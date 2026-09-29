@@ -75,4 +75,6 @@ starting shape, not a verified-against-latest-docs guarantee.
 - [x] Repo scaffolded locally
 - [ ] Pushed to GitHub (`gh repo create <org>/incharge-claude-tools --private --source=. --push`)
 - [x] First skill: `sipoc-builder`
+- [x] Second skill: `swimlane-builder` (produces Lucidchart-ready output; see its `references/lucidchart-integration.md`)
+- [ ] Confirm whether Lucid MCP server access is approved for the account (Team/Enterprise admin decision)
 - [ ] `shared-knowledge/org-glossary.md` reviewed by Delphine

@@ -8,10 +8,11 @@
     {
       "name": "accounting-process-tools",
       "source": "./",
-      "description": "Process-mapping and accounting knowledge-base tools built by the Accounting team, starting with SIPOC building.",
-      "version": "0.1.0",
+      "description": "Process-mapping and accounting knowledge-base tools built by the Accounting team: SIPOC building and Lucidchart swim-lane diagrams.",
+      "version": "0.2.0",
       "skills": [
-        "skills/sipoc-builder"
+        "skills/sipoc-builder",
+        "skills/swimlane-builder"
       ],
       "agents": []
     }
