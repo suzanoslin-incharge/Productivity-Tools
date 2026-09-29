@@ -1,0 +1,19 @@
+{
+  "name": "incharge-claude-tools",
+  "owner": {
+    "name": "InCharge Energy",
+    "email": "extern.suzan.oslin@inchargeus.com"
+  },
+  "plugins": [
+    {
+      "name": "accounting-process-tools",
+      "source": "./",
+      "description": "Process-mapping and accounting knowledge-base tools built by the Accounting team, starting with SIPOC building.",
+      "version": "0.1.0",
+      "skills": [
+        "skills/sipoc-builder"
+      ],
+      "agents": []
+    }
+  ]
+}
