@@ -6,13 +6,14 @@
   },
   "plugins": [
     {
-      "name": "process-mapping-tools",
+      "name": "productivity-tools",
       "source": "./",
-      "description": "General-purpose process-mapping tools for any team: SIPOC building and Lucidchart swim-lane diagrams.",
-      "version": "0.2.0",
+      "description": "General-purpose productivity tools for any team: SIPOC and Lucidchart swim-lane process mapping, and text-to-knowledge-base article generation.",
+      "version": "0.3.0",
       "skills": [
         "skills/sipoc-builder",
-        "skills/swimlane-builder"
+        "skills/swimlane-builder",
+        "skills/kb-article-builder"
       ],
       "agents": []
     }

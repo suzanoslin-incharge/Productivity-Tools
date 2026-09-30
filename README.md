@@ -75,7 +75,7 @@ from information I already have") is a skill.
 ```
 # from inside any Claude Code session
 /plugin marketplace add <org>/incharge-productivity-tools
-/plugin install process-mapping-tools
+/plugin install productivity-tools
 ```
 
 **Caveat:** the exact `marketplace.json` schema and `/plugin` commands should
@@ -90,5 +90,6 @@ starting shape, not a verified-against-latest-docs guarantee.
 - [ ] Pushed to GitHub (`gh repo create <org>/incharge-productivity-tools --private --source=. --push`)
 - [x] `sipoc-builder`
 - [x] `swimlane-builder` (produces Lucidchart-ready output; see its `references/lucidchart-integration.md`)
+- [x] `kb-article-builder` (text file → new title + 8-field metadata, content unchanged; full meeting-to-KB pipeline from the SOP is a later phase)
 - [ ] Confirm whether Lucid MCP server access is approved for the account (Team/Enterprise admin decision)
 - [ ] Decide whether a private personal-sandbox tier (experimental skills, not yet company-facing) is worth adding — deferred for now
