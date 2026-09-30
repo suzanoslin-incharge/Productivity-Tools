@@ -1,9 +1,30 @@
-# InCharge Claude Tools
+# InCharge Productivity Tools
 
-Shared Claude Code skills and agents for InCharge Energy. This repo is a
-**Claude Code plugin**: anyone at the company can install it and get the same
-skills, agents, and shared reference knowledge in their own Claude Code
-sessions.
+Shared Claude Code skills and agents for InCharge Energy — **general-purpose,
+cross-department** tools, not specific to any one team's domain. If a skill
+is specific to a department's own processes or data (e.g. accounting/finance
+workflows), it belongs in a sibling repo instead — see
+[`incharge-accounting-tools`](../incharge-accounting-tools) for that one.
+
+This repo is a **Claude Code plugin**: anyone at the company can install it
+and get the same skills, agents, and shared reference knowledge in their own
+Claude Code sessions, regardless of what department they're in.
+
+## What belongs here vs. a domain-specific repo
+
+- **Here**: a skill any team could use for their own work — process mapping
+  (SIPOC, swim-lane diagrams), meeting-notes summarizing, and similar. The
+  test: would this be just as useful to Product, HR, or Service as it is to
+  Accounting? If yes, it's general-purpose.
+- **A domain repo instead**: a skill that only makes sense with a specific
+  team's data, systems, or vocabulary baked in (e.g. an AP-invoice-exception
+  triager, a bank-transaction matcher). Those go in that team's own repo
+  (`incharge-accounting-tools`, and future ones per department) alongside
+  that team's `shared-knowledge/`.
+
+`sipoc-builder` and `swimlane-builder` live here for exactly this reason —
+they're process-mapping tools usable by any team, even though the first
+worked examples we built happened to be accounting processes.
 
 ## Layout
 
@@ -19,21 +40,12 @@ agents/
   <agent-name>.md         Subagent definitions (system prompt, tool
                             restrictions, model). Use for autonomous
                             multi-step work, not bounded recipes.
-shared-knowledge/
-  org-glossary.md          Terms, roles, line-of-business shorthand
-  systems-landscape.md     Systems of record and what each owns
 ```
 
-## Where knowledge goes
-
-- **Only one skill needs it** → that skill's own `references/` folder.
-- **Several skills need it** (org glossary, systems list, roles, people) →
-  `shared-knowledge/`. Each `SKILL.md` that needs it says so explicitly
-  ("Before starting, read `../../shared-knowledge/org-glossary.md`").
-- **Deep, evolving domain notes** (like a personal working folder such as
-  Accounting-MyNotes) generally stay where they are. Pull a *curated* summary
-  into `shared-knowledge/` only when a skill should load it automatically —
-  don't sync the whole working folder in.
+Note: there's no `shared-knowledge/` here — a general-purpose skill
+shouldn't hard-depend on any one department's glossary. If a skill needs
+company-specific terms it doesn't recognize, it should ask rather than
+assume a particular file exists.
 
 ## Adding a new skill
 
@@ -41,8 +53,9 @@ shared-knowledge/
    the recipe as the body.
 2. Put anything long or reference-only under `skills/<name>/references/` —
    SKILL.md should stay short; the model loads references only when needed.
-3. If it needs shared knowledge, say so in the body and confirm the file
-   exists in `shared-knowledge/`.
+3. Before adding it here, sanity-check it against "What belongs here" above —
+   if it only makes sense for one team's data or systems, it likely belongs
+   in that team's own repo instead.
 4. Add an entry for it in `.claude-plugin/marketplace.json` if it should be
    independently toggleable; otherwise it's included automatically as part
    of this plugin.
@@ -61,8 +74,8 @@ from information I already have") is a skill.
 
 ```
 # from inside any Claude Code session
-/plugin marketplace add <org>/incharge-claude-tools
-/plugin install accounting-process-tools
+/plugin marketplace add <org>/incharge-productivity-tools
+/plugin install process-mapping-tools
 ```
 
 **Caveat:** the exact `marketplace.json` schema and `/plugin` commands should
@@ -72,9 +85,10 @@ starting shape, not a verified-against-latest-docs guarantee.
 
 ## Status
 
-- [x] Repo scaffolded locally
-- [ ] Pushed to GitHub (`gh repo create <org>/incharge-claude-tools --private --source=. --push`)
-- [x] First skill: `sipoc-builder`
-- [x] Second skill: `swimlane-builder` (produces Lucidchart-ready output; see its `references/lucidchart-integration.md`)
+- [x] Repo scaffolded locally (renamed from `incharge-claude-tools` once we
+      realized SIPOC/swim-lane are general-purpose, not accounting-specific)
+- [ ] Pushed to GitHub (`gh repo create <org>/incharge-productivity-tools --private --source=. --push`)
+- [x] `sipoc-builder`
+- [x] `swimlane-builder` (produces Lucidchart-ready output; see its `references/lucidchart-integration.md`)
 - [ ] Confirm whether Lucid MCP server access is approved for the account (Team/Enterprise admin decision)
-- [ ] `shared-knowledge/org-glossary.md` reviewed by Delphine
+- [ ] Decide whether a private personal-sandbox tier (experimental skills, not yet company-facing) is worth adding — deferred for now

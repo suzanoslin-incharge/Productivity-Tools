@@ -10,9 +10,11 @@ targeted at Lucidchart. This skill is downstream of `sipoc-builder`: a
 SIPOC scopes the process and names the suppliers/customers; this skill takes
 that scope and produces the detailed, lane-by-lane flow.
 
-Read `../../shared-knowledge/systems-landscape.md` and
-`../../shared-knowledge/org-glossary.md` first if the process involves
-InCharge-specific roles or systems — don't guess at company terms.
+This skill is general-purpose — usable for any department's process. If the
+process involves company-specific roles or systems you don't recognize, ask
+rather than guess. A department may maintain its own glossary in its own
+tools repo (e.g. `incharge-accounting-tools`) — check there if relevant, but
+don't assume it exists for every team.
 
 Read `references/lucidchart-integration.md` before producing output — it
 has the exact CSV column format, the MCP setup, and a real limitation of

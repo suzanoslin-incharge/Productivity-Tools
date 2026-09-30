@@ -40,10 +40,13 @@ answered it.
 7. **Check it with the people who do the work.** A SIPOC built without them
    is usually missing something.
 
-If shared org context would help (line-of-business names, system names,
-common roles), read `../../shared-knowledge/org-glossary.md` and
-`../../shared-knowledge/systems-landscape.md` first — don't guess at
-company-specific terms.
+This skill is general-purpose — usable for any department's process, not
+just accounting/finance (the worked example in the reference guide happens
+to be a service-billing process, but that's illustration, not scope). If the
+person names a company-specific system, role, or term you don't recognize,
+ask rather than guess. A department may maintain its own glossary in its own
+tools repo (e.g. `incharge-accounting-tools`) — check there if relevant, but
+don't assume it exists for every team.
 
 ## Output format
 

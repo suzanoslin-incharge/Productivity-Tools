@@ -1,14 +1,14 @@
 {
-  "name": "incharge-claude-tools",
+  "name": "incharge-productivity-tools",
   "owner": {
     "name": "InCharge Energy",
     "email": "extern.suzan.oslin@inchargeus.com"
   },
   "plugins": [
     {
-      "name": "accounting-process-tools",
+      "name": "process-mapping-tools",
       "source": "./",
-      "description": "Process-mapping and accounting knowledge-base tools built by the Accounting team: SIPOC building and Lucidchart swim-lane diagrams.",
+      "description": "General-purpose process-mapping tools for any team: SIPOC building and Lucidchart swim-lane diagrams.",
       "version": "0.2.0",
       "skills": [
         "skills/sipoc-builder",
