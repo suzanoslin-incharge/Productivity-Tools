@@ -1,55 +1,54 @@
 # kb-article-builder
 
-Part of the InCharge Meeting-to-Knowledge-Base effort. Status: **Phase 1 built; full pipeline not started.**
+Part of the InCharge Meeting-to-Knowledge-Base effort. Status: **intake skill rewritten (2026-10-01); untested on real files. Later pipeline phases not started.**
 
-## What exists today (Phase 1)
+## What exists today
 
-A single skill (`SKILL.md`). Hand it a text file and it returns a
-knowledge-base-ready file:
+A single skill (`SKILL.md`). Hand it one file (`.md`, `.txt`, `.docx`,
+`.xlsx`, `.pdf`) and it:
 
-- a new title based on what the content is about
-- the standard eight-field metadata block (Title, Category, Document Type, Keywords, Status, Primary Process Contact, Related Teams, Short Description)
-- the original content, unchanged
+- converts the file to text
+- classifies it (Meeting, Email, Handwritten-Notes, Document) and decides: new article, update an existing article, reference stub, or skip
+- picks the category from the KB's `_Taxonomy.md`; if nothing fits, proposes a **new row** (additive only; reads the org glossary and systems landscape only then)
+- names it per the filename standard, and generates the eight-field metadata
+- when it updates an article, replaces stale facts with the new ones (e.g. a new report path replaces the old one), logs the change, and archives the prior version
+- presents one proposal and **writes nothing until you approve**
 
-It writes a new file named after the new title and leaves the original alone.
-Unsupported metadata values become `Needs confirmation`; nothing is guessed.
-This corresponds to **Step 10** of the SOP only.
-
-It has not yet been tested on real meeting files.
+Files go to `$KB_ROOT` (`Accounting-MyNotes/_KB`): `01_Sources`,
+`02_Knowledge-Articles/<Business-Function>/<Process-Area>`, `03_Decision-Log`.
+This covers SOP Steps 2, 7, 8 and 10 in a first form.
 
 ## Reference files
 
 | File | Use |
 |---|---|
-| `references/metadata-standard.md` | Quick metadata rules and controlled values; used by the skill today |
+| `references/metadata-standard.md` | Quick metadata rules and controlled values |
+| `references/filename-standard.md` | Filename rules for everything in the KB |
 | `references/InCharge_Meeting_to_Knowledge_Base_Standard.md` | The complete SOP (Parts 1 and 2), verbatim. Source of truth for the later pipeline |
 
 ## What is left to do
 
-SOP step numbers refer to Part 1 of the full SOP.
-
 **Near term**
-- [ ] Test Phase 1 on 2–3 real meeting files and adjust the title and metadata behavior
-- [ ] Decide: should it ever overwrite the original file instead of writing a new one?
-- [ ] Get the real category taxonomy (until then categories are `Proposed:`)
+- [ ] Test on 2-3 real files (one `.docx`, one `.xlsx`, one update that overrides an existing fact) and adjust
+- [x] `.docx` conversion: pandoc 3.11 installed (2026-10-01); docx skill is the fallback
+- [ ] Migrate the existing Accounting-MyNotes files into `_KB` (inventory table, approve, then move)
 - [ ] Commit and add to the plugin release
 
-**Full pipeline (later; needs design and your review of the SOP)**
-- [ ] Step 1: decide if a meeting is worth processing
-- [ ] Step 2: build the meeting source package (dated folder, AI summary, Loop notes, transcript, links, meeting metadata)
-- [ ] Steps 3–6: extract from the AI summary and Loop notes, verify against the transcript, and separate knowledge from meeting administration
-- [ ] Steps 7–8: choose article type and topic, split by topic, and draft the article in the standard structure
-- [ ] Step 9: create or update the Decision Log
-- [ ] Step 11: validation with the process contact
-- [ ] Step 12: publish, cross-link, and maintain (version, last-reviewed date, review owner)
+**Later pipeline (needs design)**
+- [ ] Step 1: triage whether a meeting is worth processing
+- [ ] Steps 3-6: extract, verify against the transcript, separate knowledge from administration
+- [ ] Step 9: Decision Log updates
+- [ ] Step 11: validation request to the process contact
+- [ ] Step 12: cross-link, version, publish to SharePoint
 
-Likely shape: a skill per bounded step, plus agents for the multi-step,
-multi-file work (source package, batch processing, Decision Log updates).
-Decide this after reviewing the SOP.
+## Done
+
+- [x] `_KB` structure, templates, filename standard, `KB_ROOT`
+- [x] Taxonomy seeded (nine rows) and approved 2026-10-01; grows by approved additions only
 
 ## Open decisions (the SOP doesn't answer these)
 
-- Category taxonomy (Business Function > Process Area values)
+- Category taxonomy: seeded and approved; new rows are added case by case
 - SharePoint locations for 01 Meeting Sources, 02 Knowledge Articles, 03 Decision Log
 - Which system holds action items
 - Where the Primary Process Contact and review owner come from
