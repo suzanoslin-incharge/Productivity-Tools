@@ -19,8 +19,7 @@ Claude Code sessions, regardless of what department they're in.
 - **A domain repo instead**: a skill that only makes sense with a specific
   team's data, systems, or vocabulary baked in (e.g. an AP-invoice-exception
   triager, a bank-transaction matcher). Those go in that team's own repo
-  (`accounting-tools`, and future ones per department) alongside
-  that team's `shared-knowledge/`.
+  (`accounting-tools`, and future ones per department).
 
 `sipoc-builder` and `swimlane-builder` live here for exactly this reason —
 they're process-mapping tools usable by any team, even though the first
@@ -40,12 +39,19 @@ agents/
   <agent-name>.md         Subagent definitions (system prompt, tool
                             restrictions, model). Use for autonomous
                             multi-step work, not bounded recipes.
+shared-knowledge/
+  org-glossary.md          InCharge org terms: lines of business, departments,
+                             key people, abbreviations
+  systems-landscape.md     Systems of record and what each owns
 ```
 
-Note: there's no `shared-knowledge/` here — a general-purpose skill
-shouldn't hard-depend on any one department's glossary. If a skill needs
-company-specific terms it doesn't recognize, it should ask rather than
-assume a particular file exists.
+`shared-knowledge/` holds company-wide reference material (org glossary,
+systems landscape) that several skills can read, for example when
+kb-article-builder adds a new taxonomy row. A skill should read these only
+when it needs a term or system name, and if a term isn't listed it should ask
+rather than assume. Both files are seeds, not verified directories; they were
+first built from Accounting's knowledge base, so confirm names and roles
+before publishing anything outward-facing.
 
 ## Adding a new skill
 
