@@ -8,12 +8,13 @@
     {
       "name": "productivity-tools",
       "source": "./",
-      "description": "General-purpose productivity tools for any team: SIPOC and Lucidchart swim-lane process mapping, and text-to-knowledge-base article generation.",
-      "version": "0.3.0",
+      "description": "General-purpose productivity tools for any team: SIPOC and Lucidchart swim-lane process mapping, text-to-knowledge-base article generation, and refreshing linked documents in the knowledge base.",
+      "version": "0.4.0",
       "skills": [
         "skills/sipoc-builder",
         "skills/swimlane-builder",
-        "skills/kb-article-builder"
+        "skills/kb-article-builder",
+        "skills/update-linked-documents"
       ],
       "agents": []
     }
