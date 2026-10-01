@@ -13,8 +13,13 @@ that scope and produces the detailed, lane-by-lane flow.
 This skill is general-purpose — usable for any department's process. If the
 process involves company-specific roles or systems you don't recognize, ask
 rather than guess. A department may maintain its own glossary in its own
-tools repo (e.g. `incharge-accounting-tools`) — check there if relevant, but
+tools repo (e.g. `accounting-tools`) — check there if relevant, but
 don't assume it exists for every team.
+
+Two references, kept separate on purpose:
+- `references/swimlane-process-map.md` — the method: what a swim-lane map is,
+  when to use it, how to build and validate one, pitfalls. Tool-agnostic.
+- `references/lucidchart-integration.md` — the output mechanics for Lucidchart.
 
 Read `references/lucidchart-integration.md` before producing output — it
 has the exact CSV column format, the MCP setup, and a real limitation of

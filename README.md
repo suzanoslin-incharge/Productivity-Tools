@@ -4,7 +4,7 @@ Shared Claude Code skills and agents for InCharge Energy — **general-purpose,
 cross-department** tools, not specific to any one team's domain. If a skill
 is specific to a department's own processes or data (e.g. accounting/finance
 workflows), it belongs in a sibling repo instead — see
-[`incharge-accounting-tools`](../incharge-accounting-tools) for that one.
+[`accounting-tools`](../accounting-tools) for that one.
 
 This repo is a **Claude Code plugin**: anyone at the company can install it
 and get the same skills, agents, and shared reference knowledge in their own
@@ -19,7 +19,7 @@ Claude Code sessions, regardless of what department they're in.
 - **A domain repo instead**: a skill that only makes sense with a specific
   team's data, systems, or vocabulary baked in (e.g. an AP-invoice-exception
   triager, a bank-transaction matcher). Those go in that team's own repo
-  (`incharge-accounting-tools`, and future ones per department) alongside
+  (`accounting-tools`, and future ones per department) alongside
   that team's `shared-knowledge/`.
 
 `sipoc-builder` and `swimlane-builder` live here for exactly this reason —
@@ -74,7 +74,7 @@ from information I already have") is a skill.
 
 ```
 # from inside any Claude Code session
-/plugin marketplace add <org>/incharge-productivity-tools
+/plugin marketplace add <org>/productivity-tools
 /plugin install productivity-tools
 ```
 
@@ -87,7 +87,7 @@ starting shape, not a verified-against-latest-docs guarantee.
 
 - [x] Repo scaffolded locally (renamed from `incharge-claude-tools` once we
       realized SIPOC/swim-lane are general-purpose, not accounting-specific)
-- [ ] Pushed to GitHub (`gh repo create <org>/incharge-productivity-tools --private --source=. --push`)
+- [ ] Pushed to GitHub (`gh repo create <org>/productivity-tools --private --source=. --push`)
 - [x] `sipoc-builder`
 - [x] `swimlane-builder` (produces Lucidchart-ready output; see its `references/lucidchart-integration.md`)
 - [x] `kb-article-builder` (text file → new title + 8-field metadata, content unchanged; full meeting-to-KB pipeline from the SOP is a later phase)

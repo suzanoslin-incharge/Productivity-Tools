@@ -23,7 +23,7 @@ interpretation of a prompt.
 **Required columns:**
 
 | Column | Meaning |
-|---|---|
+| --- | --- |
 | `ID` | A unique identifier for the row/shape. |
 | `Name` | The shape's label. |
 | `Shape Library` | Which Lucid shape library to draw from (must be spelled/capitalized exactly as Lucid expects). |
@@ -67,6 +67,7 @@ Claude — directly to a Lucid account. This is the actual "integration," as
 opposed to a copy-paste prompt or file.
 
 **What it can do** (per Lucid's own announcement and GitHub repo):
+
 - Search and retrieve existing Lucid documents by natural-language query.
 - Summarize a document's content and pull out action items.
 - **Generate a new diagram from a prompt or from a dataset.**
@@ -76,9 +77,11 @@ opposed to a copy-paste prompt or file.
 - Convert an image/visual Claude produces into a Lucid document.
 
 **Setup:**
-```
+
+```bash
 claude mcp add --transport http lucid https://mcp.lucid.app/mcp
 ```
+
 Authentication is OAuth 2.0 with Dynamic Client Registration — you'll be
 prompted to sign in to Lucid the first time it's used. Lucid states the
 server is a pass-through: it does not retain document content, prompts, or
@@ -115,6 +118,7 @@ shape library is likely to be silently dropped, producing a flat flowchart
 instead of a lane diagram.
 
 **If you use this path anyway** (quick draft, or CSV import isn't practical):
+
 - Explicitly state "use the BPMN shape library with pools and lanes" in the
   prompt — don't just name lanes and assume Lucid will infer the shape type.
 - Be specific and give full context in one prompt rather than a terse one;
@@ -136,7 +140,7 @@ summaries)*,
 ## Which path to use, by situation
 
 | Situation | Use |
-|---|---|
+| --- | --- |
 | Lane placement must be correct and reviewable/versioned | **CSV import (§1)** — default |
 | Lucid MCP is approved for your account | **MCP server (§2)** — best, once available |
 | Quick rough draft, lanes not yet final, or exploring options | **AI prompt (§3)**, with the BPMN-shape-library instruction spelled out |
