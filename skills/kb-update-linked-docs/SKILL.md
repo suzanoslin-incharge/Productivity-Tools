@@ -1,5 +1,5 @@
 ---
-name: update-linked-documents
+name: kb-update-linked-docs
 description: Check every linked document in the InCharge knowledge base against its original on SharePoint or OneDrive; where a newer version exists, find what knowledge changed and propose updates to the affected articles. Use when the user asks to refresh, sync, or check linked documents, or to bring the KB up to date with its originals.
 ---
 
@@ -7,7 +7,7 @@ description: Check every linked document in the InCharge knowledge base against 
 
 Keeps the knowledge base current for **linked** sources: documents that live
 on SharePoint or OneDrive and were extracted into KB articles by
-`kb-article-builder`. KB-only sources (emails, meeting notes) are ignored.
+`kb-article-builder`. KB-only sources (the `01_Sources/KB-Only/` folder) are ignored.
 
 **Read-only until the user approves.** Originals are never modified, and
 nothing in the KB changes before approval.
@@ -18,15 +18,21 @@ KB layout and the article/source formats are defined in
 
 ## Steps
 
-1. **Inventory.** Read every `01_Sources/*/Source-Metadata.md`. Keep those
-   with `Mode: Linked`. If the user named a source or category, limit to it.
+1. **Inventory.** Read every `01_Sources/Linked/*/Source-Metadata.md`
+   (the `KB-Only` folder is never checked). If the user named a source or category, limit to it.
    For each, note its link, the recorded `Original last modified`, and the
    article it produced.
-2. **Check dates.** For each linked source, get the original's current
-   last-modified date from its link using the Microsoft 365 connector
-   (SharePoint search or read). Compare with the recorded date. If the
-   connector cannot reach the link, mark it `could not check` and ask the user
-   for the file. Never guess, and never use a local path (none is stored).
+2. **Check dates.** For each linked source, look up the original by its
+   recorded `Item ID` using the Microsoft 365 connector and read its current
+   last-modified date and address. Compare with the recorded date.
+   - **Not found by ID (moved or re-created).** Search SharePoint by the
+     recorded `Original file name`, narrowed by any location the user gave
+     ("I moved everything to the Accounting-Internal site"). Compare the
+     candidate's content with the article. Present the candidate as a
+     proposed match; never adopt one without the user's confirmation. If one
+     moved location is confirmed, use it as the hint for the other sources.
+   - **Still not found:** mark `deleted or no access` or `could not check` and
+     ask the user for the file. Never guess, and never use a local path.
 3. **Report, then ask.** Show one table: source, article, recorded date,
    current date, status (`unchanged`, `changed`, `moved`, `deleted or no
    access`, `could not check`). Ask which changed documents to process
@@ -54,10 +60,16 @@ KB layout and the article/source formats are defined in
      `Last updated`, add a Change Log line naming the change and the new
      document date
    - update the source's `Source-Metadata.md`: `Original last modified`,
-     `Retrieved`, and `Link` if the document moved
+     `Retrieved`, and, if the document moved, `Link`, `Item ID`, `Link visibility`
+     and `Where the original lives`; also the article's **Source document**
+     section and the document's row in `_Linked-Catalog.md` (Link and Location), and add
+     a Change Log line noting the link change. Tell the user to reapply the
+     `In KB` Finder tag to the moved file.
    - if the original was deleted or replaced by a different document,
      propose a Status change (`Superseded` or `Archived`) rather than editing content
 7. **Report.** Counts (checked, unchanged, updated, skipped, could not
    check), which articles changed, and anything left open.
 
-Unchanged documents are left alone: no edits, no date updates.
+Unchanged documents are left alone: no edits to articles or sources. After a run, update `Last checked` in `$KB_ROOT/_Linked-Catalog.md` for every document checked, and `Original last modified` for those updated (that catalog edit is bookkeeping and is reported, not proposed).
+
+**Coverage check (on request).** When the user asks what is not catalogued yet, list files in the named `Accounting-MyNotes` folder that have no `In KB` Finder tag and no row in `_Linked-Catalog.md`, ignoring names that start with `_`.

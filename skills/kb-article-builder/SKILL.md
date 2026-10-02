@@ -1,6 +1,6 @@
 ---
 name: kb-article-builder
-description: Take one uploaded file (.md, .txt, .docx, .xlsx, .pdf - meeting notes, transcripts, process documents, spreadsheets, emails) and work out where it belongs in the InCharge knowledge base, what it should be called, and whether it creates a new article or updates an existing one. Proposes everything first and writes nothing until the user approves. Use when someone hands over a file and wants it filed, titled, tagged with KB metadata, or merged into the knowledge base.
+description: Take one uploaded file (.md, .txt, .docx, .xlsx, .pptx, .pdf - meeting notes, transcripts, process documents, spreadsheets, emails) and work out where it belongs in the InCharge knowledge base, what it should be called, and whether it creates a new article or updates an existing one. Proposes everything first and writes nothing until the user approves. Use when someone hands over a file and wants it filed, titled, tagged with KB metadata, or merged into the knowledge base.
 ---
 
 # KB Article Builder
@@ -20,7 +20,8 @@ References (read when needed, not all at once):
 `$KB_ROOT` (falls back to `$ACCT_MYNOTES/_KB`; stop and tell the user if neither exists).
 
 ```text
-01_Sources/Source-Name_YYYY-MM-DD/   evidence, one folder per source
+01_Sources/KB-Only/Source-Name_YYYY-MM-DD/   content whose home is the KB; original kept
+01_Sources/Linked/Source-Name_YYYY-MM-DD/    documents that live on SharePoint/OneDrive; metadata and link only
 02_Knowledge-Articles/<Business-Function>/<Process-Area>/System_Topic.md
 02_Knowledge-Articles/_Superseded-Archived/
 03_Decision-Log/Decision-Log.md
@@ -31,10 +32,10 @@ Articles are organized by topic or process, never by meeting: move the source's 
 
 ## Mode: KB-only or linked
 
-Every file is handled in one of two modes.
+Every file is handled in one of two modes. The mode is not stored as a field: it is the source folder's location, `01_Sources/KB-Only/` or `01_Sources/Linked/`.
 
-- **KB-only.** The KB is the home of this content (emails, meeting notes, handwritten notes, anything with no other home). The original is copied into `01_Sources/` and the article is the readable version.
-- **Linked.** The original lives on SharePoint or OneDrive and must stay readable there (a workbook, policy, SOP). The original is never moved, copied or edited. The KB gets an article with the knowledge extracted from it, and the source folder records the link and dates so `update-linked-documents` can refresh it later.
+- **KB-only.** The KB is the home of this content (emails, meeting notes, handwritten notes, anything with no other home). The original is copied into `01_Sources/KB-Only/<source folder>/` and the article is the readable version.
+- **Linked.** The original lives on SharePoint or OneDrive and must stay readable there (a workbook, policy, SOP). The original is never moved, copied or edited. Its source folder goes in `01_Sources/Linked/`. The KB gets an article with the knowledge extracted from it, and the source folder records the link and dates so `kb-update-linked-docs` can refresh it later.
 
 **How the mode is set:**
 1. The user says it ("linked", "KB only"): use that.
@@ -47,6 +48,7 @@ Every file is handled in one of two modes.
    - `.md` / `.txt`: read directly.
    - `.docx`: convert to markdown with `pandoc` or `python-docx` if installed; otherwise use the `docx` skill (or read `word/document.xml` from the zip). Keep headings, lists and tables.
    - `.xlsx`: read with `openpyxl`. Summarize per sheet (name, purpose, headers, row counts, notable values); do not dump whole sheets.
+   - `.pptx`: convert with `pandoc` for text in reading order. Use `python-pptx` for tables, speaker notes and a per-slide count of pictures. A slide with several pictures and little text probably carries its meaning in a diagram: flag it, render it to an image (the `pptx` skill can help) and read the image, or ask the user. Do not treat extracted text alone as the whole slide.
    - `.pdf`: use the `pdf` skill.
    - The original file is never modified.
 2. **Classify the source.** Source-Type: `Meeting`, `Email`, `Handwritten-Notes`, or `Document`. Decide the action: **new article**, **update existing article**, **reference stub**, or **skip** (not knowledge, or personal data such as bank statements). Also decide the **mode** (see above). A linked document the user does not want extracted becomes a reference stub: link, owner and a fuller-than-usual description only.
@@ -74,7 +76,7 @@ The taxonomy is additive only. Never rename, split, merge or retire an existing 
 One message, in this order:
 
 1. **File:** name, type, Source-Type.
-2. **Mode and action:** KB-only or linked, and new article / update existing / reference stub / skip, and why.
+2. **Mode and action:** KB-only or linked (this decides the source subfolder), and new article / update existing / reference stub / skip, and why.
 3. **Where:** full path of the article, and of the source folder.
 4. **Name:** the title and filename.
 5. **Taxonomy:** the row used, or a new-row proposal.
@@ -88,13 +90,15 @@ End by asking the user to approve, edit or reject.
 
 Only after approval:
 
-- **Source folder, KB-only.** Create `01_Sources/Source-Name_YYYY-MM-DD/` with `Source-Metadata.md` (from the template, `Mode: KB-only`) and the original file, unchanged, renamed to the filename standard (e.g. `Meeting-Notes_YYYY-MM-DD.docx`). A meeting recording is moved into the folder with the notes, not copied.
-- **Source folder, linked.** Create the folder with `Source-Metadata.md` only (`Mode: Linked`): the SharePoint or OneDrive sharing link, owner, the original's last-modified date, and the date retrieved. No copy of the file and never a local path. Get the link from the user, or look it up with the Microsoft 365 connector. The article ends with a **Source document** section repeating the link and dates and stating that the original is the record: if the two disagree, the original governs.
+- **Source folder, KB-only.** Create `01_Sources/KB-Only/Source-Name_YYYY-MM-DD/` with `Source-Metadata.md` (from the template) and the original file, unchanged, renamed to the filename standard (e.g. `Meeting-Notes_YYYY-MM-DD.docx`). A meeting recording is moved into the folder with the notes, not copied.
+- **Source folder, linked.** Create `01_Sources/Linked/Source-Name_YYYY-MM-DD/` with `Source-Metadata.md` only: the SharePoint or OneDrive link, owner, original file name, the connector's item ID, who the link opens for (owner only, people in InCharge, or site members), the original's last-modified date, and the date retrieved. No copy of the file and never a local path. Get the link from the user, or look it up with the Microsoft 365 connector. The article ends with a **Source document** section repeating the link and dates and stating that the original is the record: if the two disagree, the original governs.
+- **Mark a linked file as catalogued.** For every linked source: (1) add a row to `$KB_ROOT/_Linked-Catalog.md` (original file, a link to it (the SharePoint or OneDrive address, even if it opens only for the owner for now), location, article links, source folder link, catalogued date, original last modified, last checked); (2) put the Finder tag `In KB` on the local copy of the original, which changes neither its contents nor its modified date: `xattr -wx com.apple.metadata:_kMDItemUserTags "$(python3 -c "import plistlib;print(plistlib.dumps(['In KB'],fmt=plistlib.FMT_BINARY).hex())")" "<file>"`. The tag is local to this Mac. Do not edit the original itself; an in-file pointer waits until the KB is published somewhere others can open. If a linked source gains another article later, add it to the same catalog row.
+- **Open questions.** Add every open question from the article's Open Questions section as a new row in the Open table of `$ACCT_MYNOTES/OPEN_QUESTIONS.md`: the next free ID (`Q###`), the question, a suggested person who may know (from the article or the department directory; leave empty if unclear), a link to the article, and the date. Skip bullets that only say a name is a first name or unconfirmed. When a question is answered later, use the `kb-answer-open-questions` skill. Include the additions in the proposal like any other write.
 - **Action items.** Meeting administration (follow-ups, scheduling, tasks) does not go in the article. Append each action item to `$ACCT_MYNOTES/FOLLOWUP_ITEMS.md` as a row: `Done` checkbox (`[ ]`), action item, owner, date made (the meeting date), meeting title. Include them in the proposal for approval like any other write.
 - **New article.** Create it from `_Templates/Article-Template.md` in the category folder: title, metadata list, then the content organized under the template sections. Do not invent content; sections with nothing in the source say so or are omitted. Set `Last updated` and add the first Change Log line.
 - **Update.** First copy the current article to `_Superseded-Archived/<filename>_<today>.md`. Then edit the article: replace each approved stale statement, update `Last updated`, add a Change Log line naming the change and the source, and fix metadata that changed (for example Keywords or Short Description).
 - **Reference stub.** From `_Templates/Reference-Stub-Template.md`: Document Type `Reference`, the link (a SharePoint or OneDrive sharing link, never a local path), owner, retrieved date, and a fuller-than-usual Short Description. No copy of the document.
-- **Links.** Relative links both ways: the article's Sources section to the source folder, and the source's metadata back to the article.
+- **Links.** Relative links both ways (the source folder's subfolder, `KB-Only` or `Linked`, is part of the path): the article's Sources section to the source folder, and the source's metadata back to the article.
 - **Decision Log.** Only if the source clearly records a decision (not a recommendation or action item), and only as an approved item in the proposal.
 
 ## Output layout

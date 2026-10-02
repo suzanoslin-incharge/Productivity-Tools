@@ -21,7 +21,7 @@ Claude Code sessions, regardless of what department they're in.
   triager, a bank-transaction matcher). Those go in that team's own repo
   (`accounting-tools`, and future ones per department).
 
-`sipoc-builder` and `swimlane-builder` live here for exactly this reason —
+`map-sipoc-builder` and `map-swimlane-builder` live here for exactly this reason —
 they're process-mapping tools usable by any team, even though the first
 worked examples we built happened to be accounting processes.
 
@@ -94,8 +94,8 @@ starting shape, not a verified-against-latest-docs guarantee.
 - [x] Repo scaffolded locally (renamed from `incharge-claude-tools` once we
       realized SIPOC/swim-lane are general-purpose, not accounting-specific)
 - [ ] Pushed to GitHub (`gh repo create <org>/productivity-tools --private --source=. --push`)
-- [x] `sipoc-builder`
-- [x] `swimlane-builder` (produces Lucidchart-ready output; see its `references/lucidchart-integration.md`)
+- [x] `map-sipoc-builder`
+- [x] `map-swimlane-builder` (produces Lucidchart-ready output; see its `references/lucidchart-integration.md`)
 - [x] `kb-article-builder` (text file → new title + 8-field metadata, content unchanged; full meeting-to-KB pipeline from the SOP is a later phase)
 - [ ] Confirm whether Lucid MCP server access is approved for the account (Team/Enterprise admin decision)
 - [ ] Decide whether a private personal-sandbox tier (experimental skills, not yet company-facing) is worth adding — deferred for now

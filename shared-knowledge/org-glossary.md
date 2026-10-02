@@ -70,7 +70,7 @@ Recurring Services keep them operating over time.
 - **R2R** — Record-to-Report
 - **WO** — Work Order
 - **SIPOC** — Suppliers, Inputs, Process, Outputs, Customers (see
-  `skills/sipoc-builder`)
+  `skills/map-sipoc-builder`)
 - **AP** — Accounts Payable
 - **AR** — Accounts Receivable
 - **PO** — Purchase Order

@@ -1,6 +1,6 @@
 # SIPOC: What It Is and How It Leads to a Swim-Lane Map
 
-A SIPOC scopes a process. A swim-lane map details it. This guide covers how to build the first and how to turn it into the second. For the swim-lane method itself, see [swimlane-process-map.md](../../swimlane-builder/references/swimlane-process-map.md).
+A SIPOC scopes a process. A swim-lane map details it. This guide covers how to build the first and how to turn it into the second. For the swim-lane method itself, see [swimlane-process-map.md](../../map-swimlane-builder/references/swimlane-process-map.md).
 
 ---
 
@@ -66,7 +66,7 @@ Although the name runs S → I → P → O → C, you usually **fill it in from 
 
 ## 4. From SIPOC to swim-lane map
 
-For what a swim-lane map is, when to use one, and how it differs from a SIPOC, see [swimlane-process-map.md](../../swimlane-builder/references/swimlane-process-map.md). The one-line summary: a SIPOC scopes a process before mapping; a swim-lane map maps it in detail once scope is agreed.
+For what a swim-lane map is, when to use one, and how it differs from a SIPOC, see [swimlane-process-map.md](../../map-swimlane-builder/references/swimlane-process-map.md). The one-line summary: a SIPOC scopes a process before mapping; a swim-lane map maps it in detail once scope is agreed.
 
 **The conversion, specific to a SIPOC's columns:**
 
@@ -75,7 +75,7 @@ For what a swim-lane map is, when to use one, and how it differs from a SIPOC, s
 3. Break each high-level SIPOC step into the detailed steps you observed, and place each one in the lane of whoever does it.
 4. Draw arrows. **Every time an arrow crosses from one lane into another, that is a handoff.** Handoffs are where work waits, gets lost or comes back for correction, so they are usually where the improvement opportunities are.
 
-Once the lanes and steps are laid out, the `swimlane-builder` skill turns them into a Lucidchart-ready CSV or diagram.
+Once the lanes and steps are laid out, the `map-swimlane-builder` skill turns them into a Lucidchart-ready CSV or diagram.
 
 ---
 
@@ -124,7 +124,7 @@ The lanes below come straight from the SIPOC's Supplier and Customer columns. Re
 - **There are at least five handoffs** before the customer is invoiced, plus a loop back to the service team when data is wrong (step 7). If people say "a lot of rejections come from Service," that loop is worth measuring.
 - **The Systems lane is thin** compared with the human lanes. That often means people, not systems, are carrying the integration.
 
-A full swim-lane map would expand steps 6 and 8 into the detailed checks: price overrides, tax codes, reference numbers, blanket POs and portal uploads. This markdown table is a sketch, not a diagram. For an actual Lucidchart version, use the `swimlane-builder` skill.
+A full swim-lane map would expand steps 6 and 8 into the detailed checks: price overrides, tax codes, reference numbers, blanket POs and portal uploads. This markdown table is a sketch, not a diagram. For an actual Lucidchart version, use the `map-swimlane-builder` skill.
 
 ---
 

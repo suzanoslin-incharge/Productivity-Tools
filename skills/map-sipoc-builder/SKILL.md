@@ -1,5 +1,5 @@
 ---
-name: sipoc-builder
+name: map-sipoc-builder
 description: Build a SIPOC (Suppliers, Inputs, Process, Outputs, Customers) table for a business process, and optionally convert it into a swim-lane map. Use when someone asks for a SIPOC, wants to scope a process before detailed mapping, or asks how suppliers/customers relate to swim lanes.
 ---
 

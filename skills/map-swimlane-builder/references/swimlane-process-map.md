@@ -1,6 +1,6 @@
 # Swimlane Process Map
 
-**Source:** [Umbrex — Swimlane Process Map](https://umbrex.com/resources/frameworks/process-improvement-frameworks/swimlane-process-map/). Saved here for the process-mapping knowledge base. See also [sipoc-swimlane-guide.md](../../sipoc-builder/references/sipoc-swimlane-guide.md), which this piece links to in section 9.
+**Source:** [Umbrex — Swimlane Process Map](https://umbrex.com/resources/frameworks/process-improvement-frameworks/swimlane-process-map/). Saved here for the process-mapping knowledge base. See also [sipoc-swimlane-guide.md](../../map-sipoc-builder/references/sipoc-swimlane-guide.md), which this piece links to in section 9.
 
 ---
 
@@ -113,7 +113,7 @@ The exercise also exposed structural issues about decision rights and role bound
 
 A swimlane map fits best as part of a broader process-diagnosis toolkit rather than as a stand-alone answer. It is often used after a high-level framing tool and before a redesign or implementation tool.
 
-**SIPOC** is a useful precursor when the team first needs to agree on suppliers, inputs, process boundaries, outputs, and customers. It is faster and higher level than a swimlane map. Once boundaries are clear, the swimlane map adds the detailed cross-functional view. (See [sipoc-swimlane-guide.md](../../sipoc-builder/references/sipoc-swimlane-guide.md) for how the two connect — the SIPOC's suppliers and customers become the swimlane map's lanes.)
+**SIPOC** is a useful precursor when the team first needs to agree on suppliers, inputs, process boundaries, outputs, and customers. It is faster and higher level than a swimlane map. Once boundaries are clear, the swimlane map adds the detailed cross-functional view. (See [sipoc-swimlane-guide.md](../../map-sipoc-builder/references/sipoc-swimlane-guide.md) for how the two connect — the SIPOC's suppliers and customers become the swimlane map's lanes.)
 
 **Value Stream Mapping** is closely related but emphasizes flow efficiency, waste, lead time, and value-added versus non-value-added work. If the core question is ownership and handoffs, swimlanes are often the better starting point. If the main question is speed and waste, value stream mapping may be stronger.
 

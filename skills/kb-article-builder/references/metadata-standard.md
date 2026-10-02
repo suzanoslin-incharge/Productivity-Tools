@@ -17,7 +17,10 @@ Related Teams, Short Description.
 
 **Document Type:** Process Discovery Meeting Notes; Current State Process
 Documentation; Future State Design; Standard Operating Procedure; How-To
-Guide; Product Knowledge; Decision Record; Reference; Training Material.
+Guide; Product Knowledge; Decision Record; Reference; Training Material;
+Policy.
+(`Policy` was added 2026-10-01. The verbatim SOP copy in
+`InCharge_Meeting_to_Knowledge_Base_Standard.md` still shows the older list.)
 
 **Status:** Draft - Process Discovery; Draft - Under Review; Validated;
 Approved; Published; Superseded; Archived; Needs confirmation.

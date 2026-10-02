@@ -53,7 +53,7 @@ list and syntax above come from search-result summaries of it, not a direct
 read. Confirm against the live page before treating the exact column names
 as final.)*
 
-**What `swimlane-builder` should produce for this path:** a CSV with one row
+**What `map-swimlane-builder` should produce for this path:** a CSV with one row
 per process step, `Contained By` set from the lane the step's owner sits in,
 plus a lane "header" row per swim-lane container if the target diagram
 needs the lanes created rather than reused from a template.
@@ -95,7 +95,7 @@ with Delphine or IT before assuming it's available.
 Sources: [Lucid community announcement](https://community.lucid.co/community-news-and-announcements-9/introducing-the-lucid-model-context-protocol-mcp-server-12230),
 [lucidsoftware/lucid-mcp-server on GitHub](https://github.com/lucidsoftware/lucid-mcp-server).
 
-Once this is enabled for your account, `swimlane-builder` should prefer
+Once this is enabled for your account, `map-swimlane-builder` should prefer
 calling the MCP server directly over producing a CSV for manual import —
 update this file's "preferred path" note when that happens.
 

@@ -1,12 +1,12 @@
 ---
-name: swimlane-builder
+name: map-swimlane-builder
 description: Turn a scoped process (often a SIPOC's output) into a swim-lane diagram Lucidchart can actually render — as a CSV import file (default, reliable), an AI-generation prompt (fallback, has known limitations), or via the Lucid MCP server if connected. Use when someone asks for a swimlane/cross-functional flowchart, wants to visualize handoffs between roles/teams/systems, or asks to get a process into Lucidchart.
 ---
 
 # Swim-lane Builder
 
 Produces a swim-lane (cross-functional flowchart) diagram of a process,
-targeted at Lucidchart. This skill is downstream of `sipoc-builder`: a
+targeted at Lucidchart. This skill is downstream of `map-sipoc-builder`: a
 SIPOC scopes the process and names the suppliers/customers; this skill takes
 that scope and produces the detailed, lane-by-lane flow.
 
@@ -35,7 +35,7 @@ ask for or reconstruct:
 1. The process name and its start/end trigger.
 2. The lanes: every person, team, or system that performs a step. (If a
    SIPOC exists, its Supplier and Customer columns are the starting list —
-   see `sipoc-builder`'s guide for that conversion rule.)
+   see `map-sipoc-builder`'s guide for that conversion rule.)
 3. The ordered steps, each assigned to exactly one lane.
 4. Where handoffs, decisions, waits, and loops happen — these are the
    points worth calling out explicitly, since they're usually where the
@@ -60,7 +60,7 @@ just names lanes without that instruction is likely to be rendered as a
 flat flowchart, per Lucid's own documented limitation.
 
 Always also give a markdown table sketch of the lanes and steps in the
-response itself (like the worked example in `sipoc-builder`'s reference
+response itself (like the worked example in `map-sipoc-builder`'s reference
 guide) — it's the fastest way for a person to sanity-check the flow before
 importing anything into Lucidchart.
 
