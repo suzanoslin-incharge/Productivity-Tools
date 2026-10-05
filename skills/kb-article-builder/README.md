@@ -8,7 +8,7 @@ Part of the InCharge Meeting-to-Knowledge-Base effort. Status: **the three KB sk
 | --- | --- |
 | `kb-article-builder` (this skill) | Turn one file into a KB article: classify it, pick the category, name it, tag it with metadata, create or update the article. Writes nothing until you approve |
 | `kb-update-linked-docs` | Check every **linked** document against its original on SharePoint/OneDrive, find what changed, and propose article updates. Also re-finds files that moved |
-| `kb-answer-open-questions` | Work through `$ACCT_MYNOTES/OPEN_QUESTIONS.md`: list questions by who is likely to know, and record an answer (updating the articles) |
+| `kb-answer-open-questions` | Work through `$ACCT_MYNOTES/OPEN_QUESTIONS.xlsx`: list questions by who is likely to know, record an answer (updating the articles), process answers you typed into the workbook by hand, and take answers from notes, an email or a transcript. Ask it "what should I ask Doricia and Josh?" to get their questions rewritten with context |
 
 The mapping skills (`map-sipoc-builder`, `map-swimlane-builder`) are separate.
 
@@ -23,7 +23,8 @@ Hand it one file (`.md`, `.txt`, `.docx`, `.xlsx`, `.pptx`, `.pdf`) or an email 
 - names it per the filename standard, and generates the eight-field metadata
 - when it updates an article, replaces stale facts with the new ones (e.g. a new report path replaces the old one), logs the change, and archives the prior version
 - for linked files: adds a row to `_Linked-Catalog.md` and puts the Finder tag `In KB` on the original
-- adds the article's open questions to `OPEN_QUESTIONS.md` and its action items to `FOLLOWUP_ITEMS.md`
+- checks the open questions in `OPEN_QUESTIONS.xlsx` against the new file and proposes the ones it answers (recorded only after you approve)
+- adds the article's open questions to `OPEN_QUESTIONS.xlsx` and its action items to `FOLLOWUP_ITEMS.xlsx` (both are Excel workbooks you can edit by hand; keep them closed in Excel while Claude edits them)
 - presents one proposal and **writes nothing until you approve**
 
 Files go to `$KB_ROOT` (`Accounting-MyNotes/_KB`): `01_Sources/KB-Only`,
@@ -46,7 +47,7 @@ Files go to `$KB_ROOT` (`Accounting-MyNotes/_KB`): `01_Sources/KB-Only`,
 
 **Near term**
 - [ ] Run each KB skill as an installed skill (so far the steps were followed by hand) and adjust what does not work
-- [ ] Work through `OPEN_QUESTIONS.md` with `kb-answer-open-questions`
+- [ ] Work through `OPEN_QUESTIONS.xlsx` with `kb-answer-open-questions`
 - [ ] Add an email-intake step to `kb-article-builder` (find the thread through the Outlook connector, confirm it with you, save the text and attachments to a source folder; tagging and moving the email stays manual because the connector cannot do it)
 - [x] `.docx` conversion: pandoc 3.11 installed (2026-10-01); docx skill is the fallback
 - [ ] Commit and add to the plugin release
@@ -61,7 +62,7 @@ Files go to `$KB_ROOT` (`Accounting-MyNotes/_KB`): `01_Sources/KB-Only`,
 ## Done
 
 - [x] `_KB` structure, templates, filename standard, `KB_ROOT`
-- [x] `$ACCT_MYNOTES/OPEN_QUESTIONS.md` gathers every article's open questions in one place (2026-10-01)
+- [x] `$ACCT_MYNOTES/OPEN_QUESTIONS.xlsx` gathers every article's open questions in one place (2026-10-01; converted from a markdown table to an editable Excel workbook 2026-10-05)
 - [x] `_Linked-Catalog.md` plus `In KB` Finder tag mark catalogued linked files (2026-10-01)
 - [x] Taxonomy seeded (nine rows) and approved 2026-10-01; grows by approved additions only
 
@@ -78,7 +79,7 @@ There are two separate moves. Do them in this order.
 - [ ] The site and library for the **KB**
 - [ ] **One library with the three folders** (`01_Sources`, `02_Knowledge-Articles`, `03_Decision-Log`) is recommended. If the SOP's three libraries are used instead, every relative link between them breaks and must be rewritten as a URL.
 - [ ] Who gets edit rights (KB owners) and who gets read access (everyone)
-- [ ] Whether `FOLLOWUP_ITEMS.md` (now in `Accounting-MyNotes`, outside `_KB`) stays personal or moves to the shared site
+- [ ] Whether `FOLLOWUP_ITEMS.xlsx` (now in `Accounting-MyNotes`, outside `_KB`) stays personal or moves to the shared site
 
 ### Move 1: the linked originals (do first; links must be right before publishing)
 
