@@ -24,11 +24,10 @@ except as noted under "Retire".
 Recording an answer in the articles and the workbook is the same procedure for
 Process and Intake (section 4).
 
-Workbook layout. Sheet "Open" (Excel table `OpenQuestions`): `Done | ID | Question | Context | Who may know (suggested) | Article | Raised | Answer`.
-Sheet "Answered" (table `AnsweredQuestions`): `Done | ID | Question | Context | Answered by | Article | Raised | Answer`.
-`Question` is written to stand alone. `Context` is 2 to 3 plain sentences: what the article says, where the gap or conflict is, the source with its date, and "Why it matters:" when supported. Both were backfilled for every existing question on 2026-10-05 (the earlier wording is in `_Superseded/OPEN_QUESTIONS_2026-10-05_before-context.xlsx`). The article's own Open Questions bullet may be worded differently from the workbook question, so match by ID and meaning, not by exact text.
-`Done` is blank, or `Yes` when answered. The Article cell shows the article title
-and is a hyperlink with a path relative to the workbook. `Raised` is a real date
+Workbook layout. Sheet "Open" (Excel table `OpenQuestions`): `Done | ID | Question | Context | Who may know (suggested) | Related notes | Link | Raised | Answer`.
+Sheet "Answered" (table `AnsweredQuestions`): `Done | ID | Question | Context | Answered by | Related notes | Link | Raised | Answer`.
+`Question` is written to stand alone. `Context` is 2 to 4 plain sentences: what my notes say, where the gap or conflict is, where it came from (the meeting and its date, or an email), and why it matters when that is supported. Wording: write like a colleague talking to a colleague, in plain everyday words, for people who have not read Suzan's notes (the workbook is shared and is copied into process documents such as a SIPOC). Never write "the article", "the KB", "the source" or "per"; say "my notes" for Suzan's write-up and "the meeting notes" (or name the meeting) for a meeting. Emails can be named normally ("in Priya's email of 2026-09-29"). Do not end a Context with a stock phrase such as "From the 2026-10-05 session" and do not use the label "Why it matters:"; say it in a sentence ("This matters because ..."). Spell out an acronym the first time it appears in each cell. Both were backfilled for every existing question on 2026-10-05. The article's own Open Questions bullet may be worded differently from the workbook question, so match by ID and meaning, not by exact text.
+`Done` is blank, or `Yes` when answered. `Related notes` is the title of the KB article in plain text. `Link` is a clickable **local file link** to that article (built as `file:///Users/suzanoslin/Library/CloudStorage/OneDrive-InChargeService/Accounting-MyNotes/` plus the path under `_KB`), which opens the note in Suzan's editor. SharePoint web links to `.md` files do not open in a browser; at migration the links are re-pointed (see the kb-article-builder README, section "Moving everything to SharePoint"). `Raised` is a real date
 (`yyyy-mm-dd`). IDs are `Q001`, `Q002`, ... and are never reused.
 
 Read and edit the workbook with `openpyxl` or the `xlsx` skill. Keep the
