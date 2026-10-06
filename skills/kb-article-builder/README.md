@@ -21,7 +21,7 @@ Hand it one file (`.md`, `.txt`, `.docx`, `.xlsx`, `.pptx`, `.pdf`) or an email 
 - classifies it (Meeting, Email, Handwritten-Notes, Document) and decides: new article, update an existing article, reference stub, or skip
 - picks the category from the KB's `_Taxonomy.md`; if nothing fits, proposes a **new row** (additive only; reads the org glossary and systems landscape only then)
 - names it per the filename standard, and generates the eight-field metadata
-- when it updates an article, replaces stale facts with the new ones (e.g. a new report path replaces the old one), logs the change, and archives the prior version
+- when it updates an article, replaces stale facts with the new ones (e.g. a new report path replaces the old one), and logs the change (no archive copy; OneDrive keeps version history)
 - for linked files: adds a row to `_Linked-Catalog.md` and puts the Finder tag `In KB` on the original
 - checks the open questions in `OPEN_QUESTIONS.xlsx` against the new file and proposes the ones it answers (recorded only after you approve)
 - adds the article's open questions to `OPEN_QUESTIONS.xlsx` and its action items to `FOLLOWUP_ITEMS.xlsx` (both are Excel workbooks you can edit by hand; keep them closed in Excel while Claude edits them)

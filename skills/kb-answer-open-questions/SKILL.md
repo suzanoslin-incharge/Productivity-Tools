@@ -170,8 +170,8 @@ notes, a transcript). Read it with the ingest rules in `../kb-article-builder/SK
    the original said it. If the original is the user's own document, suggest
    updating it, so `kb-update-linked-docs` can refresh the article later.
 5. **If the answer contradicts an existing statement**, replace the old
-   statement (as in `kb-article-builder`), archive the previous article version
-   to `_Superseded-Archived`, and show the before/after.
+   statement (as in `kb-article-builder`, with no archive copy) and show the
+   before/after.
 6. **If the answer creates a to-do**, suggest a row for
    `$ACCT_MYNOTES/FOLLOWUP_ITEMS.xlsx` (columns: Done, Action item, Owner,
    Date made, Meeting; append below the last row of the `FollowUps` table) and

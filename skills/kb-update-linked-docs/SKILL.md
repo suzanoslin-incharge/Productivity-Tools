@@ -55,7 +55,7 @@ KB layout and the article/source formats are defined in
    list, the new knowledge, the removals, the questions, and any metadata that
    would change (Keywords, Short Description). Wait for approve, edit or reject.
 6. **On approval, write exactly what was approved:**
-   - copy the current article to `02_Knowledge-Articles/_Superseded-Archived/<filename>_<today>.md`
+   - do not archive the old version; OneDrive keeps version history
    - edit the article: replace approved facts, add approved new knowledge, set
      `Last updated`, add a Change Log line naming the change and the new
      document date
