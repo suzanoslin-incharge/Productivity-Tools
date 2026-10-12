@@ -5,7 +5,7 @@ diagram. There are three real paths, in order of reliability. **Do not
 default to the AI text-prompt path for anything where lane placement
 matters** — see the caveat in §3.
 
-Researched 2026-09-29 from Lucid's own help center, developer docs, GitHub,
+Researched 2026-09-29 (section 1 corrected 2026-10-09) from Lucid's own help center, developer docs, GitHub,
 and product-team responses in their community forum. Where I couldn't fetch
 a page directly (marked below), treat the detail as reasonably sourced but
 worth a quick sanity check against the live page before relying on it for
@@ -16,47 +16,78 @@ something company-facing.
 ## 1. CSV import (recommended default for swim-lane accuracy)
 
 Lucidchart has a documented **"Create a process diagram from CSV import"**
-feature built specifically for this. It places shapes deterministically —
-including into named swim lanes — rather than leaving placement to an AI's
-interpretation of a prompt.
+feature built specifically for this. It places shapes deterministically,
+including into named swim lanes, and lays them out itself. It does not leave
+placement to an AI's interpretation of a prompt.
 
-**Required columns:**
+**Corrected 2026-10-09.** The first version of this section guessed the
+layout from search summaries and was wrong: it produced files that stacked
+every shape in one column. The layout below is Lucid's own sample file
+(`SalesProcess.csv`, from Lucid's help center) and was confirmed with a
+working import and a Visio export.
 
-| Column | Meaning |
-| --- | --- |
-| `ID` | A unique identifier for the row/shape. |
-| `Name` | The shape's label. |
-| `Shape Library` | Which Lucid shape library to draw from (must be spelled/capitalized exactly as Lucid expects). |
-| `Page ID` | Which page/canvas the shape belongs to. |
-| `Contained By` | What container (swim lane, pool) the shape sits inside. |
-| `Text Area 1` | The visible text on the shape. |
+**Columns (in this order):** `Id, Name, Shape Library, Page ID, Contained By,
+Line Source, Line Destination, Source Arrow, Destination Arrow, Text Area 1`
+and then `Text Area 2`, `Text Area 3` and so on, as many as there are lanes.
+There are no color, size or position columns. Lucid sets those. Color shapes
+by hand after the import.
 
-**Swim-lane placement syntax:** the `Contained By` cell uses
-`<SwimlaneShapeID>:<RowName>` — the ID of the swim-lane container shape,
-a colon, then the name of the specific lane row the shape belongs in. Every
-row that should land inside a lane needs this filled in correctly; a blank
-or malformed value is the most common reason shapes land outside their
-intended lane.
+**Rows, in this order:**
+
+| Row | Name | Shape Library | Page ID | Contained By | Other cells |
+| --- | --- | --- | --- | --- | --- |
+| Page | `Page` | blank | blank | blank | `Text Area 1` = `Page 1` |
+| Swim-lane container | `Swim Lane` | `Flowchart Shapes` | `1` | blank | `Text Area 1..n` = **the lane names, one per column, in lane order** |
+| Each step | `Process`, `Decision` or `Terminator` | `Flowchart Shapes` | `1` | `<swim lane Id>:<lane number>` | `Text Area 1` = the step text |
+| Each arrow | `Line` | blank | `1` | blank | `Line Source` = the step Id, `Line Destination` = the next step Id, `Source Arrow` = `None`, `Destination Arrow` = `Arrow`, `Text Area 1` = the arrow label (can be blank) |
+
+**Lane placement syntax:** `Contained By` is the Id of the Swim Lane row, a
+colon, then the **lane number**, counting from 1 in the order the lane names
+appear in the Text Area columns. Example: `2:3` is the third lane of the swim
+lane whose Id is 2. It is not the lane's name.
+
+**Rules that avoid a broken import (learned 2026-10-08):**
+
+- Give every shape at least one arrow in or out. A file with several
+  unconnected note shapes and arrows that loop back to an earlier step failed
+  to lay out (shapes piled in one spot, and Lucid's auto-arrange errored).
+  Files with only one of the two problems laid out fine. Keep notes in a
+  separate sheet or table, not in the diagram, and avoid loops unless needed.
+- Do not leave a lane empty. Drop it, or the diagram shows an empty band.
+- Keep lane names short, under about 25 characters. Longer names are drawn
+  twice in the narrow lane header, for example "Customer (payer and AP
+  contact)(payer and AP contact)". Put the detail in a table, not the name.
+- Shape and arrow Ids must be unique and contiguous. Arrow rows come after
+  all the shape rows.
+- Write the file as UTF-8 with CRLF line endings. Excel's "CSV UTF-8"
+  save is fine. Plain "CSV" can garble characters.
+- Test with a small file first, then the full one, and check lane count, lane
+  order, a few steps in their lanes, and all arrow labels.
 
 **Import steps (from Lucid's help center, summarized):**
 
-1. Open or create the target document in Lucidchart.
+1. Open or create a **new, blank** document in Lucidchart.
 2. Select **Import Data** at the bottom left of the document (or the
    equivalent "Import Data" action in the toolbar).
 3. Upload the CSV.
 4. Map/verify columns if prompted.
 5. Lucid builds the diagram, placing shapes per `Contained By`.
 
-Source: [Lucid Help Center — Create a process diagram from CSV import](https://help.lucid.co/hc/en-us/articles/15927090927508-Create-a-process-diagram-from-CSV-import).
-*(This page returned a 403 to automated fetch when researched — the column
-list and syntax above come from search-result summaries of it, not a direct
-read. Confirm against the live page before treating the exact column names
-as final.)*
+Source: [Lucid Help Center, Create a process diagram from CSV import](https://help.lucid.co/hc/en-us/articles/15927090927508-Create-a-process-diagram-from-CSV-import).
+*(This page returned a 403 to automated fetch. The sample layout above comes
+from Lucid's own `SalesProcess.csv`, which was imported and laid out
+correctly.)*
 
-**What `map-swimlane-builder` should produce for this path:** a CSV with one row
-per process step, `Contained By` set from the lane the step's owner sits in,
-plus a lane "header" row per swim-lane container if the target diagram
-needs the lanes created rather than reused from a template.
+**What `map-swimlane-builder` should produce for this path:** one CSV in the
+layout above, one row per step and one row per arrow, with a master table of
+the steps (step ID, lane, step, next step, label, confirmed) kept beside it
+so the diagram can be regenerated. Mark unconfirmed steps in the step text
+(for example "(?)").
+
+**Visio.** Lucid exports to .vsdx (File, Export, Visio). Visio's Data
+Visualizer is decommissioned at InCharge, so it is not an option. Round
+trips between Lucid and Visio lose fidelity, so keep the master table as the
+source and treat each diagram as an output.
 
 ---
 
