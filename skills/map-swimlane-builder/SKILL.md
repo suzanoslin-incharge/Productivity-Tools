@@ -49,13 +49,14 @@ Import Data in Lucidchart. This is the reliable path for anything where
 lane correctness matters (i.e., basically everything this skill is used
 for).
 
-**If the diagram will be linked to the master workbook on SharePoint** and
-colored by Lucid's conditional formatting rules, add the label columns in
-`references/lucidchart-integration.md` §4 (`ShapeType` and `Status` on the Steps sheet; `Line ID` and `LineType` on the
-Arrows sheet). They add to the master
-table; they do not change step IDs, lanes, arrows or the CSV. Ask which labels
-to use if Suzan has not said, and mark the linked-sheet approach as untested
-until she has tried a small file.
+**If shapes and lines should be colored by label in Lucid**, add the label
+columns in `references/lucidchart-integration.md` §4: `ShapeType` and `Status`
+on the shapes, `Line ID` and `LineType` on the arrows in the master workbook.
+Use the CSV rules (§4.3) now; the XLSX live-link rules (§4.4) apply only if
+the account moves to Enterprise. The columns add to the master table; they do
+not change step IDs, lanes, arrows or the section 1 CSV layout. Ask which
+labels to use if Suzan has not said, and mark the approach as untested until
+she has tried a small file.
 
 **If the Lucid MCP server is connected** (check for an MCP tool whose name
 suggests Lucid), prefer generating/editing the document directly per

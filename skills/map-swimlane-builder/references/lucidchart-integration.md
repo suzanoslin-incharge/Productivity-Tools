@@ -54,9 +54,12 @@ lane whose Id is 2. It is not the lane's name.
   Files with only one of the two problems laid out fine. Keep notes in a
   separate sheet or table, not in the diagram, and avoid loops unless needed.
 - Do not leave a lane empty. Drop it, or the diagram shows an empty band.
-- Keep lane names short, under about 25 characters. Longer names are drawn
-  twice in the narrow lane header, for example "Customer (payer and AP
-  contact)(payer and AP contact)". Put the detail in a table, not the name.
+- Keep lane names to about 10 characters or fewer ("Customer", "PayFabric",
+  "Accounting"). Longer names are drawn twice in the narrow lane header: this
+  happened at 25 characters ("Customer (payer and AP contact)" showed as
+  "Customer (payer and AP contact)(payer and AP contact)") and again at 17
+  characters ("Accounting and AR"; Suzan, 2026-10-12). Put the full name in a lane
+  key (a sheet in the master), not in the lane header.
 - Shape and arrow Ids must be unique and contiguous. Arrow rows come after
   all the shape rows.
 - Write the file as UTF-8 with CRLF line endings. Excel's "CSV UTF-8"
@@ -168,31 +171,33 @@ summaries)*,
 
 ---
 
-## 4. Formatting labels for a live-linked Excel master (added 2026-10-12)
+## 4. Formatting labels for Lucid (added 2026-10-12)
 
-Use this when the diagram is built from the master workbook stored on
-SharePoint and linked to Lucid (data linking), and Lucid's **conditional
-formatting rules** color the shapes and lines. The rules read exact text, so
-the sheet carries fixed labels instead of colors or hex codes. This section
-only **adds** label columns to the master table. It does not change step IDs,
-lanes, arrows, the CSV in section 1, or the rules for what goes in a step.
+Lucid can color shapes and lines from text labels in the data (conditional
+formatting rules), so the data carries fixed labels instead of colors or hex
+codes. This section only **adds** label columns to the master table. It does
+not change step IDs, lanes, arrows, the CSV layout in section 1, or the rules
+for what goes in a step.
 
-**Not tested yet.** Whether Lucid draws arrows from the Arrows sheet of a
-linked workbook, and whether a rule can format a line from a sheet column, is not verified, and neither is that the import asks for one sheet or two. Test
-with a small file first (same rule as section 1). Suzan tests in Lucid and sends screenshots. Section 1 stays the
-default path when lane placement must be right.
+There are two ways to get the data into Lucid, and their rules differ:
 
-**Layout** (two sheets, as in the cash deposit master):
+| | Used | Rules in |
+| --- | --- | --- |
+| **CSV import** | now (no Enterprise plan) | 4.3 |
+| **XLSX live link** to a workbook on SharePoint | only if the account moves to Enterprise | 4.4 |
+
+The master workbook (4.1) and the labels (4.2) are the same for both.
+
+### 4.1 Master workbook (the source for both)
+
+Two sheets, as in the cash deposit master. Suzan chose this on 2026-10-12 over
+one sheet with comma-separated line labels, which misaligns when a step
+branches.
 
 | Sheet | One row per | Columns |
 | --- | --- | --- |
 | Steps | shape | `Step ID`, `Lane`, `Step Name`, `ShapeType`, `Status`, plus the existing columns (`Shape`, `Confirmed`) unchanged. No connection columns |
 | Arrows | arrow | `Line ID`, `From`, `To`, `Label`, `LineType` |
-
-This is the two-sheet method (Suzan chose it on 2026-10-12 over a single sheet
-with comma-separated line labels, which misaligns easily when a step
-branches). In Lucid's import, choose two sheets, point the shape settings at
-Steps and the line settings at Arrows.
 
 - `Step Name` is the visible text, the same text as the existing `Step`
   column. Keep the existing step IDs (`S01`, `S02`).
@@ -201,29 +206,53 @@ Steps and the line settings at Arrows.
   (Yes, No, Found, Not found); leave it blank when the arrow has no text. A
   draft that writes `S17 (Yes), S15 (No)` becomes two Arrows rows, one with
   `Label` = Yes and one with No.
-- The Steps sheet has **no** connection column. Add a `Next Step ID` column
-  (the `To` IDs of that step's arrows, comma-separated, filled from Arrows,
-  never typed by hand) only if a single-sheet import is used instead.
-- The linked sheets use these exact header names, or the column mapping in
-  Lucid is set once to match them. Spelling, spacing and capitals in the
-  labels must match every time.
+- Keep the master as the source and regenerate the CSV or the linked sheet
+  from it.
 
-**ShapeType** (function of the shape; one value per row):
+**Checks before handing anything over:**
+
+1. Every step except `Start` has an arrow in, and every step except `Final`
+   has an arrow out.
+2. Every `From` and `To` on Arrows is a real `Step ID`, and every `Line ID` is
+   unique.
+3. No blank `ShapeType`, `Status` or `LineType`; no spelling, capital or
+   trailing-space differences between labels.
+4. Every `System Decision` and `Manual Review` has at least two arrows out, and
+   at most one is `Main Flow` unless the branches are parallel.
+5. Fonts are Calibri 12 point or larger, as for every file this skill makes.
+
+### 4.2 Labels (same for CSV and XLSX)
+
+**ShapeType** (function of the shape; one value per shape):
 
 | Label | Use for |
 | --- | --- |
 | `Start` | the trigger step (no arrow comes in) |
 | `Final` | an end step (no arrow goes out) |
-| `Decision` | a question with two or more outcomes (every Yes/No step) |
-| `Review` | a check that compares work to a rule or document and is not itself a branching question, for example "Verify amounts match across systems" |
+| `System Decision` | a system or rule decides on its own, with two or more outcomes (for example "Payment successful?" in PayFabric). Each outcome has its own arrow |
+| `Manual Review` | a person checks or decides, with two or more outcomes (for example "Remittance and invoice found?"). Pass moves forward; fail cannot move forward and goes another way (Exception Path or Loop Back) |
 | `Standard` | every other step |
 
-If a step could be Review or Standard, use `Standard` and ask. Notes are not
+Both decision types must branch. A step worded Review, Verify or Check with a
+pass path and a fail path is a `Manual Review` (or a `System Decision` if a
+system does it). With no branching it is `Standard`, even if it is worded as a
+review (for example "Review the bank report and lockbox the day after receipt");
+ask whether a fail path exists.
+
+**Gray zone (Suzan, 2026-10-12):** if a person looks up or reads a system's
+result and then decides, it is a `Manual Review`, even though the data comes
+from a system (for example "BC sales order ID already filled in on the
+opportunity?", checked by Sales Support). Use `System Decision` only when the
+system or rule decides on its own with no person involved (for example
+"Payment successful?" in PayFabric). The lane does not decide the label; who
+makes the call does.
+
+Notes are not
 shapes; they stay in the Excel reading copy, as before. The existing `Shape`
 column (`Process`, `Decision`, `Terminator`) keeps feeding the CSV import.
 
 **Status** (so unconfirmed items show until they are confirmed; one value per
-row):
+shape):
 
 | Label | Meaning |
 | --- | --- |
@@ -235,7 +264,11 @@ row):
 Keep the label exact. Put names, dates and notes in the existing `Confirmed`
 column (for example "Assumed (Suzan, 2026-10-08)"), not in `Status`.
 
-**LineType** (what the arrow means; one value per Arrows row):
+How Status is shown in Lucid (icon, tag, fill) is not decided yet (Suzan,
+2026-10-12). The labels stay in the data either way, and no Status rules are in
+the rules file for now.
+
+**LineType** (what the arrow means; one value per arrow):
 
 | Label | Use for |
 | --- | --- |
@@ -245,24 +278,78 @@ column (for example "Assumed (Suzan, 2026-10-08)"), not in `Status`.
 
 The arrow's wording stays in `Label` (for example Yes, No, Found, Not found).
 
-**Checks before handing the workbook over:**
+### 4.3 CSV rules (used now)
 
-1. Every step except `Start` has an arrow in, and every step except `Final`
-   has an arrow out.
-2. Every `From` and `To` on Arrows is a real `Step ID`, and every `Line ID` is
-   unique.
-3. No blank `ShapeType`, `Status` or `LineType`; no spelling, capital or
-   trailing-space differences between labels.
-4. Every `Decision` has at least two arrows out, and at most one is `Main Flow`
-   unless the branches are parallel.
-5. Fonts are Calibri 12 point or larger, as for every file this skill makes.
+A CSV import is one file, not two sheets. Everything in section 1 still
+applies (layout, short lane names, every shape connected, UTF-8 with CRLF).
 
-**Styles are set in Lucid, not in the sheet.** Suggested starting point, one
-rule per label: `Start` and `Final` as terminators; `Decision` as a diamond in
-amber; `Review` in blue; `Standard` plain; `Unconfirmed` with a dashed
-outline; `Assumed` with a yellow fill; `Main Flow` as a thick dark line;
-`Exception Path` as a dashed orange line; `Loop Back` as a dashed purple
-line. Pick the colors in Lucid. The sheet never holds a color.
+- Build the CSV from the master: shape rows from Steps, `Line` rows from
+  Arrows, in the section 1 layout.
+- Append `ShapeType` and `Status` as extra columns after the `Text Area`
+  columns, filled on shape rows only. Leave `LineType` out of the CSV (it does
+  not import, see the test result below) and keep it in the master.
+- The CSV has no `Line ID`; Lucid numbers rows itself. Keep `Line ID` in the
+  master only.
+- **Tested 2026-10-12 (Suzan, test files A and B).** Both import and lay out
+  correctly. In B, `ShapeType` and `Status` come in as custom data on each
+  shape (Data panel, Custom Data), so shape rules can read them. They also show
+  as text inside the shape; untick them under Header Fields in the Properties
+  panel to hide that. `LineType` on the `Line` rows did **not** come in: a
+  selected arrow shows "No attached data". So from a CSV, rules can color shapes
+  by `ShapeType` and `Status`, but lines cannot be colored by `LineType` from the
+  file. Style lines by hand, or add a `LineType` data field by hand to the few
+  Exception Path and Loop Back lines and leave Main Flow as the default line
+  style. Still to test: whether the shape rules change exactly the right shapes.
+
+- **Lucid AI applies the rules from a table (tested 2026-10-12).** Giving Lucid's
+  own AI the rules table (`Lucid-Format-Rules`, CSV or tab-separated) formatted
+  the shapes and lines correctly: fills, dashed outlines, and the three line
+  styles. It found the lines because the table's last column named each arrow
+  ("S14 to S15 (No)"); it cannot read `LineType` from the file. So for every
+  map, generate a rules table from the master: shape rules by label, and line
+  rules that list each arrow as `From to To` (with its label). If the arrows
+  change, regenerate the table.
+- **Rule order.** When two rules set the same property on a shape, the later
+  rule won (S12: `Assumed` yellow over `Start` green). Put `Status` rules after
+  `ShapeType` rules so an alert status shows. A shape that matches rules for
+  different properties gets both (S20: blue fill and dashed outline).
+- **To confirm.** Whether the AI created live conditional formatting rules or
+  one-time styles. Check the Conditional formatting panel: if rules are listed,
+  they are live for shapes; if not, the styling is fixed and must be redone when
+  the diagram changes.
+
+### 4.4 XLSX rules (only if the account moves to Enterprise)
+
+Linking an Excel file stored on SharePoint is an Enterprise feature (Suzan,
+2026-10-12). Suzan will not start on that plan and may upgrade later. These
+rules are for that day and are untested.
+
+- **Two sheets, not one file.** Link the master's two sheets: choose two
+  sheets in Lucid's import, point the shape settings at Steps and the line
+  settings at Arrows.
+- **Header row.** Put the headers in row 1 of each linked sheet. The real
+  masters have title rows above the headers; a linked sheet may need them
+  removed or moved.
+- **No connection column.** The Steps sheet has no `Next Step ID`. Add one
+  (the `To` IDs of that step's arrows, comma-separated, filled from Arrows,
+  never typed by hand) only if a single-sheet import is used instead.
+- **Exact names.** Use the header names in 4.1, or set the column mapping in
+  Lucid once to match them. Spelling, spacing and capitals in the labels must
+  match every time.
+- **Not tested yet.** Whether Lucid draws arrows from the Arrows sheet of a
+  linked workbook, whether a rule can format a line from a sheet column, and
+  that the import asks for one sheet or two, are not verified. Test with a
+  small file first: `Lucid-Link-Test_ShapeType-LineType_2026-10-12.xlsx` in
+  `Lucid-Import-Tests/`.
+
+### 4.5 Styles are set in Lucid, not in the data
+
+Colors are still being chosen (Suzan, 2026-10-12). Starting point only: `Start`
+and `Final` as terminators; `System Decision` and `Manual Review` as diamonds in
+two different fills; `Standard` plain; `Main Flow` as a thick dark line;
+`Exception Path` as a dashed orange line; `Loop Back` as a dashed purple line.
+How `Status` shows is undecided. Pick the colors in Lucid. The data never holds
+a color.
 
 ---
 
@@ -273,4 +360,5 @@ line. Pick the colors in Lucid. The sheet never holds a color.
 | Lane placement must be correct and reviewable/versioned | **CSV import (§1)** — default |
 | Lucid MCP is approved for your account | **MCP server (§2)** — best, once available |
 | Quick rough draft, lanes not yet final, or exploring options | **AI prompt (§3)**, with the BPMN-shape-library instruction spelled out |
-| Diagram linked to the master workbook on SharePoint, colored by Lucid rules | **Label columns (§4)**, added to the master table; untested, so try a small file first |
+| Color shapes by label from a CSV import (no Enterprise plan) | **CSV rules (§4.3)**: `ShapeType` and `Status` columns import as shape data; lines are styled by hand; shape rules still to test |
+| Diagram linked to the master workbook on SharePoint (Enterprise plan only) | **XLSX rules (§4.4)**; untested and not needed until the plan changes |
