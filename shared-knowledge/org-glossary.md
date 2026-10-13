@@ -189,6 +189,16 @@ People, titles, and the systems each team uses are in the directory below.
 | Energy Solutions / Business Development | David Callaghan (Business Development Manager, Energy Solutions); Michael Gallagher (Head of Branch Operations); Michael Fogerty (Manager of Strategic Accounts - Renewable Energy) | Salesforce; Proposed: proposal and project tools | Business development; renewable-energy accounts; opportunity development | Sales; Branch Operations; EPC; Engineering; Marketing |
 | Efficient / Lighting Operations | Michael Gallagher (Head of Branch Operations); De'Ontae Hall (General Manager); Francisco Amigon (Service Manager) | ServiceMax; RAMP; Proposed: branch operations systems | Lighting and electrical field operations; service management; branch coordination | Branch Operations; Field Operations; HSE; Sales; Finance |
 
+### Regional Service Specialists (RSS)
+
+Each region has two RSS roles, one for Branch and one for Field. Source: the updated Field Operations org chart distributed by Michael Gallagher on 2026-08-17. Names confirmed by Suzan on 2026-10-12. These names are not in the roster of 2026-07-20.
+
+| Region | RSS, Branch | RSS, Field |
+| --- | --- | --- |
+| West | Wendy Rosales | Bobby Martinez |
+| Central | Justin Duncan | Mannie Young |
+| East | Adam Walger | Courtney Schiller |
+
 ### Source
 
 - Roster as of 07.20.26.xlsx
