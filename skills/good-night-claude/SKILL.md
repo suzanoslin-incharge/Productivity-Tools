@@ -15,7 +15,7 @@ Keep it fast: one short proposal, one "yes".
 
 ## Steps
 
-1. **Carry-forward check (every night).** Read the whole pickup file before changing it, and keep the list of its items. Every item not completed stays, however old; an item leaves only when it was finished (say what shows it) or Suzan says to drop it. After the rewrite, compare the old and new lists and report "N carried, N added, N removed", naming each removed item and why. Never drop an item silently. Also keep one item, "KB: meeting notes and emails not yet processed", up to date: list every `.vtt` file in `$ACCT_MYNOTES/meetingNotes` (that folder is only a temporary place for downloaded `.vtt` files, deleted after filing; ignore any other file there), and every meeting from today's calendar that has no notes in `$KB_ROOT/01_Sources` and is not already listed, plus emails Suzan says are unprocessed. Entries stay until filed. Recurring meetings count each time they happen (for example the Tuesday "New WO Process Testing Check-in", which also covers the non-EVSE paperless work orders).
+1. **Carry-forward check (every night).** Read the whole pickup file before changing it, and keep the list of its items. Every item not completed stays, however old; an item leaves only when it was finished (say what shows it) or Suzan says to drop it. After the rewrite, compare the old and new lists and report "N carried, N added, N removed", naming each removed item and why. Never drop an item silently. Add only what Suzan asked to add during the day ("add X to pickup"). Do not search the calendar, Teams, mail or `meetingNotes` to build this list.
 2. **Review the day.** Use this session. Read the pickup file's "Next up", "Started, not finished" and "Waiting on other people". If today had other sessions, use files in `$ACCT_MYNOTES` changed today. For meetings, chats and emails, search the calendar, Teams and mail for today with the Microsoft 365 connector (read only); use only what you find. Do not guess.
 3. **Propose all of this in one short message, showing only the changes:**
    - **Journal entry for today** (format below).
@@ -40,6 +40,7 @@ Add above the previous entry, under a heading `## yyyy-mm-dd (Weekday)`:
 
 ## Rules
 
+- Keep it simple. The pickup file only carries forward what is not done and adds what Suzan asked to add. Do not search her communication channels or other files to rebuild or extend that list, and do not show long lists back to her: show only the changes.
 - Write the pickup file and journal the way Suzan would write to a colleague. Never mention Claude, AI, bots or the tools used. The skill name is not written into any file.
 - Dates are yyyy-mm-dd. Plain English. Spell out an acronym the first time it appears in a file or in an entry.
 - Names: use a full name only if it is confirmed in `$TOOLS_PRODCTVTY/shared-knowledge/org-glossary.md` or in the pickup file's "Names confirmed by Suzan". Otherwise keep the first name as written.
