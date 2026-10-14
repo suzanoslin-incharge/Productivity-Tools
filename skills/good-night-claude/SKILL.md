@@ -17,10 +17,12 @@ Both files are in `$ACCT_MYNOTES`. No tracker or article changes, no loose-ends 
 
 Four parts, in this order:
 
-- **Where we left off (yyyy-mm-dd):** a summary of today's chat context, replaced every night. One bullet per thread Suzan was in the middle of. Each bullet says: where it stands, what was just done, decisions and corrections that must carry forward, what is waiting on whom, and exactly where to restart (the file, the step, the next action). A task name is not enough. Example: not "Finish Lucid formatting" but "Lucid CSV formatting: imported the plain file, lanes and arrows look right; still to decide colors and how Status shows. Restart by importing the labelled CSV and testing the rules table." Finish with "First thing tomorrow:". About 2 to 3 lines per thread, 10 to 20 lines in all. Someone reading only this can start work. The good-morning skill shows it the next day.
-- **Next up, (weekday yyyy-mm-dd):** what Suzan was in the middle of today, plus anything she asked to add ("add X to pickup"). Most urgent first.
+- **Where we left off (yyyy-mm-dd):** only work in progress that did not get finished today, work Suzan actually started. Replaced every night. One bullet per item. Each bullet says what was tried (and what happened), what is left to do, decisions and corrections that must carry forward, and exactly where to restart (the file, the step, the next action). A task name is not enough. Example: not "Finish Lucid formatting" but "Lucid CSV formatting: imported the plain file, lanes and arrows look right; still to decide colors and how Status shows. Restart by importing the labelled CSV and testing the rules table." A request or topic that came up but was never started (for example a new ask from Delphine) is not work in progress; it goes in Next up. Finish with "First thing tomorrow:". About 2 to 3 lines per item. Someone reading only this can start work. The good-morning skill shows it the next day.
+- **Next up, (weekday yyyy-mm-dd):** work to do that is not in Where we left off (new asks and work not yet started), plus anything she asked to add ("add X to pickup"). Most urgent first.
 - **Outstanding:** everything not finished on earlier days. It grows each day. At night, every Next up item that is not done moves here. An item leaves only when it is done (say what shows it) or Suzan says to drop it.
 - **Context for Claude:** the last section, not shown at startup. Facts, names and rules Claude needs to work well. Update it every night from today's session: add new facts, names and rules, fix what changed, and remove what is no longer true. The good-morning skill reads it the next day.
+
+**No duplicates.** A thread that is in Where we left off does not also appear in Next up or Outstanding. Where we left off carries it.
 
 Do not put open questions, follow-up items or waiting-on lines in the file. They live in the trackers. Add one only if Suzan asked.
 
