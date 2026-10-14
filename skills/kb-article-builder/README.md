@@ -87,7 +87,7 @@ There are two separate moves. Do them in this order.
 | **SharePoint, edit access for KB owners only** | The same library; Suzan and any other KB owners | Keeps the content controlled. |
 | **SharePoint, shared site (Move 1 below)** | The linked originals: the Procure_to_Pay, Order-to-Cash and Upstream documents the articles point to | They must be at a shared address before the KB is published. |
 | **SharePoint, restricted to KB owners (recommended)** | `_KB/01_Sources` (transcripts, AI summaries, recordings, source metadata) | These name people and include candid remarks. Articles link to them, so readers who follow a source link will be blocked; accept that, or decide to share selected sources. |
-| **Stays in `Accounting-MyNotes` (personal)** | `OPEN_QUESTIONS.xlsx`, `FOLLOWUP_ITEMS.xlsx`, `PICKUP_*.md`, `CLAUDE.md`, `_Assignments`, `_Superseded`, `_Productivity`, `meetingNotes`, `Bank-Deposits-Automation`, `AR-Capacity-and-Billing-Baseline_TEMPLATE.xlsx` | Working files and raw material. Share a deliverable (for example the SIPOC or the baseline template) with specific people when it is ready, not the whole folder. |
+| **Stays in `Accounting-MyNotes` (personal)** | `OPEN_QUESTIONS.xlsx`, `FOLLOWUP_ITEMS.xlsx`, `PICKUP_*.md`, `CLAUDE.md`, `_Assignments`, `_Superseded`, `_Productivity`, `meetingNotes` (temporary: downloaded `.vtt` files, deleted once filed), `Bank-Deposits-Automation`, `AR-Capacity-and-Billing-Baseline_TEMPLATE.xlsx` | Working files and raw material. Share a deliverable (for example the SIPOC or the baseline template) with specific people when it is ready, not the whole folder. |
 
 ### Copilot and Markdown (Microsoft Copilot's answer, 2026-10-05)
 
