@@ -8,7 +8,7 @@ Part of the InCharge Meeting-to-Knowledge-Base effort. Status: **the three KB sk
 | --- | --- |
 | `kb-article-builder` (this skill) | Turn one file into a KB article: classify it, pick the category, name it, tag it with metadata, create or update the article. Writes nothing until you approve |
 | `kb-update-linked-docs` | Check every **linked** document against its original on SharePoint/OneDrive, find what changed, and propose article updates. Also re-finds files that moved |
-| `kb-answer-open-questions` | Work through `$ACCT_MYNOTES/OPEN_QUESTIONS.xlsx`: list questions by who is likely to know, record an answer (updating the articles), process answers you typed into the workbook by hand, and take answers from notes, an email or a transcript. Ask it "what should I ask Doricia and Josh?" to get their questions rewritten with context |
+| `kb-answer-open-questions` | Work through `$ACCT_MYNOTES/TRACKERS/OPEN_QUESTIONS.xlsx`: list questions by who is likely to know, record an answer (updating the articles), process answers you typed into the workbook by hand, and take answers from notes, an email or a transcript. Ask it "what should I ask Doricia and Josh?" to get their questions rewritten with context |
 
 The mapping skills (`map-sipoc-builder`, `map-swimlane-builder`) are separate.
 
@@ -62,7 +62,7 @@ Files go to `$KB_ROOT` (`Accounting-MyNotes/_KB`): `01_Sources/KB-Only`,
 ## Done
 
 - [x] `_KB` structure, templates, filename standard, `KB_ROOT`
-- [x] `$ACCT_MYNOTES/OPEN_QUESTIONS.xlsx` gathers every article's open questions in one place (2026-10-01; converted from a markdown table to an editable Excel workbook 2026-10-05)
+- [x] `$ACCT_MYNOTES/TRACKERS/OPEN_QUESTIONS.xlsx` gathers every article's open questions in one place (2026-10-01; converted from a markdown table to an editable Excel workbook 2026-10-05)
 - [x] `_Linked-Catalog.md` plus `In KB` Finder tag mark catalogued linked files (2026-10-01)
 - [x] Taxonomy seeded (nine rows) and approved 2026-10-01; grows by approved additions only
 
@@ -87,7 +87,7 @@ There are two separate moves. Do them in this order.
 | **SharePoint, edit access for KB owners only** | The same library; Suzan and any other KB owners | Keeps the content controlled. |
 | **SharePoint, shared site (Move 1 below)** | The linked originals: the Procure_to_Pay, Order-to-Cash and Upstream documents the articles point to | They must be at a shared address before the KB is published. |
 | **SharePoint, restricted to KB owners (recommended)** | `_KB/01_Sources` (transcripts, AI summaries, recordings, source metadata) | These name people and include candid remarks. Articles link to them, so readers who follow a source link will be blocked; accept that, or decide to share selected sources. |
-| **Stays in `Accounting-MyNotes` (personal)** | `OPEN_QUESTIONS.xlsx`, `FOLLOWUP_ITEMS.xlsx`, `PICKUP_*.md`, `CLAUDE.md`, `_Assignments`, `_Superseded`, `_Productivity`, `meetingNotes` (temporary: downloaded `.vtt` files, deleted once filed), `Bank-Deposits-Automation`, `AR-Capacity-and-Billing-Baseline_TEMPLATE.xlsx` | Working files and raw material. Share a deliverable (for example the SIPOC or the baseline template) with specific people when it is ready, not the whole folder. |
+| **Stays in `Accounting-MyNotes` (personal)** | `TRACKERS/` (`OPEN_QUESTIONS.xlsx`, `FOLLOWUP_ITEMS.xlsx`, `DAILY-PICKUP.md`, `JOURNAL.md`), `CLAUDE.md`, `_Assignments`, `_Superseded`, `_Productivity`, `meetingNotes` (temporary: downloaded `.vtt` files, deleted once filed), `Bank-Deposits-Automation`, `AR-Capacity-and-Billing-Baseline_TEMPLATE.xlsx` | Working files and raw material. Share a deliverable (for example the SIPOC or the baseline template) with specific people when it is ready, not the whole folder. |
 
 ### Copilot and Markdown (Microsoft Copilot's answer, 2026-10-05)
 
@@ -121,7 +121,7 @@ What this means for the migration (a suggestion):
 - [ ] The site and library for the **KB**
 - [ ] **One library with the three folders** (`01_Sources`, `02_Knowledge-Articles`, `03_Decision-Log`) is recommended. If the SOP's three libraries are used instead, every relative link between them breaks and must be rewritten as a URL.
 - [ ] Who gets edit rights (KB owners) and who gets read access (everyone)
-- [ ] Whether `FOLLOWUP_ITEMS.xlsx` (now in `Accounting-MyNotes`, outside `_KB`) stays personal or moves to the shared site
+- [ ] Whether `FOLLOWUP_ITEMS.xlsx` (now in `Accounting-MyNotes/TRACKERS`, outside `_KB`) stays personal or moves to the shared site
 
 ### Move 1: the linked originals (do first; links must be right before publishing)
 

@@ -11,7 +11,7 @@ Does three things, nothing else:
 2. Rolls `DAILY-PICKUP.md` forward.
 3. Commits and pushes git changes in `$TOOLS_PRODCTVTY`.
 
-Both files are in `$ACCT_MYNOTES`. No tracker or article changes, no loose-ends report. Keep it fast: one short proposal, one "yes".
+Both files are in `$ACCT_MYNOTES/TRACKERS`. No tracker or article changes, no loose-ends report. Keep it fast: one short proposal, one "yes".
 
 ## The pickup file
 

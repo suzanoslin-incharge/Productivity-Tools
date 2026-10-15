@@ -5,7 +5,7 @@ description: Work with the open questions in the InCharge knowledge base in thre
 
 # Answer Open Questions
 
-Open questions live in one Excel workbook, `$ACCT_MYNOTES/OPEN_QUESTIONS.xlsx`,
+Open questions live in one Excel workbook, `$ACCT_MYNOTES/TRACKERS/OPEN_QUESTIONS.xlsx`,
 so the user can also read and edit it by hand. Each article's own "Open
 Questions" section keeps the context; the workbook is the working list.
 **Nothing in an article or in the workbook changes until the user approves**,
@@ -173,7 +173,7 @@ notes, a transcript). Read it with the ingest rules in `../kb-article-builder/SK
    statement (as in `kb-article-builder`, with no archive copy) and show the
    before/after.
 6. **If the answer creates a to-do**, suggest a row for
-   `$ACCT_MYNOTES/FOLLOWUP_ITEMS.xlsx` (columns: Done, Action item, Owner,
+   `$ACCT_MYNOTES/TRACKERS/FOLLOWUP_ITEMS.xlsx` (columns: Done, Action item, Owner,
    Date made, Meeting; append below the last row of the `FollowUps` table) and
    add it only if the user says yes.
 7. **If the answer raises a new question**, add it as a new row with the next ID,

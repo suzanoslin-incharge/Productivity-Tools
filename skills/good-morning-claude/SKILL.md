@@ -5,7 +5,7 @@ description: Start-of-day pickup for Suzan. Reads DAILY-PICKUP.md (including las
 
 # Good Morning Claude
 
-Starts the day from `$ACCT_MYNOTES/DAILY-PICKUP.md`. Read only that file. Do not read the journal. Do not search mail, calendar, Teams, trackers or other files.
+Starts the day from `$ACCT_MYNOTES/TRACKERS/DAILY-PICKUP.md`. Read only that file. Do not read the journal. Do not search mail, calendar, Teams, trackers or other files.
 
 ## Steps
 
