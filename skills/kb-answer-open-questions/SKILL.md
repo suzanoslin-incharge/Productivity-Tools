@@ -157,10 +157,11 @@ notes, a transcript). Read it with the ingest rules in `../kb-article-builder/SK
    - the question as it stands in the article's Open Questions section
    - where the answer goes (Current State, Business Rules and Exceptions, ...)
      and the exact new text
-   - the change to remove the open question, `Last updated`, and a Change Log
-     line that names the question ID, who answered and when (for example
-     "2026-10-06: Q034 answered by Matt: ..."); the ID is how Process mode
-     later recognises that the article is already up to date
+   - the change to remove the open question and `Last updated`. Write the Change
+     Log line without listing it in the proposal: one short line (under about 25
+     words) that names the question ID, who answered and when (for example
+     "2026-10-06: Q034 answered by Matt"); the ID is how Process mode later
+     recognises that the article is already up to date
    - for the workbook: the row moving from the "Open" sheet to the "Answered"
      sheet with the answer, the person and the date
    Ask the user to approve, edit or reject.

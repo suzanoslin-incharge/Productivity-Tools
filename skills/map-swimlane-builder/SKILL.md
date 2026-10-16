@@ -81,3 +81,5 @@ importing anything into Lucidchart.
   practical — that trades reliability for convenience.
 - It does not assume the Lucid MCP server is connected or approved for the
   account — check, don't assume.
+
+**Keep the workbook lean (Suzan, 2026-10-15).** Do not add a "What changed" sheet or a "Change" column to a SIPOC or a swim-lane master. Do not track versions inside the file; a new dated file is enough. Be complete and accurate, but record only the current state.

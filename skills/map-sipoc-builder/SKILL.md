@@ -68,3 +68,5 @@ handoffs across lanes.
   diagram — offer those as a next step, don't silently produce one instead.
 - It does not invent company facts. If suppliers, systems, or customers for
   a given process aren't known, ask, or mark them `TBD` rather than guessing.
+
+**Keep the workbook lean (Suzan, 2026-10-15).** Do not add a "What changed" sheet or a "Change" column to a SIPOC or a swim-lane master. Do not track versions inside the file; a new dated file is enough. Be complete and accurate, but record only the current state.
