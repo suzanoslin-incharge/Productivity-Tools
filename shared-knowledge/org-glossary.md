@@ -1,7 +1,7 @@
 # InCharge Org Glossary (shared knowledge)
 
 Seed version, pulled from the Accounting knowledge base on 2026-09-28.
-Updated 2026-10-20 with the Operations Organization chart (see the section on that chart below). Suzan Oslin gave the chart; it is undated, so confirm its date when possible. Where it differs from the 2026-07-20 roster table, the chart governs.
+Updated 2026-10-20 with the Operations Organization chart (see the section on that chart below). Suzan Oslin gave the chart; it is undated; Suzan Oslin places it in summer 2026 (approximate). Where it differs from the 2026-07-20 roster table, the chart governs.
 Updated 2026-10-01 with department names and abbreviations from the
 InCharge Departments and Key People directory (roster dated 2026-07-20); full directory table added below.
 Anyone using a skill that touches process mapping should treat this as a
@@ -152,7 +152,7 @@ People, titles, and the systems each team uses are in the directory below.
 | Software Engineering | Siarhei Ahranovich (VP of Software Engineering); Andre Napier (Sr Manager, Product Engineering); Felipe Nogaroto Gonzalez (Senior DevOps Engineer) | Jira; Proposed: software-development and DevOps platforms | Software engineering; product engineering; DevOps | Digital Product; QA; UX; IT; Support |
 | Software Quality Assurance | Ihar Strelka (Software Quality Assurance Engineer); Hanna Vysotskaya (Lead Quality Assurance); Brian Ives (Senior QA Engineer) | Jira; Proposed: test-management tools | Software quality assurance; test planning; validation | Software Engineering; Digital Product; Support |
 | UX / Product Design | Nicole Gose (Software UX Designer); Isaac Sanmiguel (UX Researcher); Sarai Garcia (Software UX Designer Intern) | Proposed: design and research tools; Jira | UX design; user research; product-design support | Digital Product; Software Engineering; Marketing; Customer Experience |
-| Hardware / Product Engineering | Andre Napier (Sr Manager, Product Engineering); Alexander Petze (Product Manager EV Charging); Zoe Nettles (Hardware Documentation Specialist) | Proposed: engineering and documentation repositories | Product engineering; EV charging product management; hardware documentation | Digital Product; Software; Training; Service; Supply Chain |
+| Hardware / Product Engineering | Andre Napier (Sr Manager, Product Engineering); Alex Petze (moved from Product Manager EV Charging to Regional Service Specialist, East, in the summer 2026 service re-org); Zoe Nettles (Hardware Documentation Specialist) | Proposed: engineering and documentation repositories | Product engineering; EV charging product management; hardware documentation | Digital Product; Software; Training; Service; Supply Chain |
 | Technology / IT | Nikolas Runge (Chief Technology Officer); Jack Ehlers (IT Operations Manager); Alexander Som (IT Operations and Security Analyst) | Active Directory; Proposed: IT service and security platforms | IT operations; security; access and infrastructure support | Software Engineering; HR; all departments |
 | Technical Training | Sean Gossard (Director of Technical Training); Ben Nicol (Senior Technical Training Manager); Niko Bardacke (Cornerstone LMS Administrator Intern) | Cornerstone LMS; Proposed: SharePoint | Technical training; learning administration; certification support | Service; Field Operations; Hardware; HSE; HR |
 | Service Executive Leadership | Kevin Wright (General Manager, East); Sierra Wilkins (Director, Field Maintenance); Bilal Ahsan (Director of Support Operations) | ServiceMax; Salesforce | Service delivery; support operations; service-process leadership | Service Management; NOC; Field Operations; Parts; Training; Sales |
@@ -190,7 +190,7 @@ People, titles, and the systems each team uses are in the directory below.
 | Energy Solutions / Business Development | David Callaghan (Business Development, Lighting & Electrical); Mike Gallagher (Head of Field Ops); Mike Fogerty (Business Development, Solar and Battery) | Salesforce; Proposed: proposal and project tools | Business development; renewable-energy accounts; opportunity development | Sales; Branch Operations; EPC; Engineering; Marketing |
 | Efficient / Lighting Operations | Mike Gallagher (Head of Field Ops); De'Ontae Hall (General Manager, West); Francisco Amigon (Service Manager; not on the Operations Organization chart, which shows Chris Gonzalez as Service Manager, West) | ServiceMax; RAMP; Proposed: branch operations systems | Lighting and electrical field operations; service management; branch coordination | Branch Operations; Field Operations; HSE; Sales; Finance |
 
-### Operations Organization chart (given by Suzan Oslin, 2026-10-20; undated)
+### Operations Organization chart (given by Suzan Oslin, 2026-10-20; summer 2026, approximate)
 
 Reports to Mike Gallagher, Head of Field Ops: the three regional General Managers, Sierra Wilkins, and two Business Development leads. Names as shown on the chart.
 
@@ -221,12 +221,12 @@ Reports to Mike Gallagher, Head of Field Ops: the three regional General Manager
 | Business Development | Mike Fogerty | Business Development, Solar and Battery |
 | Business Development | David Callaghan | Business Development, Lighting & Electrical |
 
-The chart does not show the earlier split of two RSS roles per region into Branch and Field (the 2026-08-17 chart). It lists two RSS per region, and East changed from Adam Walger and Courtney Schiller to Alex Petze and Kenny Gainyard. The regional teams in the roster table above (Southeast, Northeast, Southwest and so on) are not on this chart.
+The chart does not show the earlier split of two RSS roles per region into Branch and Field (the 2026-08-17 chart). It lists two RSS per region, and East changed from Adam Walger and Courtney Schiller to Alex Petze and Kenny Gainyard. Alex Petze moved into the RSS role with the summer 2026 service re-org (Suzan Oslin, 2026-10-20). Courtney Schiller is not on the chart; her current role is not known. The regional teams in the roster table above (Southeast, Northeast, Southwest and so on) are not on this chart.
 
 ### Source
 
 - Roster as of 07.20.26.xlsx
-- Operations Organization chart (undated), given by Suzan Oslin on 2026-10-20
+- Operations Organization chart (summer 2026, approximate), given by Suzan Oslin on 2026-10-20
 - Additional process and system references from the InCharge P2P transformation materials, warehouse metadata standard, and service-parts workflow notes used earlier in this working directory.
 
 ## Full detail
