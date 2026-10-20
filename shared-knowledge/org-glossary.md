@@ -1,6 +1,7 @@
 # InCharge Org Glossary (shared knowledge)
 
 Seed version, pulled from the Accounting knowledge base on 2026-09-28.
+Updated 2026-10-20 with the Operations Organization chart (see the section on that chart below). Suzan Oslin gave the chart; it is undated, so confirm its date when possible. Where it differs from the 2026-07-20 roster table, the chart governs.
 Updated 2026-10-01 with department names and abbreviations from the
 InCharge Departments and Key People directory (roster dated 2026-07-20); full directory table added below.
 Anyone using a skill that touches process mapping should treat this as a
@@ -143,7 +144,7 @@ People, titles, and the systems each team uses are in the directory below.
 | Service Sales | Adam Everman (National Service Sales Director); Katie Veerkamp (Manager of Strategic Accounts Service & Support); Michael Scheeper (Head of Customer Experience & Support Operations) | Salesforce; ServiceMax | Service sales; strategic-account support; customer experience coordination | Service Management; NOC; Sales; Customer Experience |
 | Sales Operations | Katrina Schurawel (Senior Sales Operations Manager); April Frank (Sales Engagement Analyst); Miaka Golden (Sales Operations Specialist) | Salesforce; Business Central | Customer-data ownership; sales process support; sales engagement; reporting | Sales; Finance; Marketing; Product; EPC |
 | Strategic Accounts | Virginia Hewitt (Sr. Director of Enterprise Accounts); Michael Heller (Enterprise Account Manager); Alexander Soulas (Sr Project Manager Strategic Accounts) | Salesforce; Procore; Proposed: Business Central | Strategic-account management; project coordination; customer engagement | Sales; EPC; Service; Customer Experience; Finance |
-| Customer Experience / Customer Support | Michael Scheeper (Head of Customer Experience & Support Operations); Kevin Wright (Vice President of Support Operations); Bilal Ahsan (Director of Support Operations) | Salesforce; ServiceMax; Proposed: support channels | Customer support; support-operations leadership; cross-department issue coordination | NOC; Service Management; Sales; Product; Software |
+| Customer Experience / Customer Support | Michael Scheeper (Head of Customer Experience & Support Operations); Kevin Wright (General Manager, East); Bilal Ahsan (Director of Support Operations) | Salesforce; ServiceMax; Proposed: support channels | Customer support; support-operations leadership; cross-department issue coordination | NOC; Service Management; Sales; Product; Software |
 | Marketing & Communications | Justin Wong (Senior Marketing Manager); Laura Karrer (Digital Marketing Specialist); Junko Green (Director of Customer Engagement, Software) | Proposed: website and digital-marketing platforms; Salesforce | Marketing communications; digital marketing; software customer engagement | Sales; Product; Software; Executive Leadership |
 | Government Relations / Public Affairs | Laura Rivas (Manager, Grants, Opportunities, and Public Affairs); Kelly Bernd (Senior Proposal and Grant Specialist); Claire Disch (Proposal and Grant Specialist) | Proposed: SharePoint; proposal and grant repositories | Grant and proposal support; public affairs; opportunity tracking | Sales; EPC; Engineering; Finance; Executive Leadership |
 | Digital Product | Russell Schmidt (Vice President of Digital Products); Oleksandra Huynh (Senior Product Manager); Jason Haren (Senior Product Manager) | Salesforce; Jira; Proposed: product collaboration tools | Product management; digital-product planning; requirements and roadmap coordination | Software Engineering; UX; Sales; Service; Marketing |
@@ -154,19 +155,19 @@ People, titles, and the systems each team uses are in the directory below.
 | Hardware / Product Engineering | Andre Napier (Sr Manager, Product Engineering); Alexander Petze (Product Manager EV Charging); Zoe Nettles (Hardware Documentation Specialist) | Proposed: engineering and documentation repositories | Product engineering; EV charging product management; hardware documentation | Digital Product; Software; Training; Service; Supply Chain |
 | Technology / IT | Nikolas Runge (Chief Technology Officer); Jack Ehlers (IT Operations Manager); Alexander Som (IT Operations and Security Analyst) | Active Directory; Proposed: IT service and security platforms | IT operations; security; access and infrastructure support | Software Engineering; HR; all departments |
 | Technical Training | Sean Gossard (Director of Technical Training); Ben Nicol (Senior Technical Training Manager); Niko Bardacke (Cornerstone LMS Administrator Intern) | Cornerstone LMS; Proposed: SharePoint | Technical training; learning administration; certification support | Service; Field Operations; Hardware; HSE; HR |
-| Service Executive Leadership | Kevin Wright (Vice President of Support Operations); Sierra Wilkins (Director of Service Delivery); Bilal Ahsan (Director of Support Operations) | ServiceMax; Salesforce | Service delivery; support operations; service-process leadership | Service Management; NOC; Field Operations; Parts; Training; Sales |
-| Service Management | Sierra Wilkins (Director of Service Delivery); Matt Burnette (Director of Service Estimating); Kylie Schiller (Sr. Dispatch Manager) | ServiceMax; Salesforce; Business Central; RAMP | Service delivery; estimating; dispatch; service PO coordination | Field Operations; NOC; Parts; Accounting; Purchasing; Training |
+| Service Executive Leadership | Kevin Wright (General Manager, East); Sierra Wilkins (Director, Field Maintenance); Bilal Ahsan (Director of Support Operations) | ServiceMax; Salesforce | Service delivery; support operations; service-process leadership | Service Management; NOC; Field Operations; Parts; Training; Sales |
+| Service Management | Sierra Wilkins (Director, Field Maintenance); Matt Burnette (Director of Service Estimating); Kylie Schiller (Manager, Workforce Excellence) | ServiceMax; Salesforce; Business Central; RAMP | Service delivery; estimating; dispatch; service PO coordination | Field Operations; NOC; Parts; Accounting; Purchasing; Training |
 | Service Account Management | Katie Veerkamp (Manager of Strategic Accounts Service & Support); Amber Blough (Service Account Manager); Ana Maria Stallings (Service Account Manager) | Salesforce; ServiceMax | Service-account management; customer coordination; strategic-account support | Sales; Service Management; NOC; Customer Experience |
 | Service Assets | William Bruce (Senior Asset Manager); Robert Loyd (Asset Manager, EVSE); Daisy Calderon (Asset Specialist) | Salesforce; ServiceMax | EVSE asset management; asset-data support | Service Management; NOC; Product; Field Operations |
-| Dispatch / Service Coordination | Kylie Schiller (Sr. Dispatch Manager); Dean Ruth (Manager of Project Coordinators); Steven Rivera (Service Manager) | ServiceMax; Salesforce | Dispatch; work-order coordination; service scheduling; case-to-work-order handoffs | Field Operations; Parts; NOC; Service Management |
+| Dispatch / Service Coordination | Kylie Schiller (Manager, Workforce Excellence); Dean Ruth (Manager of Project Coordinators); Stephen Rivera (Service Manager, East) | ServiceMax; Salesforce | Dispatch; work-order coordination; service scheduling; case-to-work-order handoffs | Field Operations; Parts; NOC; Service Management |
 | NOC / Network Operations Center | James Tuppince (Network Operations Center Manager); Christian Dunston (Technical Support Manager); Michelle Vassallo (Payment Services Manager) | Salesforce; ServiceMax; Proposed: network-monitoring and payment platforms | Network operations; technical support; payment services | Service Management; Software; Product; Customer Experience; Sales |
 | Technical Support | Christian Dunston (Technical Support Manager); Shannon Hawkins (Technical Support Specialist II); Katrina Kirby (Technical Support Specialist II) | Salesforce; ServiceMax | Technical support; case handling; troubleshooting coordination | NOC; Service Management; Product; Software; Field Operations |
 | Payment Services | Michelle Vassallo (Payment Services Manager); Austin Daniel (Payment Specialist); James Tuppince (Network Operations Center Manager) | Proposed: payment-services platforms; Salesforce | Payment-services support; payment issue coordination | NOC; Customer Experience; Sales; Finance |
-| Field Service Operations | Kevin Wright (Vice President of Support Operations); Sierra Wilkins (Director of Service Delivery); Van Wilkins (Executive Vice President of Enterprise Growth) | ServiceMax; Salesforce; RAMP | Regional field service; technician deployment; service delivery | Service Management; Dispatch; Training; Parts; HSE |
+| Field Service Operations | Kevin Wright (General Manager, East); Sierra Wilkins (Director, Field Maintenance); Van Wilkins (Executive Vice President of Enterprise Growth) | ServiceMax; Salesforce; RAMP | Regional field service; technician deployment; service delivery | Service Management; Dispatch; Training; Parts; HSE |
 | Southeast Field Service | Iqwon McRae (Regional Service Manager); Brian Moats (EVCS Technician Lead); Walter Clark (EVCS Technician) | ServiceMax; RAMP | Regional dispatch execution; EVCS field service; work-order completion | Service Management; Dispatch; Parts; NOC; Training |
 | Northeast Field Service | Richard Morris (EVCS Technician Lead); Lance Carmack (EVCS Technician); David Santos (EVCS Technician) | ServiceMax; RAMP | EVCS field service; work-order completion | Service Management; Dispatch; Parts; NOC; Training |
 | Southwest Field Service | Connor Clabaugh (Associate Regional Service Manager); David Leal (EVCS Technician); Martha Rivera Perez (EVCS Technician) | ServiceMax; RAMP | Regional service management; EVCS field service; work-order completion | Service Management; Dispatch; Parts; NOC; Training |
-| Central Field Service | Alicia Tafolla (General Manager); Chukwu Ideghe (EVCS Technician); Kevin Lamson (EVCS Technician) | ServiceMax; RAMP | Regional operations; EVCS field service; work-order completion | Service Management; Dispatch; Parts; NOC; Training |
+| Central Field Service | Alice Tafolla (General Manager, Central); Chukwu Ideghe (EVCS Technician); Kevin Lamson (EVCS Technician) | ServiceMax; RAMP | Regional operations; EVCS field service; work-order completion | Service Management; Dispatch; Parts; NOC; Training |
 | Midwest Field Service | James McNiece (Regional Service Manager); Lillique Leasure-Burnett (EVCS Technician); Amos Jones (EVCS Technician) | ServiceMax; RAMP | Regional service management; EVCS field service; work-order completion | Service Management; Dispatch; Parts; NOC; Training |
 | Northwest Field Service | Frank Dolence (Regional Service Manager); William Ervin (EVCS Technician) | ServiceMax; RAMP | Regional service management; EVCS field service; work-order completion | Service Management; Dispatch; Parts; NOC; Training |
 | Canada Operations | Ian Houghton (EVCS Technician); Shahram Farzinpak (EVCS Technician); Hanna Vysotskaya (Lead Quality Assurance, R&D Canada) | ServiceMax; Proposed: software QA tools | EVCS field service in Canada; software quality assurance in Canada | Service Management; Software QA; Dispatch; Product |
@@ -185,23 +186,47 @@ People, titles, and the systems each team uses are in the directory below.
 | Warehouse Material Handling | Lamont Carpenter (Senior Material Handler); Nathan Shepard (Material Handler); Terrell Eberhardt (Material Handler) | Business Central; JotForm | Material handling; receiving support; put-away; warehouse movement | Warehouse; Logistics; Purchasing; Parts |
 | Parts | Leeana Kesolei (Quality & Parts Manager); Aydian Woodard (Parts Coordinator); Samuel Kesolei (Purchasing & Inventory Specialist) | ServiceMax; Salesforce; Business Central | Parts identification; sourcing; ordering; tracking; delivery confirmation before dispatch | Service Management; Dispatch; Warehouse; Purchasing; Accounting |
 | Health, Safety & Environment | Lon Bartoli (HSE Manager); Cody Anderson (Contractor Compliance Program Manager); Patrick Arevalo (Electrical & Safety Manager) | TrustLayer; Compass; Drata | Contractor compliance; supplier-risk controls; health and safety support | HR; EPC; Field Operations; Procurement; Warehouse |
-| Branch Operations | Michael Gallagher (Head of Branch Operations); De'Ontae Hall (General Manager); Francisco Amigon (Service Manager) | ServiceMax; RAMP; Proposed: branch operations systems | Branch operations; service delivery; technician and field coordination | Service; Sales; HSE; Finance; HR |
-| Energy Solutions / Business Development | David Callaghan (Business Development Manager, Energy Solutions); Michael Gallagher (Head of Branch Operations); Michael Fogerty (Manager of Strategic Accounts - Renewable Energy) | Salesforce; Proposed: proposal and project tools | Business development; renewable-energy accounts; opportunity development | Sales; Branch Operations; EPC; Engineering; Marketing |
-| Efficient / Lighting Operations | Michael Gallagher (Head of Branch Operations); De'Ontae Hall (General Manager); Francisco Amigon (Service Manager) | ServiceMax; RAMP; Proposed: branch operations systems | Lighting and electrical field operations; service management; branch coordination | Branch Operations; Field Operations; HSE; Sales; Finance |
+| Branch Operations | Mike Gallagher (Head of Field Ops); De'Ontae Hall (General Manager, West); Francisco Amigon (Service Manager; not on the Operations Organization chart, which shows Chris Gonzalez as Service Manager, West) | ServiceMax; RAMP; Proposed: branch operations systems | Branch operations; service delivery; technician and field coordination | Service; Sales; HSE; Finance; HR |
+| Energy Solutions / Business Development | David Callaghan (Business Development, Lighting & Electrical); Mike Gallagher (Head of Field Ops); Mike Fogerty (Business Development, Solar and Battery) | Salesforce; Proposed: proposal and project tools | Business development; renewable-energy accounts; opportunity development | Sales; Branch Operations; EPC; Engineering; Marketing |
+| Efficient / Lighting Operations | Mike Gallagher (Head of Field Ops); De'Ontae Hall (General Manager, West); Francisco Amigon (Service Manager; not on the Operations Organization chart, which shows Chris Gonzalez as Service Manager, West) | ServiceMax; RAMP; Proposed: branch operations systems | Lighting and electrical field operations; service management; branch coordination | Branch Operations; Field Operations; HSE; Sales; Finance |
 
-### Regional Service Specialists (RSS)
+### Operations Organization chart (given by Suzan Oslin, 2026-10-20; undated)
 
-Each region has two RSS roles, one for Branch and one for Field. Source: the updated Field Operations org chart distributed by Michael Gallagher on 2026-08-17. Names confirmed by Suzan on 2026-10-12. These names are not in the roster of 2026-07-20.
+Reports to Mike Gallagher, Head of Field Ops: the three regional General Managers, Sierra Wilkins, and two Business Development leads. Names as shown on the chart.
 
-| Region | RSS, Branch | RSS, Field |
+| Group | Person | Role |
 | --- | --- | --- |
-| West | Wendy Rosales | Bobby Martinez |
-| Central | Justin Duncan | Mannie Young |
-| East | Adam Walger | Courtney Schiller |
+| Head | Mike Gallagher | Head of Field Ops |
+| West | De'Ontae Hall | General Manager, West |
+| West | Chris Gonzalez | Service Manager |
+| West | Wendy Rosales | Regional Service Specialist |
+| West | Bobby Martinez | Regional Service Specialist |
+| West | Leonardo Torres | Permitting & Compliance Specialist |
+| West | Melissa Stewart | Billing Specialist |
+| Central | Alice Tafolla | General Manager, Central |
+| Central | OPEN | Service Manager (vacant on the chart) |
+| Central | Justin Duncan | Regional Service Specialist |
+| Central | Mannie Young | Regional Service Specialist |
+| Central | Chardonea Barber | Permitting & Compliance Specialist |
+| East | Kevin Wright | General Manager, East |
+| East | Stephen Rivera | Service Manager |
+| East | Alex Petze | Regional Service Specialist |
+| East | Kenny Gainyard | Regional Service Specialist |
+| East | Amanda Jones | Permitting & Compliance Specialist |
+| Field Maintenance | Sierra Wilkins | Director, Field Maintenance |
+| Field Maintenance | Kylie Schiller | Manager, Workforce Excellence |
+| Field Maintenance | Jesse Garcia | Service Account Manager |
+| Field Maintenance | Ana Maria Stallings | Service Account Manager |
+| Field Maintenance | Amber Blough | Service Account Manager |
+| Business Development | Mike Fogerty | Business Development, Solar and Battery |
+| Business Development | David Callaghan | Business Development, Lighting & Electrical |
+
+The chart does not show the earlier split of two RSS roles per region into Branch and Field (the 2026-08-17 chart). It lists two RSS per region, and East changed from Adam Walger and Courtney Schiller to Alex Petze and Kenny Gainyard. The regional teams in the roster table above (Southeast, Northeast, Southwest and so on) are not on this chart.
 
 ### Source
 
 - Roster as of 07.20.26.xlsx
+- Operations Organization chart (undated), given by Suzan Oslin on 2026-10-20
 - Additional process and system references from the InCharge P2P transformation materials, warehouse metadata standard, and service-parts workflow notes used earlier in this working directory.
 
 ## Full detail
