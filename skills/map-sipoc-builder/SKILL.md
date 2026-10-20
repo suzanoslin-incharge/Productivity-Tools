@@ -69,4 +69,10 @@ handoffs across lanes.
 - It does not invent company facts. If suppliers, systems, or customers for
   a given process aren't known, ask, or mark them `TBD` rather than guessing.
 
+**Open questions and follow-ups sheets (Suzan, 2026-10-20).** Every SIPOC workbook has two sheets after the SIPOC, both copied from the trackers and kept in sync with them (not typed in separately):
+- **Open questions:** columns `ID`, `Question`, `Context`, `Who may know (suggested)`, `SIPOC step affected`, `Raised`, `Status`. Take the questions that belong to this process from `$ACCT_MYNOTES/TRACKERS/OPEN_QUESTIONS.xlsx` (Open sheet; use its text and the `Batch` column to find them). A closed question leaves the sheet in the next dated SIPOC.
+- **Follow-ups:** columns `Action item`, `Owner`, `Date made`, `Meeting`, `SIPOC step affected`. Take the actions that belong to this process from `$ACCT_MYNOTES/TRACKERS/FOLLOWUP_ITEMS.xlsx`.
+- If a sheet has nothing, one row says "No open questions at this time" or "No follow-ups at this time".
+- One issue is in one place: an unknown fact is a question and a pure action is a follow-up, never both. Fonts follow the 12-point rule. The swim-lane master reads these sheets and does not keep its own.
+
 **Keep the workbook lean (Suzan, 2026-10-15).** Do not add a "What changed" sheet or a "Change" column to a SIPOC or a swim-lane master. Do not track versions inside the file; a new dated file is enough. Be complete and accurate, but record only the current state.
