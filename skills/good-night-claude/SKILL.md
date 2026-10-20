@@ -5,11 +5,12 @@ description: End-of-day wrap-up for Suzan. Writes today's entry in JOURNAL.md, r
 
 # Good Night Claude
 
-Does three things, nothing else:
+Does four things, nothing else:
 
 1. Writes today's entry in `JOURNAL.md`.
 2. Rolls `DAILY-PICKUP.md` forward.
-3. Commits and pushes git changes in `$TOOLS_PRODCTVTY`.
+3. Publishes changed production files to SharePoint (the `publish-files` skill).
+4. Commits and pushes git changes in `$TOOLS_PRODCTVTY`.
 
 Both files are in `$ACCT_MYNOTES/TRACKERS`. No tracker or article changes, no loose-ends report. Keep it fast: one short proposal, one "yes".
 
@@ -37,9 +38,10 @@ Do not put open questions, follow-up items or waiting-on lines in the file. They
    - The new "Where we left off".
    - Pickup changes: finished items removed; unfinished Next up items moved to Outstanding; new Next up items; the Next up heading set to the next working day.
    - Context for Claude: the lines that change.
+   - Production files to publish: run steps 1 to 3 of the `publish-files` skill and show its short list here (nothing if no file changed). Suzan can say "skip publishing tonight".
    - The count: "N carried, N added, N removed", naming each removed item and why. Never drop an item silently.
    Use defaults, not questions. If one thing really blocks the update, ask one question and say what you will do if she does not answer.
-4. **On "yes", write exactly what was shown.** Back up the pickup file and the journal to the scratchpad first. Do not write while a file is open with unsaved changes.
+4. **On "yes", write exactly what was shown.** Run step 4 of `publish-files` for the files listed. Back up the pickup file and the journal to the scratchpad first. Do not write while a file is open with unsaved changes.
 5. **Commit and push.** In `$TOOLS_PRODCTVTY`: run `git status`. If there are changes, stage them (the repo tracks only `skills/`, `shared-knowledge/` and `agents/`), look at the diff, then commit to `main` with a short message that says what changed and why, ending with the co-author line from the session's attribution instructions, and push. Do not ask again. Stop and tell Suzan instead of committing if the diff contains any of: an ID or token (a long GUID, a key, a password, a client or tenant ID), a name or content copied from the knowledge base, or a `SKILL.md` with broken front matter (missing `name` or `description`). If the push fails, report the error and leave the commit in place.
 6. **Say good night.** Two lines: what got done (and the commit, if any), and the first thing for tomorrow.
 
