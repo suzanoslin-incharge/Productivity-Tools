@@ -15,7 +15,7 @@
         "skills/map-swimlane-builder",
         "skills/kb-article-builder",
         "skills/kb-update-linked-docs",
-        "skills/kb-answer-open-questions"
+        "skills/kb-answer-questions"
       ],
       "agents": []
     }

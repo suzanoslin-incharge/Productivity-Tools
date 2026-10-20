@@ -8,7 +8,7 @@ Part of the InCharge Meeting-to-Knowledge-Base effort. Status: **the three KB sk
 | --- | --- |
 | `kb-article-builder` (this skill) | Turn one file into a KB article: classify it, pick the category, name it, tag it with metadata, create or update the article. Writes nothing until you approve |
 | `kb-update-linked-docs` | Check every **linked** document against its original on SharePoint/OneDrive, find what changed, and propose article updates. Also re-finds files that moved |
-| `kb-answer-open-questions` | Work through `$ACCT_MYNOTES/TRACKERS/OPEN_QUESTIONS.xlsx`: list questions by who is likely to know, record an answer (updating the articles), process answers you typed into the workbook by hand, and take answers from notes, an email or a transcript. Ask it "what should I ask Doricia and Josh?" to get their questions rewritten with context |
+| `kb-answer-questions` | Work through `$ACCT_MYNOTES/TRACKERS/OPEN_QUESTIONS.xlsx`: list questions by who is likely to know, record an answer (updating the articles), process answers you typed into the workbook by hand, and take answers from notes, an email or a transcript. Ask it "what should I ask Doricia and Josh?" to get their questions rewritten with context |
 
 The mapping skills (`map-sipoc-builder`, `map-swimlane-builder`) are separate.
 
@@ -47,7 +47,7 @@ Files go to `$KB_ROOT` (`Accounting-MyNotes/_KB`): `01_Sources/KB-Only`,
 
 **Near term**
 - [ ] Run each KB skill as an installed skill (so far the steps were followed by hand) and adjust what does not work
-- [ ] Work through `OPEN_QUESTIONS.xlsx` with `kb-answer-open-questions`
+- [ ] Work through `OPEN_QUESTIONS.xlsx` with `kb-answer-questions`
 - [ ] Add an email-intake step to `kb-article-builder` (find the thread through the Outlook connector, confirm it with you, save the text and attachments to a source folder; tagging and moving the email stays manual because the connector cannot do it)
 - [x] `.docx` conversion: pandoc 3.11 installed (2026-10-01); docx skill is the fallback
 - [ ] Commit and add to the plugin release
@@ -169,3 +169,7 @@ productivity-tools repo, not in the KB).
 - Which system holds action items
 - Where the Primary Process Contact and review owner come from
 - Whether to publish to SharePoint directly (Microsoft 365 connector is available) or hand off files for manual upload
+
+## Open questions workbook layout (updated 2026-10-20)
+
+The Open sheet has a tenth column, `Batch` (topic group), and is sorted by batch, then ID. New questions get an existing batch where one fits, are checked for duplicates first, and are appended at the bottom until the user asks to tidy. The user does not read the workbook; Claude answers from it by person or by batch.

@@ -1,5 +1,5 @@
 ---
-name: kb-answer-open-questions
+name: kb-answer-questions
 description: Work with the open questions in the InCharge knowledge base in three ways - ASK (what should I ask Doricia and Josh? returns each person's questions rewritten to stand alone, with context from the article), PROCESS (find questions the user answered by hand in the workbook and move them to Answered and record them in the articles), and INTAKE (the user passes notes, an email, a transcript or a message containing answers; match them to open questions and record them). Nothing is written until the user approves. Use when the user asks what to ask someone, wants to review open questions, says "process my answers", or hands over answers in any form.
 ---
 
@@ -20,11 +20,12 @@ except as noted under "Retire".
 | "Here are notes / an email / a transcript / what Matt told me: record the answers" (pasted or attached) | **Intake** | 3 |
 | "Q034: Matt says ..." (one answer, typed) | Intake with one answer | 3 |
 | "Q012 doesn't matter any more" | **Retire** | 5 |
+| "Tidy the questions" / "merge duplicates" | **Tidy** | 6 |
 
 Recording an answer in the articles and the workbook is the same procedure for
 Process and Intake (section 4).
 
-Workbook layout. Sheet "Open" (Excel table `OpenQuestions`): `Done | ID | Question | Context | Who may know (suggested) | Related notes | Link | Raised | Answer`.
+Workbook layout. Sheet "Open" (Excel table `OpenQuestions`): `Done | ID | Question | Context | Who may know (suggested) | Related notes | Link | Raised | Answer | Batch`. `Batch` is the topic group; the sheet is sorted by batch, then ID. Suzan never reads the workbook and always asks Claude first, so answer from it and never send her to open it.
 Sheet "Answered" (table `AnsweredQuestions`): `Done | ID | Question | Context | Answered by | Related notes | Link | Raised | Answer`.
 `Question` is written to stand alone. `Context` is 2 to 4 plain sentences: what my notes say, where the gap or conflict is, where it came from (the meeting and its date, or an email), and why it matters when that is supported. Wording: write like a colleague talking to a colleague, in plain everyday words, for people who have not read Suzan's notes (the workbook is shared and is copied into process documents such as a SIPOC). Never write "the article", "the KB", "the source" or "per"; say "my notes" for Suzan's write-up and "the meeting notes" (or name the meeting) for a meeting. Emails can be named normally ("in Priya's email of 2026-09-29"). Do not end a Context with a stock phrase such as "From the 2026-10-05 session" and do not use the label "Why it matters:"; say it in a sentence ("This matters because ..."). Spell out an acronym the first time it appears in each cell. Both were backfilled for every existing question on 2026-10-05. The article's own Open Questions bullet may be worded differently from the workbook question, so match by ID and meaning, not by exact text.
 `Done` is blank, or `Yes` when answered. `Related notes` is the title of the KB article in plain text. `Link` is a clickable **local file link** to that article (built as `file:///Users/suzanoslin/Library/CloudStorage/OneDrive-InChargeService/Accounting-MyNotes/` plus the path under `_KB`), which opens the note in Suzan's editor. SharePoint web links to `.md` files do not open in a browser; at migration the links are re-pointed (see the kb-article-builder README, section "Moving everything to SharePoint"). `Raised` is a real date
@@ -42,6 +43,7 @@ question copied from the workbook often means little on its own ("The note says
 'lots to be worked out'"), so every question is rewritten to stand alone and
 comes with context.
 
+0. **By batch.** If the user names a batch or a topic ("the Fastenal batch", "Dispatch Guide"), list that batch's questions, grouped by person, in the short form below. Names of batches are the values in the `Batch` column.
 1. **Find the people.** Match each name the user gave against "Who may know"
    (case-insensitive, first or last name, e.g. "Josh" matches "Joshua
    Barnhill"). Use `$TOOLS_PRODCTVTY/shared-knowledge/org-glossary.md` to
@@ -189,7 +191,16 @@ mode), move the row to Answered with `Answered by` set to the user, the answer
 "Retired: <reason>", and remove it from the article's Open Questions section.
 Show the change first if it touches an article.
 
+## 6. Tidy: "tidy the questions", "find duplicates"
+
+1. Re-sort the Open sheet by `Batch` (in the order the batches first appear), then ID. Keep IDs, text and links; rebuild hyperlinks after the sort.
+2. Read every open question and its Context. List, in one short table: **duplicates** (same question; keep the clearer one, move useful context into it, retire the other as `Retired: duplicate of Qxxx`), **related** (leave both rows), **close without asking** (answerable by looking at a file), **bundled** (split only when different people would answer each part, otherwise trim to the main ask) and **empty Context**.
+3. Merge only true duplicates. Never fold two different questions into one.
+4. Show the table and write only what is approved. Retired rows move to Answered with `Answered by` = the user and the date.
+
 ## Adding new questions
+
+
 
 When `kb-article-builder` or `kb-update-linked-docs` writes an article, it
 adds that article's open questions to the "Open" sheet with the next free ID,
@@ -198,4 +209,4 @@ is written to stand alone: it names the system or process, says what is known
 and what is not, and does not depend on the surrounding text ("The note says
 'lots to be worked out'" is not a question) and has a `Context` cell written with it. If you add a question here by
 hand-off ("add a question for Carrie about ..."), also add it to the article's
-Open Questions section after approval.
+Open Questions section after approval. Every new question gets a `Batch`, and the workbook is searched first for a duplicate (see kb-article-builder, Open questions).
