@@ -5,13 +5,14 @@ description: End-of-day wrap-up for Suzan. Writes today's entry in JOURNAL.md, r
 
 # Good Night Claude
 
-Does four things, nothing else (five on Fridays):
+Does four things, nothing else (six on Fridays):
 
 1. Writes today's entry in `JOURNAL.md`.
 2. Rolls `DAILY-PICKUP.md` forward.
 3. Publishes changed production files to SharePoint (the `publish-files` skill).
 4. Commits and pushes git changes in `$TOOLS_PRODCTVTY`.
 5. **Fridays only:** tidies the open questions (the Tidy mode of the `kb-answer-questions` skill). Check the day with `date +%u`; 5 means Friday.
+6. **Fridays only:** writes the freshness report for Suzan to review on Monday morning (section "Friday freshness report" below).
 
 Both files are in `$ACCT_MYNOTES/TRACKERS`. No tracker or article changes (except the Friday tidy of the open questions workbook), no loose-ends report. Keep it fast: one short proposal, one "yes".
 
@@ -41,11 +42,23 @@ Do not put open questions, follow-up items or waiting-on lines in the file. They
    - Context for Claude: the lines that change.
    - Production files to publish: run steps 1 to 3 of the `publish-files` skill and show its short list here (nothing if no file changed). Suzan can say "skip publishing tonight".
    - **Fridays only, tidy the questions:** run steps 1 and 2 of Tidy (section 6 of `kb-answer-questions`) read-only and show the short table here: duplicates to merge, questions that could be closed by looking at a file, bundled questions, and empty Context cells. Say "nothing to tidy" if there are none. Suzan can say "skip the tidy tonight".
+   - **Fridays only, freshness report:** one line saying a report will be written to `$ACCT_MYNOTES/_Productivity/Freshness-Report_yyyy-mm-dd.md` and that a Monday "Next up" item will point to it. Do not show the report itself tonight. Suzan can say "skip the freshness report".
    - The count: "N carried, N added, N removed", naming each removed item and why. Never drop an item silently.
    Use defaults, not questions. If one thing really blocks the update, ask one question and say what you will do if she does not answer.
 4. **On "yes", write exactly what was shown.** Run step 4 of `publish-files` for the files listed. On Fridays also re-sort the Open sheet by batch and write only the tidy items she approved (close the workbook check first: if it is open in Excel, ask her to close it). Back up the pickup file and the journal to the scratchpad first. Do not write while a file is open with unsaved changes.
-5. **Commit and push.** In `$TOOLS_PRODCTVTY`: run `git status`. If there are changes, stage them (the repo tracks only `skills/`, `shared-knowledge/` and `agents/`), look at the diff, then commit to `main` with a short message that says what changed and why, ending with the co-author line from the session's attribution instructions, and push. Do not ask again. Stop and tell Suzan instead of committing if the diff contains any of: an ID or token (a long GUID, a key, a password, a client or tenant ID), a name or content copied from the knowledge base, or a `SKILL.md` with broken front matter (missing `name` or `description`). If the push fails, report the error and leave the commit in place.
-6. **Say good night.** Two lines: what got done (and the commit, if any), and the first thing for tomorrow.
+5. **Fridays only: write the freshness report** (read-only; see below), then add this item at the top of Monday's Next up in the new pickup file: **Review the Friday freshness report** with one sentence: what it covers and the file name. Skip both if she said to skip it.
+6. **Commit and push.** In `$TOOLS_PRODCTVTY`: run `git status`. If there are changes, stage them (the repo tracks only `skills/`, `shared-knowledge/` and `agents/`), look at the diff, then commit to `main` with a short message that says what changed and why, ending with the co-author line from the session's attribution instructions, and push. Do not ask again. Stop and tell Suzan instead of committing if the diff contains any of: an ID or token (a long GUID, a key, a password, a client or tenant ID), a name or content copied from the knowledge base, or a `SKILL.md` with broken front matter (missing `name` or `description`). If the push fails, report the error and leave the commit in place.
+7. **Say good night.** Two lines: what got done (and the commit, if any), and the first thing for tomorrow.
+
+## Friday freshness report
+
+Read-only. It changes nothing in the knowledge base or the trackers. Suzan reads it on Monday morning, not on Friday night. Write it to `$ACCT_MYNOTES/_Productivity/Freshness-Report_yyyy-mm-dd.md` (the Friday's date), as a short plain-English markdown file with three sections. Under each section, say "Nothing to report" if it is empty. Write it as Suzan would to a colleague; never mention Claude, AI or the tools used. Dates are yyyy-mm-dd.
+
+1. **Articles not updated in 6 weeks.** Read the `Last updated` line of every article in `$KB_ROOT/02_Knowledge-Articles` (skip `_Superseded-Archived`). List the ones more than 42 days old: title, last updated date, days since, and the article's status. Oldest first.
+2. **Open questions with no movement in 30 days.** The Open sheet has no "last touched" column, so use the `Raised` date: list questions raised more than 30 days ago that are still open, grouped by `Batch`, with the ID, the question and who may know. Say that "no movement" means still open since it was raised.
+3. **Linked documents not refreshed.** Run steps 1 and 2 of `kb-update-linked-docs` (inventory and date check, read-only, Microsoft 365 connector). List each linked source whose original is newer than the recorded date, or that could not be checked: source, article, recorded date, current date, status. Do not run the update.
+
+End the file with one line: how many items in each section, so the Monday reminder can say it. Do not add a "what changed" section or version notes.
 
 ## Journal entry format
 
@@ -62,5 +75,5 @@ Add above the previous entry, under a heading `## yyyy-mm-dd (Weekday)`. Suzan s
 - Write both files the way Suzan would write to a colleague. Never mention Claude, AI, bots or the tools used. The skill name is not written into any file.
 - Dates are yyyy-mm-dd. Plain English. Spell out an acronym the first time it appears in a file or entry.
 - Names: use a full name only if it is confirmed in `$TOOLS_PRODCTVTY/shared-knowledge/org-glossary.md` or in the pickup file's "Names confirmed by Suzan". Otherwise keep the first name as written.
-- Do not edit trackers or knowledge base articles. Do not delete, move or rename anything.
+- Do not edit trackers or knowledge base articles (the Friday report is a new file in `_Productivity`, nothing else changes). Do not delete, move or rename anything.
 - Any file this skill creates follows the 12-point minimum font rule.
