@@ -19,15 +19,15 @@ Hand it one file (`.md`, `.txt`, `.docx`, `.xlsx`, `.pptx`, `.pdf`) or an email 
 - converts the file to text
 - asks (unless you said, or attached the file with the + button) whether it is **KB-only** (original copied into `01_Sources/KB-Only/`) or **linked** (original stays on SharePoint/OneDrive; `01_Sources/Linked/` holds the link and dates)
 - classifies it (Meeting, Email, Handwritten-Notes, Document) and decides: new article, update an existing article, reference stub, or skip
-- picks the category from the KB's `_Taxonomy.md`; if nothing fits, proposes a **new row** (additive only; reads the org glossary and systems landscape only then)
+- picks the category from the KB's `00_Taxonomy.md`; if nothing fits, proposes a **new row** (additive only; reads the org glossary and systems landscape only then)
 - names it per the filename standard, and generates the eight-field metadata
 - when it updates an article, replaces stale facts with the new ones (e.g. a new report path replaces the old one), and logs the change (no archive copy; OneDrive keeps version history)
-- for linked files: adds a row to `_Linked-Catalog.md` and puts the Finder tag `In KB` on the original
+- for linked files: adds a row to `00_Linked-Catalog.md` and puts the Finder tag `In KB` on the original
 - checks the open questions in `OPEN_QUESTIONS.xlsx` against the new file and proposes the ones it answers (recorded only after you approve)
 - adds the article's open questions to `OPEN_QUESTIONS.xlsx` and its action items to `FOLLOWUP_ITEMS.xlsx` (both are Excel workbooks you can edit by hand; keep them closed in Excel while Claude edits them)
 - presents one proposal and **writes nothing until you approve**
 
-Files go to `$KB_ROOT` (`Accounting-MyNotes/_KB`): `01_Sources/KB-Only`,
+Files go to `$KB_ROOT` (`Accounting-MyNotes/KB`): `01_Sources/KB-Only`,
 `01_Sources/Linked`, `02_Knowledge-Articles/<Business-Function>/<Process-Area>`,
 `03_Decision-Log`. This covers SOP Steps 2, 7, 8 and 10 in a first form.
 
@@ -61,14 +61,14 @@ Files go to `$KB_ROOT` (`Accounting-MyNotes/_KB`): `01_Sources/KB-Only`,
 
 ## Done
 
-- [x] `_KB` structure, templates, filename standard, `KB_ROOT`
+- [x] `KB` structure, templates, filename standard, `KB_ROOT`
 - [x] `$ACCT_MYNOTES/TRACKERS/OPEN_QUESTIONS.xlsx` gathers every article's open questions in one place (2026-10-01; converted from a markdown table to an editable Excel workbook 2026-10-05)
-- [x] `_Linked-Catalog.md` plus `In KB` Finder tag mark catalogued linked files (2026-10-01)
+- [x] `00_Linked-Catalog.md` plus `In KB` Finder tag mark catalogued linked files (2026-10-01)
 - [x] Taxonomy seeded (nine rows) and approved 2026-10-01; grows by approved additions only
 
 ## Moving everything to SharePoint
 
-Today the KB (`_KB`) and the linked originals both sit in Suzan Oslin's
+Today the KB (`KB`) and the linked originals both sit in Suzan Oslin's
 personal OneDrive, so links to the originals open only for her. This section
 records what to do, and what must change, when everything moves to SharePoint.
 There are two separate moves. Do them in this order.
@@ -77,17 +77,17 @@ There are two separate moves. Do them in this order.
 
 - **Decision: do not migrate yet.** For the foreseeable future the KB is read-only and is for Suzan alone. Everything stays in `Accounting-MyNotes` (OneDrive) until she knows who in Accounting has Copilot access and who is using it. Then she opens the KB up.
 - **Trigger for this plan:** Suzan says she knows who has Copilot, or wants to share the KB, or asks about sharing, permissions or SharePoint. When that happens (or when anyone asks about opening the KB up), remind her that **this plan lives in this README, section "Moving everything to SharePoint"**, and walk her through it. The same reminder is in `$ACCT_MYNOTES/CLAUDE.md` and the pickup file.
-- **Links today:** the `Link` column in `OPEN_QUESTIONS.xlsx` and in the SIPOC workbook holds **local file links** that open the note in Suzan's editor. SharePoint web links to `.md` files did not work: the browser tries to download a Markdown file instead of showing it, and personal OneDrive links open only for the owner. At migration, re-point every `Link` to the SharePoint address (the base address is `https://<site>/.../<library>/` plus the same path under `_KB`), and publish readable copies (see below).
+- **Links today:** the `Link` column in `OPEN_QUESTIONS.xlsx` and in the SIPOC workbook holds **local file links** that open the note in Suzan's editor. SharePoint web links to `.md` files did not work: the browser tries to download a Markdown file instead of showing it, and personal OneDrive links open only for the owner. At migration, re-point every `Link` to the SharePoint address (the base address is `https://<site>/.../<library>/` plus the same path under `KB`), and publish readable copies (see below).
 
 ### What moves and what stays
 
 | Where | What | Why |
 | --- | --- | --- |
-| **SharePoint, shared library, read access for everyone** | `_KB/02_Knowledge-Articles` and `_KB/03_Decision-Log`, plus `_Templates`, `_Taxonomy.md`, `_Linked-Catalog.md`, `_README.md` | This is the part colleagues and Copilot should read. |
+| **SharePoint, shared library, read access for everyone** | `KB/02_Knowledge-Articles` and `KB/03_Decision-Log`, plus `00_Templates`, `00_Taxonomy.md`, `00_Linked-Catalog.md`, `00_README.md` | This is the part colleagues and Copilot should read. |
 | **SharePoint, edit access for KB owners only** | The same library; Suzan and any other KB owners | Keeps the content controlled. |
 | **SharePoint, shared site (Move 1 below)** | The linked originals: the Procure-to-Pay, Order-to-Cash and Upstream documents the articles point to | They must be at a shared address before the KB is published. |
-| **SharePoint, restricted to KB owners (recommended)** | `_KB/01_Sources` (transcripts, AI summaries, recordings, source metadata) | These name people and include candid remarks. Articles link to them, so readers who follow a source link will be blocked; accept that, or decide to share selected sources. |
-| **Stays in `Accounting-MyNotes` (personal)** | `TRACKERS/` (`OPEN_QUESTIONS.xlsx`, `FOLLOWUP_ITEMS.xlsx`, `DAILY-PICKUP.md`, `JOURNAL.md`), `CLAUDE.md`, `_Assignments`, `_Superseded`, `_Productivity`, `meetingNotes` (temporary: downloaded `.vtt` files, deleted once filed), `Bank-Deposits-Automation`, `Record-to-Report/_AR-Capacity-and-Billing-Baseline_TEMPLATE.xlsx` (retired; a copy is in the shared Automation folder) | Working files and raw material. Share a deliverable (for example the SIPOC or the baseline template) with specific people when it is ready, not the whole folder. |
+| **SharePoint, restricted to KB owners (recommended)** | `KB/01_Sources` (transcripts, AI summaries, recordings, source metadata) | These name people and include candid remarks. Articles link to them, so readers who follow a source link will be blocked; accept that, or decide to share selected sources. |
+| **Stays in `Accounting-MyNotes` (personal)** | `TRACKERS/` (`OPEN_QUESTIONS.xlsx`, `FOLLOWUP_ITEMS.xlsx`, `DAILY-PICKUP.md`, `JOURNAL.md`), `CLAUDE.md`, `_Assignments`, `_Superseded`, `Productivity`, `meetingNotes` (temporary: downloaded `.vtt` files, deleted once filed), `Bank-Deposits-Automation`, `Record-to-Report/_AR-Capacity-and-Billing-Baseline_TEMPLATE.xlsx` (retired; a copy is in the shared Automation folder) | Working files and raw material. Share a deliverable (for example the SIPOC or the baseline template) with specific people when it is ready, not the whole folder. |
 
 ### Copilot and Markdown (Microsoft Copilot's answer, 2026-10-05)
 
@@ -121,7 +121,7 @@ What this means for the migration (a suggestion):
 - [ ] The site and library for the **KB**
 - [ ] **One library with the three folders** (`01_Sources`, `02_Knowledge-Articles`, `03_Decision-Log`) is recommended. If the SOP's three libraries are used instead, every relative link between them breaks and must be rewritten as a URL.
 - [ ] Who gets edit rights (KB owners) and who gets read access (everyone)
-- [ ] Whether `FOLLOWUP_ITEMS.xlsx` (now in `Accounting-MyNotes/TRACKERS`, outside `_KB`) stays personal or moves to the shared site
+- [ ] Whether `FOLLOWUP_ITEMS.xlsx` (now in `Accounting-MyNotes/TRACKERS`, outside `KB`) stays personal or moves to the shared site
 
 ### Move 1: the linked originals (do first; links must be right before publishing)
 
@@ -133,7 +133,7 @@ ends, which would break every link.
 3. What has to be updated for each moved original. The skill does the first three; check them:
    - `01_Sources/Linked/<source>/Source-Metadata.md`: **Link**, **Item ID**, **Link visibility** (now "Site members" or similar, no longer "Owner only"), **Where the original lives**, **Owner** (a real owner, not the OneDrive account)
    - the article's **Source document** section (the link and the line "opens for the owner only")
-   - `_Linked-Catalog.md`: **Link**, **Location**, **Original last modified**, **Last checked**
+   - `00_Linked-Catalog.md`: **Link**, **Location**, **Original last modified**, **Last checked**
    - the Finder tag `In KB`: it lives on the local copy, so reapply it to the new synced location (the `xattr` command is in `SKILL.md`)
    - a Change Log line in each article noting the link change (this is not a content update)
 4. Check: open each link from a second account that is not the file's owner.
@@ -142,13 +142,13 @@ Currently catalogued (9 linked sources; item IDs for all nine were recorded on 2
 
 ### Move 2: the KB itself
 
-1. Copy the whole `_KB` tree to the library **intact**: same folder names, same structure, no renames. All relative links keep working because they are relative. File names already have no spaces, which keeps SharePoint URLs clean.
+1. Copy the whole `KB` tree to the library **intact**: same folder names, same structure, no renames. All relative links keep working because they are relative. File names already have no spaces, which keeps SharePoint URLs clean.
 2. Sync the library locally, then point the tools at it:
    - set `KB_ROOT` in `~/.zshrc` to the synced folder
-   - update the fallback `$ACCT_MYNOTES/_KB` named in `SKILL.md` and in `_KB/_README.md` (it will no longer be the home)
-   - update the README's mentions of staging in `_KB/_README.md` ("Staging area ... until the site is chosen")
+   - update the fallback `$ACCT_MYNOTES/KB` named in `SKILL.md` and in `KB/00_README.md` (it will no longer be the home)
+   - update the README's mentions of staging in `KB/00_README.md` ("Staging area ... until the site is chosen")
 3. Run a relative-link check over every `.md` file in the new location and confirm nothing is broken.
-4. Retire the old copy (rename it `_KB-OLD` or archive it) once the new one is verified, so there are not two live copies.
+4. Retire the old copy (rename it `KB-OLD` or archive it) once the new one is verified, so there are not two live copies.
 5. Apply the same `In KB` Finder-tag convention going forward; nothing else about the skills changes.
 
 What does **not** need to change: the filename standard, templates, taxonomy,
@@ -157,10 +157,10 @@ productivity-tools repo, not in the KB).
 
 ### After both moves
 
-- **Cross-link from the original back to the KB.** Now possible, since an article has a real shared URL. Add a document property or a visible line in each original ("Catalogued in KB: <article URL>"). This edits the file and changes its modified date, so record the new date in `Source-Metadata.md` and `_Linked-Catalog.md` right after, so the update checker does not count it as a change.
+- **Cross-link from the original back to the KB.** Now possible, since an article has a real shared URL. Add a document property or a visible line in each original ("Catalogued in KB: <article URL>"). This edits the file and changes its modified date, so record the new date in `Source-Metadata.md` and `00_Linked-Catalog.md` right after, so the update checker does not count it as a change.
 - **Other documents** that refer to an article should link to its SharePoint URL, not a relative path.
 - **SharePoint metadata columns.** The eight metadata fields live in each article's body today. To filter and search by them in SharePoint, add them as library columns and fill them from the article metadata. Copilot reads the article text either way.
-- **Permissions and review.** Confirm the review owner and who may change Status (open items in `_KB/_README.md`).
+- **Permissions and review.** Confirm the review owner and who may change Status (open items in `KB/00_README.md`).
 
 ## Open decisions (the SOP doesn't answer these)
 

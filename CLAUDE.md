@@ -12,7 +12,7 @@ The skills are installed by symlinks in `~/.claude/skills/` that point at `skill
 
 ## The knowledge base is not in this repo
 
-The knowledge base and trackers live in OneDrive and are reached through environment variables: `$KB_ROOT` (the `_KB` folder), `$ACCT_MYNOTES` (Accounting-MyNotes) and `$TOOLS_PRODCTVTY` (this repo). Never copy knowledge base content into the repo. See `$ACCT_MYNOTES/CLAUDE.md` for the knowledge base rules.
+The knowledge base and trackers live in OneDrive and are reached through environment variables: `$KB_ROOT` (the `KB` folder), `$ACCT_MYNOTES` (Accounting-MyNotes) and `$TOOLS_PRODCTVTY` (this repo). Never copy knowledge base content into the repo. See `$ACCT_MYNOTES/CLAUDE.md` for the knowledge base rules.
 
 ## Git
 

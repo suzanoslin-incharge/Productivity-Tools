@@ -1,6 +1,6 @@
 # Filename standard
 
-Applies to every file and folder in the knowledge base (`_KB`).
+Applies to every file and folder in the knowledge base (`KB`).
 
 - **No spaces.** Ever.
 - **Hyphen (`-`)** joins the words of one phrase: `Business-Plan`.
@@ -19,7 +19,7 @@ Applies to every file and folder in the knowledge base (`_KB`).
 | Fixed files in a source folder | by source type | `Source-Metadata.md`, `Transcript.md`, `Recording-Link.md` |
 | Recordings and scans | `Source-Name_YYYY-MM-DD.ext` | `Sales-BC-to-SF-Integration_2026-09-25.mp4` |
 | Category folders | `Business-Function/Process-Area` | `Operations/Warehouse-and-Inventory-Management` |
-| Special folders and files | leading underscore | `_Templates`, `_Taxonomy.md`, `_Superseded-Archived` |
+| Special folders and files | leading underscore | `00_Templates`, `00_Taxonomy.md`, `_Superseded-Archived` |
 
 The SOP (Step 2) names meeting folders `YYYY-MM-DD Meeting Title` (date first,
 with spaces). This standard deliberately overrides that: name first, no spaces.

@@ -13,8 +13,8 @@ on SharePoint or OneDrive and were extracted into KB articles by
 nothing in the KB changes before approval.
 
 KB layout and the article/source formats are defined in
-`../kb-article-builder/SKILL.md` and the KB's `_README.md`. Use `$KB_ROOT`
-(falls back to `$ACCT_MYNOTES/_KB`).
+`../kb-article-builder/SKILL.md` and the KB's `00_README.md`. Use `$KB_ROOT`
+(falls back to `$ACCT_MYNOTES/KB`).
 
 ## Steps
 
@@ -62,7 +62,7 @@ KB layout and the article/source formats are defined in
    - update the source's `Source-Metadata.md`: `Original last modified`,
      `Retrieved`, and, if the document moved, `Link`, `Item ID`, `Link visibility`
      and `Where the original lives`; also the article's **Source document**
-     section and the document's row in `_Linked-Catalog.md` (Link and Location), and add
+     section and the document's row in `00_Linked-Catalog.md` (Link and Location), and add
      a Change Log line noting the link change. Tell the user to reapply the
      `In KB` Finder tag to the moved file.
    - if the original was deleted or replaced by a different document,
@@ -70,6 +70,6 @@ KB layout and the article/source formats are defined in
 7. **Report.** Counts (checked, unchanged, updated, skipped, could not
    check), which articles changed, and anything left open.
 
-Unchanged documents are left alone: no edits to articles or sources. After a run, update `Last checked` in `$KB_ROOT/_Linked-Catalog.md` for every document checked, and `Original last modified` for those updated (that catalog edit is bookkeeping and is reported, not proposed).
+Unchanged documents are left alone: no edits to articles or sources. After a run, update `Last checked` in `$KB_ROOT/00_Linked-Catalog.md` for every document checked, and `Original last modified` for those updated (that catalog edit is bookkeeping and is reported, not proposed).
 
-**Coverage check (on request).** When the user asks what is not catalogued yet, list files in the named `Accounting-MyNotes` folder that have no `In KB` Finder tag and no row in `_Linked-Catalog.md`, ignoring names that start with `_`.
+**Coverage check (on request).** When the user asks what is not catalogued yet, list files in the named `Accounting-MyNotes` folder that have no `In KB` Finder tag and no row in `00_Linked-Catalog.md`, ignoring names that start with `_`.
