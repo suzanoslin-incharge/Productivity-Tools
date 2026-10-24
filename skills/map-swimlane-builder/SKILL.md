@@ -50,7 +50,7 @@ lane correctness matters (i.e., basically everything this skill is used
 for).
 
 **If shapes and lines should be colored by label in Lucid**, add the label
-columns in `references/lucidchart-integration.md` §4: `ShapeType` and `Status`
+columns in `references/lucidchart-integration.md` §4: `ShapeType` (Start, Final, Manual, Automated, Manual Review, System Decision) and `Status` (Confirmed, Unconfirmed, TBD)
 on the shapes, `Line ID` and `LineType` on the arrows in the master workbook.
 Use the CSV rules (§4.3) now; the XLSX live-link rules (§4.4) apply only if
 the account moves to Enterprise. The columns add to the master table; they do
@@ -85,3 +85,7 @@ importing anything into Lucidchart.
 **Open questions and follow-ups (Suzan, 2026-10-20).** The swim-lane master does not keep its own sheets for them. They live in the SIPOC workbook for the same process (see `map-sipoc-builder`) and in the trackers.
 
 **Keep the workbook lean (Suzan, 2026-10-15).** Do not add a "What changed" sheet or a "Change" column to a SIPOC or a swim-lane master. Do not track versions inside the file; a new dated file is enough. Be complete and accurate, but record only the current state.
+
+**File names (Suzan, 2026-10-22).** Name each file with the workflow first, then the document type, then the date last, so related files sort together: `<Workflow>_SIPOC_<yyyy-mm-dd>.xlsx`, `<Workflow>_Swimlane-Master_<yyyy-mm-dd>.xlsx` and `<Workflow>_Lucid-Import_<yyyy-mm-dd>.csv`. Short hyphenated workflow names, no prefix the folder already gives. Published names on SharePoint are the same without the date. Move older versions into an `_archive` subfolder. Full rules are in `$ACCT_MYNOTES/CLAUDE.md`.
+
+**One CSV only (Suzan, 2026-10-22).** Always produce the labeled CSV (ShapeType and Status columns, section 4.3) and no unlabeled copy. Do not put "with-labels" in the file name.

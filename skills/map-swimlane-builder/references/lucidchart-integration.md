@@ -231,13 +231,16 @@ branches.
 | `Final` | an end step (no arrow goes out) |
 | `System Decision` | a system or rule decides on its own, with two or more outcomes (for example "Payment successful?" in PayFabric). Each outcome has its own arrow |
 | `Manual Review` | a person checks or decides, with two or more outcomes (for example "Remittance and invoice found?"). Pass moves forward; fail cannot move forward and goes another way (Exception Path or Loop Back) |
-| `Standard` | every other step |
+| `Manual` | every other step a person does (the default when unsure) |
+| `Automated` | a step the system does with no person: a Salesforce flow, a Business Central action, PayFabric, the integration. Its shape and border differ from `Manual` in Lucid (Suzan, 2026-10-23) |
 
 Both decision types must branch. A step worded Review, Verify or Check with a
 pass path and a fail path is a `Manual Review` (or a `System Decision` if a
-system does it). With no branching it is `Standard`, even if it is worded as a
+system does it). With no branching it is `Manual` (or `Automated`), even if it is worded as a
 review (for example "Review the bank report and lockbox the day after receipt");
-ask whether a fail path exists.
+ask whether a fail path exists. `Start` and `Final` keep their own labels even when a system does the step, and a decision made by a system stays `System Decision`.
+
+Suzan changed these labels on 2026-10-23: the old `Standard` became `Manual`, and `Automated` is new.
 
 **Gray zone (Suzan, 2026-10-12):** if a person looks up or reads a system's
 result and then decides, it is a `Manual Review`, even though the data comes
@@ -257,16 +260,19 @@ shape):
 | Label | Meaning |
 | --- | --- |
 | `Confirmed` | a named person or source states it |
-| `Unconfirmed` | in the draft, not yet confirmed |
-| `TBD` | a known gap; the content is not known |
-| `Assumed` | Suzan said to assume it (shown yellow) |
+| `Unconfirmed` | we think it is correct but it still needs checking: in the draft, or something Suzan said to assume |
+| `TBD` | nobody has figured it out yet; the answer depends on an open question |
 
-Keep the label exact. Put names, dates and notes in the existing `Confirmed`
-column (for example "Assumed (Suzan, 2026-10-08)"), not in `Status`.
+Only these three values (Suzan, 2026-10-23). The old `Assumed` became
+`Unconfirmed`; the reason stays in the note column (for example "Assumed (Suzan,
+2026-10-08)"), not in `Status`. `TBD` stays a separate value: `Unconfirmed` is
+what we think is right but need to check; `TBD` is what nobody has worked out
+yet. Keep the label exact.
 
-How Status is shown in Lucid (icon, tag, fill) is not decided yet (Suzan,
-2026-10-12). The labels stay in the data either way, and no Status rules are in
-the rules file for now.
+How Status shows in Lucid: `Unconfirmed` and `TBD` change the fill to amber (the two can get different ambers if Suzan wants them told apart), while the
+shape and border still show `Manual` or `Automated` (Suzan, 2026-10-23). Suzan
+sets the colors in Lucid; the data never holds a color. The labels stay in the
+data either way.
 
 **LineType** (what the arrow means; one value per arrow):
 
@@ -310,7 +316,7 @@ applies (layout, short lane names, every shape connected, UTF-8 with CRLF).
   rules that list each arrow as `From to To` (with its label). If the arrows
   change, regenerate the table.
 - **Rule order.** When two rules set the same property on a shape, the later
-  rule won (S12: `Assumed` yellow over `Start` green). Put `Status` rules after
+  rule won (S12: `Assumed`, now `Unconfirmed`, yellow over `Start` green). Put `Status` rules after
   `ShapeType` rules so an alert status shows. A shape that matches rules for
   different properties gets both (S20: blue fill and dashed outline).
 - **To confirm.** Whether the AI created live conditional formatting rules or
@@ -346,9 +352,9 @@ rules are for that day and are untested.
 
 Colors are still being chosen (Suzan, 2026-10-12). Starting point only: `Start`
 and `Final` as terminators; `System Decision` and `Manual Review` as diamonds in
-two different fills; `Standard` plain; `Main Flow` as a thick dark line;
+two different fills; `Manual` and `Automated` in two different shapes or borders; `Unconfirmed` turns the fill amber; `Main Flow` as a thick dark line;
 `Exception Path` as a dashed orange line; `Loop Back` as a dashed purple line.
-How `Status` shows is undecided. Pick the colors in Lucid. The data never holds
+Pick the colors in Lucid. The data never holds
 a color.
 
 ---

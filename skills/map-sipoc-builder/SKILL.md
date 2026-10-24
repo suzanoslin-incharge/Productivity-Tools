@@ -76,3 +76,5 @@ handoffs across lanes.
 - One issue is in one place: an unknown fact is a question and a pure action is a follow-up, never both. Fonts follow the 12-point rule. The swim-lane master reads these sheets and does not keep its own.
 
 **Keep the workbook lean (Suzan, 2026-10-15).** Do not add a "What changed" sheet or a "Change" column to a SIPOC or a swim-lane master. Do not track versions inside the file; a new dated file is enough. Be complete and accurate, but record only the current state.
+
+**File names (Suzan, 2026-10-22).** Name each file with the workflow first, then the document type, then the date last, so related files sort together: `<Workflow>_SIPOC_<yyyy-mm-dd>.xlsx`, `<Workflow>_Swimlane-Master_<yyyy-mm-dd>.xlsx` and `<Workflow>_Lucid-Import_<yyyy-mm-dd>.csv`. Short hyphenated workflow names, no prefix the folder already gives. Published names on SharePoint are the same without the date. Move older versions into an `_archive` subfolder. Full rules are in `$ACCT_MYNOTES/CLAUDE.md`.

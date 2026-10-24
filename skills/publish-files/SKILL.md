@@ -38,7 +38,7 @@ Suzan decides which files are production. A new file goes on the list only when 
    - Copy the old SharePoint file to the scratchpad first.
    - Copy each local file to `<SharePoint folder>/<fixed name>` and check with `cmp` that the copy is identical.
    - Update the row: local path, `Last published` (today, yyyy-mm-dd), the local file's modified date and time, and the SharePoint file's new modified date and time. The list is the only place this is recorded.
-5. **Reply in two lines:** what was published, and anything skipped. Remind her once, if she has not confirmed it, to check that version history is on for the library.
+5. **Reply in two lines:** what was published, and anything skipped. Do not remind her about version history: she cannot see the library settings and assumes it is on (2026-10-23).
 
 ## Rules
 

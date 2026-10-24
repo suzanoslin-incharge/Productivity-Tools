@@ -41,7 +41,7 @@ Files go to `$KB_ROOT` (`Accounting-MyNotes/_KB`): `01_Sources/KB-Only`,
 
 ## Migration status
 
-**Complete (2026-10-01).** `Procure_to_Pay`, `Upstream`, `Record-to-Report` and `Order-to-Cash` are catalogued (files starting with an underscore were excluded by design).
+**Complete (2026-10-01).** `Procure-to-Pay`, `Upstream`, `Record-to-Report` and `Order-to-Cash` are catalogued (files starting with an underscore were excluded by design).
 
 ## What is left to do
 
@@ -85,9 +85,9 @@ There are two separate moves. Do them in this order.
 | --- | --- | --- |
 | **SharePoint, shared library, read access for everyone** | `_KB/02_Knowledge-Articles` and `_KB/03_Decision-Log`, plus `_Templates`, `_Taxonomy.md`, `_Linked-Catalog.md`, `_README.md` | This is the part colleagues and Copilot should read. |
 | **SharePoint, edit access for KB owners only** | The same library; Suzan and any other KB owners | Keeps the content controlled. |
-| **SharePoint, shared site (Move 1 below)** | The linked originals: the Procure_to_Pay, Order-to-Cash and Upstream documents the articles point to | They must be at a shared address before the KB is published. |
+| **SharePoint, shared site (Move 1 below)** | The linked originals: the Procure-to-Pay, Order-to-Cash and Upstream documents the articles point to | They must be at a shared address before the KB is published. |
 | **SharePoint, restricted to KB owners (recommended)** | `_KB/01_Sources` (transcripts, AI summaries, recordings, source metadata) | These name people and include candid remarks. Articles link to them, so readers who follow a source link will be blocked; accept that, or decide to share selected sources. |
-| **Stays in `Accounting-MyNotes` (personal)** | `TRACKERS/` (`OPEN_QUESTIONS.xlsx`, `FOLLOWUP_ITEMS.xlsx`, `DAILY-PICKUP.md`, `JOURNAL.md`), `CLAUDE.md`, `_Assignments`, `_Superseded`, `_Productivity`, `meetingNotes` (temporary: downloaded `.vtt` files, deleted once filed), `Bank-Deposits-Automation`, `AR-Capacity-and-Billing-Baseline_TEMPLATE.xlsx` | Working files and raw material. Share a deliverable (for example the SIPOC or the baseline template) with specific people when it is ready, not the whole folder. |
+| **Stays in `Accounting-MyNotes` (personal)** | `TRACKERS/` (`OPEN_QUESTIONS.xlsx`, `FOLLOWUP_ITEMS.xlsx`, `DAILY-PICKUP.md`, `JOURNAL.md`), `CLAUDE.md`, `_Assignments`, `_Superseded`, `_Productivity`, `meetingNotes` (temporary: downloaded `.vtt` files, deleted once filed), `Bank-Deposits-Automation`, `Record-to-Report/_AR-Capacity-and-Billing-Baseline_TEMPLATE.xlsx` (retired; a copy is in the shared Automation folder) | Working files and raw material. Share a deliverable (for example the SIPOC or the baseline template) with specific people when it is ready, not the whole folder. |
 
 ### Copilot and Markdown (Microsoft Copilot's answer, 2026-10-05)
 
@@ -138,7 +138,7 @@ ends, which would break every link.
    - a Change Log line in each article noting the link change (this is not a content update)
 4. Check: open each link from a second account that is not the file's owner.
 
-Currently catalogued (9 linked sources; item IDs for all nine were recorded on 2026-10-05): the five Procure_to_Pay originals, the O2C executive summary deck, the installed-product lifecycle diagram, and the two Order-to-Cash notes documents. After the move, rebuild the `Link` columns in the tracker workbooks.
+Currently catalogued (9 linked sources; item IDs for all nine were recorded on 2026-10-05): the five Procure-to-Pay originals, the O2C executive summary deck, the installed-product lifecycle diagram, and the two Order-to-Cash notes documents. After the move, rebuild the `Link` columns in the tracker workbooks.
 
 ### Move 2: the KB itself
 
