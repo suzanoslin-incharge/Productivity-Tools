@@ -46,7 +46,7 @@ KB layout and the article/source formats are defined in
      existing line and new line. The new fact replaces the old one.
    - **New knowledge** not yet in the article.
    - **Removed content:** things the article states that the new version no
-     longer supports. Flag them; do not delete without approval.
+     longer supports. Remove them: the original's latest version wins.
    - **Softer differences** (reworded, reordered, unclear which is current):
      list as questions, do not guess.
    - **Moved:** if only the location changed, the update is the link.
