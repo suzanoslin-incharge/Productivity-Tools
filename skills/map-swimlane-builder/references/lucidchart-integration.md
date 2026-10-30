@@ -269,10 +269,7 @@ Only these three values (Suzan, 2026-10-23). The old `Assumed` became
 what we think is right but need to check; `TBD` is what nobody has worked out
 yet. Keep the label exact.
 
-How Status shows in Lucid: `Unconfirmed` and `TBD` change the fill to amber (the two can get different ambers if Suzan wants them told apart), while the
-shape and border still show `Manual` or `Automated` (Suzan, 2026-10-23). Suzan
-sets the colors in Lucid; the data never holds a color. The labels stay in the
-data either way.
+How Status shows in Lucid (changed by Suzan, 2026-10-29; full style set in 4.5): `Unconfirmed` changes only the fill to pastel amber and keeps the shape and border for `Manual` or `Automated`. `TBD` overrides the whole shape: coral fill and crimson border, with no Manual or Automated distinction. The data never holds a color. The labels stay in the data either way.
 
 **LineType** (what the arrow means; one value per arrow):
 
@@ -348,14 +345,51 @@ rules are for that day and are untested.
   small file first: `Lucid-Link-Test_ShapeType-LineType_2026-10-12.xlsx` in
   `Lucid-Import-Tests/`.
 
-### 4.5 Styles are set in Lucid, not in the data
+### 4.5 Styles are set in Lucid, not in the data (decided 2026-10-29)
 
-Colors are still being chosen (Suzan, 2026-10-12). Starting point only: `Start`
-and `Final` as terminators; `System Decision` and `Manual Review` as diamonds in
-two different fills; `Manual` and `Automated` in two different shapes or borders; `Unconfirmed` turns the fill amber; `Main Flow` as a thick dark line;
-`Exception Path` as a dashed orange line; `Loop Back` as a dashed purple line.
-Pick the colors in Lucid. The data never holds
-a color.
+Suzan chose the style set below on 2026-10-29. It replaces the starting point of 2026-10-12 (decisions as diamonds, amber for both Unconfirmed and TBD, orange and purple dashed lines). The data never holds a color or a geometry; the labels in 4.2 drive all of it.
+
+| Label | Lucid style |
+| --- | --- |
+| `Start` | Oval, muted green |
+| `Final` | Oval, dark gray |
+| `Manual`, `Manual Review` | Sharp-edged rectangle, pale blue fill, dark blue outline `#007aff` |
+| `Automated`, `System Decision` | Rounded rectangle, light slate-gray fill, dark slate outline |
+| Status `Unconfirmed` | Pastel amber fill; geometry and border kept |
+| Status `TBD` | Coral/magenta fill, crimson outline, one shape for Manual and Automated alike (overrides the two rows above) |
+| LineType `Main Flow` | Solid dark gray line |
+| LineType `Exception Path`, `Loop Back` | Dashed dark gray line (the two look the same) |
+| Swim-lane headers | Solid `#007aff` fill, white text; lane backgrounds transparent |
+
+Notes:
+
+- A decision is no longer a diamond in the finished map: `Manual Review` is a rectangle and `System Decision` a rounded rectangle. The `Shape` column in the master (`Decision`) and the CSV `Name` column still say Decision; the rules change the look in Lucid, so leave the files as they are.
+- `TBD` and `Unconfirmed` rules go after the shape rules, as in 4.3, so the status wins.
+- `LineType` does not import from a CSV (4.3). The line styles come from the rules table that lists each arrow as `From to To`, built from the Arrows sheet of the master. Every master needs `Line ID` and `LineType` on its Arrows sheet.
+- Untested as of 2026-10-29. The blueprint prompt below came as a draft and has not been run in Lucid. It asks Lucid's AI to read `LineType` from the data, which a CSV import cannot supply, and the AI prompt path has the lane problem in section 3. Test it on a small file first.
+
+Blueprint prompt as Suzan supplied it (a template with 3 placeholder lanes):
+
+```text
+Generate a professional horizontal swimlane diagram template with 3 lanes. Configure the diagram to look at three CSV data columns: "ShapeType", "LineType", and "Status".
+
+Apply these exact shape geometric and formatting rules:
+1. ShapeType "Start" & "Final": Use Ovals. Start is muted green, Final is dark gray.
+2. ShapeType "Manual" & "Manual Review": Use sharp-edged Rectangles. Standard fill is light pale blue with a dark blue outline using corporate hex #007aff.
+3. ShapeType "Automated" & "System Decision": Use Rounded Rectangles. Standard fill is light tech-slate gray with a dark slate outline.
+
+Apply these exact line routing rules based on "LineType":
+4. LineType "Main Flow": Solid, dark gray line.
+5. LineType "Exception Path" & "Loop Back": Dashed, dark gray line.
+
+Apply these "Status" conditional override rules:
+6. If the data property "Status" is exactly equal to "Unconfirmed", change the shape fill color to a light pastel amber/yellow, preserving the original shape geometry and border.
+7. If the data property "Status" is exactly equal to "TBD", override the shape entirely to a light coral/magenta fill with a crimson red border, removing any automated vs manual distinction.
+
+Style the swimlane headers with a solid dark blue fill using hex code #007aff and white text; keep the lane backgrounds transparent. Place a small sequence of these placeholder shapes on the canvas to establish the template.
+```
+
+Label values the data must use, exactly (every master and Lucid CSV in Accounting-MyNotes checked on 2026-10-29): ShapeType `Start`, `Final`, `Manual`, `Manual Review`, `Automated`, `System Decision`; LineType `Main Flow`, `Exception Path`, `Loop Back`; Status `Confirmed`, `Unconfirmed`, `TBD`.
 
 ---
 
