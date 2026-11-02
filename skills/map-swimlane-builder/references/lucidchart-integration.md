@@ -269,7 +269,7 @@ Only these three values (Suzan, 2026-10-23). The old `Assumed` became
 what we think is right but need to check; `TBD` is what nobody has worked out
 yet. Keep the label exact.
 
-How Status shows in Lucid (changed by Suzan, 2026-10-29; full style set in 4.5): `Unconfirmed` changes only the fill to pastel amber and keeps the shape and border for `Manual` or `Automated`. `TBD` overrides the whole shape: coral fill and crimson border, with no Manual or Automated distinction. The data never holds a color. The labels stay in the data either way.
+How Status shows in Lucid (changed by Suzan, 2026-10-29; full style set in 4.5): `Unconfirmed` changes only the fill to amber (`#feeb89`) and keeps the shape and border for `Manual` or `Automated`. `TBD` overrides the whole shape: coral fill (`#f6b6a6`) and a dashed border (`#b83280`), with no Manual or Automated distinction. The data never holds a color. The labels stay in the data either way.
 
 **LineType** (what the arrow means; one value per arrow):
 
@@ -308,10 +308,11 @@ applies (layout, short lane names, every shape connected, UTF-8 with CRLF).
   own AI the rules table (`Lucid-Format-Rules`, CSV or tab-separated) formatted
   the shapes and lines correctly: fills, dashed outlines, and the three line
   styles. It found the lines because the table's last column named each arrow
-  ("S14 to S15 (No)"); it cannot read `LineType` from the file. So for every
-  map, generate a rules table from the master: shape rules by label, and line
-  rules that list each arrow as `From to To` (with its label). If the arrows
-  change, regenerate the table.
+  ("S14 to S15 (No)"); it cannot read `LineType` from the file. Since 2026-11-02 a rules
+  table is not needed for each map: Suzan's Lucid template applies the styles
+  from the labels, so only the label values in the data matter. Section 4.5 and
+  `shared-knowledge/Lucid_Style_Definitions.pdf` are the written record of the
+  styles (Suzan Oslin, 2026-11-02). Build a rules table only if she asks.
 - **Rule order.** When two rules set the same property on a shape, the later
   rule won (S12: `Assumed`, now `Unconfirmed`, yellow over `Start` green). Put `Status` rules after
   `ShapeType` rules so an alert status shows. A shape that matches rules for
@@ -345,51 +346,46 @@ rules are for that day and are untested.
   small file first: `Lucid-Link-Test_ShapeType-LineType_2026-10-12.xlsx` in
   `Lucid-Import-Tests/`.
 
-### 4.5 Styles are set in Lucid, not in the data (decided 2026-10-29)
+### 4.5 Styles are set in Lucid, not in the data (final values, 2026-10-29)
 
-Suzan chose the style set below on 2026-10-29. It replaces the starting point of 2026-10-12 (decisions as diamonds, amber for both Unconfirmed and TBD, orange and purple dashed lines). The data never holds a color or a geometry; the labels in 4.2 drive all of it.
+The authority is `shared-knowledge/Lucid_Style_Definitions.pdf` ("Finalized Style Definitions", 2026-10-29). Suzan's Lucid template applies these values from the labels in 4.2. Use the exact hex values and stroke names; make no substitutions. The data never holds a color or a geometry. The PDF replaces the earlier spec of 2026-10-29 (the one with a `#007aff` shape outline and transparent lane backgrounds) and the starting point of 2026-10-12.
 
-| Label | Lucid style |
+**Shapes** (all text `#17324d` unless noted)
+
+| ShapeType | Fill | Border | Stroke |
+| --- | --- | --- | --- |
+| `Start` | `#9bb89d` | `#4c535d` | 2 px solid |
+| `Final` | `#4c535d` (text `#ffffff`) | `#4c535d` | 2 px solid |
+| `Manual`, `Manual Review` | `#d6e9ff` | `#005fcc` | 3 px solid |
+| `Automated`, `System Decision` | `#cdcddb` | `#553f6a` | 3 px solid |
+
+**Status** (applied after the shape rules, so the status wins)
+
+| Status | Fill | Border | Stroke |
+| --- | --- | --- | --- |
+| `Unconfirmed` on `Manual` | `#feeb89` | `#005fcc` (the ShapeType border is kept) | 4 px solid |
+| `Unconfirmed` on `Automated` | `#feeb89` | `#553f6a` (the ShapeType border is kept) | 4 px solid |
+| `TBD` (one shape for Manual and Automated alike) | `#f6b6a6` | `#b83280` | 3 px dashed |
+| `Confirmed` | no change | no change | no change |
+
+**Connectors** (all `#4c535d`)
+
+| LineType | Line |
 | --- | --- |
-| `Start` | Oval, muted green |
-| `Final` | Oval, dark gray |
-| `Manual`, `Manual Review` | Sharp-edged rectangle, pale blue fill, dark blue outline `#007aff` |
-| `Automated`, `System Decision` | Rounded rectangle, light slate-gray fill, dark slate outline |
-| Status `Unconfirmed` | Pastel amber fill; geometry and border kept |
-| Status `TBD` | Coral/magenta fill, crimson outline, one shape for Manual and Automated alike (overrides the two rows above) |
-| LineType `Main Flow` | Solid dark gray line |
-| LineType `Exception Path`, `Loop Back` | Dashed dark gray line (the two look the same) |
-| Swim-lane headers | Solid `#007aff` fill, white text; lane backgrounds transparent |
+| `Main Flow` | 3 px solid |
+| `Exception Path` | 3 px dashed |
+| `Loop Back` | 3 px dashed (looks the same as Exception Path) |
+
+**Swim lanes:** header fill `#007aff`, header text `#ffffff`, border 1 px. Lane body fills alternate in a fixed order: lane 1 `#fdf5f5`, lane 2 `#f5fbf7`, lane 3 `#f5f9fd`. Keep body fills subtle and the lane order consistent. (The PDF lists three body fills; how the pattern continues past lane 3 is not stated, so repeat it.)
+
+**How the rules map:** `ShapeType` picks the exact shape entry above, `LineType` picks the exact connector entry, and `Status: Unconfirmed` overlays the amber fill while keeping the ShapeType border color.
 
 Notes:
 
-- A decision is no longer a diamond in the finished map: `Manual Review` is a rectangle and `System Decision` a rounded rectangle. The `Shape` column in the master (`Decision`) and the CSV `Name` column still say Decision; the rules change the look in Lucid, so leave the files as they are.
-- `TBD` and `Unconfirmed` rules go after the shape rules, as in 4.3, so the status wins.
-- `LineType` does not import from a CSV (4.3). The line styles come from the rules table that lists each arrow as `From to To`, built from the Arrows sheet of the master. Every master needs `Line ID` and `LineType` on its Arrows sheet.
-- Untested as of 2026-10-29. The blueprint prompt below came as a draft and has not been run in Lucid. It asks Lucid's AI to read `LineType` from the data, which a CSV import cannot supply, and the AI prompt path has the lane problem in section 3. Test it on a small file first.
-
-Blueprint prompt as Suzan supplied it (a template with 3 placeholder lanes):
-
-```text
-Generate a professional horizontal swimlane diagram template with 3 lanes. Configure the diagram to look at three CSV data columns: "ShapeType", "LineType", and "Status".
-
-Apply these exact shape geometric and formatting rules:
-1. ShapeType "Start" & "Final": Use Ovals. Start is muted green, Final is dark gray.
-2. ShapeType "Manual" & "Manual Review": Use sharp-edged Rectangles. Standard fill is light pale blue with a dark blue outline using corporate hex #007aff.
-3. ShapeType "Automated" & "System Decision": Use Rounded Rectangles. Standard fill is light tech-slate gray with a dark slate outline.
-
-Apply these exact line routing rules based on "LineType":
-4. LineType "Main Flow": Solid, dark gray line.
-5. LineType "Exception Path" & "Loop Back": Dashed, dark gray line.
-
-Apply these "Status" conditional override rules:
-6. If the data property "Status" is exactly equal to "Unconfirmed", change the shape fill color to a light pastel amber/yellow, preserving the original shape geometry and border.
-7. If the data property "Status" is exactly equal to "TBD", override the shape entirely to a light coral/magenta fill with a crimson red border, removing any automated vs manual distinction.
-
-Style the swimlane headers with a solid dark blue fill using hex code #007aff and white text; keep the lane backgrounds transparent. Place a small sequence of these placeholder shapes on the canvas to establish the template.
-```
-
-Label values the data must use, exactly (every master and Lucid CSV in Accounting-MyNotes checked on 2026-10-29): ShapeType `Start`, `Final`, `Manual`, `Manual Review`, `Automated`, `System Decision`; LineType `Main Flow`, `Exception Path`, `Loop Back`; Status `Confirmed`, `Unconfirmed`, `TBD`.
+- A decision is not a diamond in the finished map: `Manual Review` is shaped like `Manual` and `System Decision` like `Automated`. The `Shape` column in the master (`Decision`) and the CSV `Name` column still say Decision; the template changes the look in Lucid, so leave the files as they are.
+- `LineType` does not import from a CSV (4.3). Line styles come from Suzan's Lucid template. A per-map rules table is not needed (Suzan Oslin, 2026-11-02); this section and the PDF are the record. Every master needs `Line ID` and `LineType` on its Arrows sheet.
+- Export must stay editable. Check the exported rendering before sending.
+- Label values the data must use, exactly: ShapeType `Start`, `Final`, `Manual`, `Manual Review`, `Automated`, `System Decision`; LineType `Main Flow`, `Exception Path`, `Loop Back`; Status `Confirmed`, `Unconfirmed`, `TBD`.
 
 ---
 
