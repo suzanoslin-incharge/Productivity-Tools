@@ -233,12 +233,15 @@ branches.
 | `Manual Review` | a person checks or decides, with two or more outcomes (for example "Remittance and invoice found?"). Pass moves forward; fail cannot move forward and goes another way (Exception Path or Loop Back) |
 | `Manual` | every other step a person does (the default when unsure) |
 | `Automated` | a step the system does with no person: a Salesforce flow, a Business Central action, PayFabric, the integration. Its shape and border differ from `Manual` in Lucid (Suzan, 2026-10-23) |
+| `Storage` | any place where data or files are kept: a shared drive folder, SharePoint, a mailbox such as the AR inbox, or a database such as Business Central or Salesforce records (Suzan, 2026-11-02). One shape for all of them; the text says which. Not a step and not a lane. Show it only where work is saved to it or read from it |
 
 Both decision types must branch. A step worded Review, Verify or Check with a
 pass path and a fail path is a `Manual Review` (or a `System Decision` if a
 system does it). With no branching it is `Manual` (or `Automated`), even if it is worded as a
 review (for example "Review the bank report and lockbox the day after receipt");
 ask whether a fail path exists. `Start` and `Final` keep their own labels even when a system does the step, and a decision made by a system stays `System Decision`.
+
+**Storage shape (Suzan, 2026-11-02).** Drives, SharePoint, inboxes and databases are places, not actors, so they never get a lane unless the system itself runs steps (see the lane rule in SKILL.md). All of them are one `Storage` shape for simplicity; the text names the place (for example "Daily Statements folder", "AR inbox", "BC"). Place the shape in the lane of the person or job that writes to it, join it with arrows (save, read), and give it at least one arrow in and one out. In the CSV use `Process` for `Name` (as for decisions) and let the ShapeType label drive the look in Lucid. The Storage style is in section 4.5 (revised 2026-11-02); the CSV does not carry it. Untested in a CSV import.
 
 Suzan changed these labels on 2026-10-23: the old `Standard` became `Manual`, and `Automated` is new.
 
@@ -302,7 +305,7 @@ applies (layout, short lane names, every shape connected, UTF-8 with CRLF).
   by `ShapeType` and `Status`, but lines cannot be colored by `LineType` from the
   file. Style lines by hand, or add a `LineType` data field by hand to the few
   Exception Path and Loop Back lines and leave Main Flow as the default line
-  style. Still to test: whether the shape rules change exactly the right shapes.
+  style. Tried again on 2026-11-02 with a `LineType` column on the `Line` rows of a real map: it did not work either (Suzan Oslin), so leave `LineType` out of the CSV. Still to test: whether the shape rules change exactly the right shapes.
 
 - **Lucid AI applies the rules from a table (tested 2026-10-12).** Giving Lucid's
   own AI the rules table (`Lucid-Format-Rules`, CSV or tab-separated) formatted
@@ -346,46 +349,57 @@ rules are for that day and are untested.
   small file first: `Lucid-Link-Test_ShapeType-LineType_2026-10-12.xlsx` in
   `Lucid-Import-Tests/`.
 
-### 4.5 Styles are set in Lucid, not in the data (final values, 2026-10-29)
+### 4.5 Styles are set in Lucid, not in the data (revised values, 2026-11-02)
 
-The authority is `shared-knowledge/Lucid_Style_Definitions.pdf` ("Finalized Style Definitions", 2026-10-29). Suzan's Lucid template applies these values from the labels in 4.2. Use the exact hex values and stroke names; make no substitutions. The data never holds a color or a geometry. The PDF replaces the earlier spec of 2026-10-29 (the one with a `#007aff` shape outline and transparent lane backgrounds) and the starting point of 2026-10-12.
+The authority is the revised template rules Suzan gave on 2026-11-02, saved in `lucid-style-rules_2026-11-02.js` in this folder. They replace the values in `shared-knowledge/Lucid_Style_Definitions.pdf` (2026-10-29) wherever the two differ. Suzan's Lucid template applies them from the labels in 4.2. The data never holds a color or a geometry, and the CSV does not need them. Use the exact hex values and stroke names; make no substitutions.
 
-**Shapes** (all text `#17324d` unless noted)
+**Shapes** (text `#17324d` unless noted; every border is 3 px)
 
 | ShapeType | Fill | Border | Stroke |
 | --- | --- | --- | --- |
-| `Start` | `#9bb89d` | `#4c535d` | 2 px solid |
-| `Final` | `#4c535d` (text `#ffffff`) | `#4c535d` | 2 px solid |
-| `Manual`, `Manual Review` | `#d6e9ff` | `#005fcc` | 3 px solid |
-| `Automated`, `System Decision` | `#cdcddb` | `#553f6a` | 3 px solid |
+| `Start` | `#9bb89d` | `#4c535d` | solid |
+| `Final` (also called Termination) | `#4c535d` (text `#ffffff`) | `#4c535d` | solid |
+| `Manual`, `Manual Review` | `#d6e9ff` | `#005fcc` | solid |
+| `Automated`, `System Decision` | `#cdcddb` | `#553f6a` | solid |
+| `Storage` (drive, SharePoint, inbox or database) | `#ffffff` | `#3a414a` | solid |
 
 **Status** (applied after the shape rules, so the status wins)
 
 | Status | Fill | Border | Stroke |
 | --- | --- | --- | --- |
-| `Unconfirmed` on `Manual` | `#feeb89` | `#005fcc` (the ShapeType border is kept) | 4 px solid |
-| `Unconfirmed` on `Automated` | `#feeb89` | `#553f6a` (the ShapeType border is kept) | 4 px solid |
+| `Unconfirmed` | `#feeb89` | keeps the ShapeType border color | keeps the ShapeType width (3 px solid) |
 | `TBD` (one shape for Manual and Automated alike) | `#f6b6a6` | `#b83280` | 3 px dashed |
 | `Confirmed` | no change | no change | no change |
 
-**Connectors** (all `#4c535d`)
+**Connectors** (all `#4c535d`, 3 px)
 
 | LineType | Line |
 | --- | --- |
-| `Main Flow` | 3 px solid |
-| `Exception Path` | 3 px dashed |
-| `Loop Back` | 3 px dashed (looks the same as Exception Path) |
+| `Main Flow` | solid |
+| `Exception Path` | dashed |
+| `Loop Back` | dashed (looks the same as Exception Path) |
 
-**Swim lanes:** header fill `#007aff`, header text `#ffffff`, border 1 px. Lane body fills alternate in a fixed order: lane 1 `#fdf5f5`, lane 2 `#f5fbf7`, lane 3 `#f5f9fd`. Keep body fills subtle and the lane order consistent. (The PDF lists three body fills; how the pattern continues past lane 3 is not stated, so repeat it.)
+Exception Path and Loop Back lines stay at 3 px dashed (Suzan Oslin, 2026-11-02). The "Exception Path / Loop Back" shape entry in the rules file originally said 4 px; it is corrected to 3 px.
 
-**How the rules map:** `ShapeType` picks the exact shape entry above, `LineType` picks the exact connector entry, and `Status: Unconfirmed` overlays the amber fill while keeping the ShapeType border color.
+**Swim lanes:** header fill `#007aff`, header text `#ffffff`, border `#3a414a` 1 px. Lane body fills alternate in a fixed order: lane 1 `#fdf5f5`, lane 2 `#f5fbf7`, lane 3 `#f5f9fd`. The rules list three body fills; repeat the pattern past lane 3.
+
+**Text in the diagram:** font Inter, size 10, color `#17324d`. This is the Lucid template setting. The 12 point minimum and Calibri rule apply to the files this skill makes (workbooks, documents, PDFs), not to text inside a Lucid diagram.
+
+**Theme (template name "Finalized Template Rules"):** canvas `#ffffff`, font Inter. Roles: default = Storage, primary = Manual, secondary = Automated, accent = amber (fill `#feeb89`, border `#005fcc`, 3 px solid; the rules point at an Unconfirmed shape entry that does not exist, so this fallback applies), highlight = TBD, success = Start, error = Final. Default line: elbow shape, `#4c535d`, 3 px solid, no outline on the line label, label text in the text style above.
+
+**Key (legend):** editable; built from representative shapes; keeps the exact labels and exact styles.
+
+**Checks the template runs:** text contrast, text overflow, blocks overlapping, a disconnected line end, a line through a block, an inefficient connector, and editable output.
+
+**How the rules map:** `ShapeType` picks the exact shape entry above, `LineType` picks the exact connector entry, and `Status: Unconfirmed` overlays the amber fill while keeping the ShapeType border.
 
 Notes:
 
 - A decision is not a diamond in the finished map: `Manual Review` is shaped like `Manual` and `System Decision` like `Automated`. The `Shape` column in the master (`Decision`) and the CSV `Name` column still say Decision; the template changes the look in Lucid, so leave the files as they are.
-- `LineType` does not import from a CSV (4.3). Line styles come from Suzan's Lucid template. A per-map rules table is not needed (Suzan Oslin, 2026-11-02); this section and the PDF are the record. Every master needs `Line ID` and `LineType` on its Arrows sheet.
+- `Storage` shapes use `Process` as the CSV `Name`; the label drives the look (see 4.2).
+- `LineType` does not import from a CSV (4.3). Line styles come from Suzan's Lucid template. A per-map rules table is not needed (Suzan Oslin, 2026-11-02); this section and the saved rules file are the record. Every master needs `Line ID` and `LineType` on its Arrows sheet.
 - Export must stay editable. Check the exported rendering before sending.
-- Label values the data must use, exactly: ShapeType `Start`, `Final`, `Manual`, `Manual Review`, `Automated`, `System Decision`; LineType `Main Flow`, `Exception Path`, `Loop Back`; Status `Confirmed`, `Unconfirmed`, `TBD`.
+- Label values the data must use, exactly: ShapeType `Start`, `Final`, `Manual`, `Manual Review`, `Automated`, `System Decision`, `Storage`; LineType `Main Flow`, `Exception Path`, `Loop Back`; Status `Confirmed`, `Unconfirmed`, `TBD`.
 
 ---
 

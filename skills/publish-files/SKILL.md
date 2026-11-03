@@ -19,6 +19,8 @@ Anything copied there is visible to the Accounting team, so **nothing is copied 
 - **Local file:** the path under `$ACCT_MYNOTES` of the current dated version.
 - **Owner, Last published** (date), **Local file modified when published** (the local file's modified date and time at the last publish), and **SharePoint copy modified after last publish** (the SharePoint file's modified date and time right after the last copy).
 
+**What is published (Suzan, 2026-11-02): the SIPOC and the flow picture (PNG) only.** Swim-lane masters (xlsx) and Lucid import files (csv) stay in Accounting-MyNotes and are never put on the list or in SharePoint. A flow with no PNG yet is published with its SIPOC alone; do not create a PNG or ask for one. On 2026-11-02 the 14 master and CSV files were removed from the Automation folder (backup: `$ACCT_MYNOTES/_Superseded/Production-Removed_2026-11-02/`) and their rows were taken off the list.
+
 Suzan decides which files are production. A new file goes on the list only when she says so. If `$ACCT_AUTO` is not set in the shell, use `$ACCT_INTERNAL/Automation`. A folder that does not exist is reported, never created.
 
 ## Steps

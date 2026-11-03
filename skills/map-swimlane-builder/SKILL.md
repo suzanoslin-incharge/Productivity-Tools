@@ -50,7 +50,7 @@ lane correctness matters (i.e., basically everything this skill is used
 for).
 
 **If shapes and lines should be colored by label in Lucid**, add the label
-columns in `references/lucidchart-integration.md` §4: `ShapeType` (Start, Final, Manual, Automated, Manual Review, System Decision) and `Status` (Confirmed, Unconfirmed, TBD)
+columns in `references/lucidchart-integration.md` §4: `ShapeType` (Start, Final, Manual, Automated, Manual Review, System Decision, Storage) and `Status` (Confirmed, Unconfirmed, TBD)
 on the shapes, `Line ID` and `LineType` on the arrows in the master workbook.
 Use the CSV rules (§4.3) now; the XLSX live-link rules (§4.4) apply only if
 the account moves to Enterprise. The columns add to the master table; they do
@@ -89,3 +89,9 @@ importing anything into Lucidchart.
 **File names (Suzan, 2026-10-22).** Name each file with the workflow first, then the document type, then the date last, so related files sort together: `<Workflow>_SIPOC_<yyyy-mm-dd>.xlsx`, `<Workflow>_Swimlane-Master_<yyyy-mm-dd>.xlsx` and `<Workflow>_Lucid-Import_<yyyy-mm-dd>.csv`. Short hyphenated workflow names, no prefix the folder already gives. Published names on SharePoint are the same without the date. Move older versions into an `_archive` subfolder. Full rules are in `$ACCT_MYNOTES/CLAUDE.md`.
 
 **One CSV only (Suzan, 2026-10-22).** Always produce the labeled CSV (ShapeType and Status columns, section 4.3) and no unlabeled copy. Do not put "with-labels" in the file name.
+
+**Lanes show who runs the step (Suzan, 2026-11-02).** Put each step in the lane of whoever executes it. Ask: "If the person walked away from their computer, would the step still happen?" If a person does it, even by clicking a button in Salesforce, it goes in that person's lane, and the text names the system ("Update the stage to Closed Won in Salesforce"). A system lane (Salesforce, BC, Integration, Tool) holds only steps the system runs without a person: a flow, trigger, scheduled job or background sync. A drive, an inbox or a database is a place, not an actor, so it does not get a lane: the person or job that reads or writes it owns the step. Draw it as a `Storage` shape (one shape for drives, SharePoint, inboxes and databases; the text names the place) only where work passes through it; see section 4.2 of the Lucid reference. Remove a system lane that has no automated step. Show the handoff between a person and a system with an arrow across lanes.
+
+**Numbering and lane names (Suzan, 2026-11-02).** Number steps in reading order, S01, S02 and so on. Storage shapes and decisions are steps too, so they are S numbers. Ends are E01, E02. Arrows are L01, L02 and live on the Arrows sheet only. Do not use other letters (no X for storage). Renumber after each round of edits so the numbers stay in reading order. Write lane headers in ALL CAPS and keep them to about 10 characters (for example PAYMENT, AUTOMATION, WALTER).
+
+**What the CSV defines (Suzan, 2026-11-02).** The CSV carries only the step text, the lanes, the arrows, `ShapeType` and `Status`. No Path column and no LineType column (LineType did not import when tried on 2026-10-12 and 2026-11-02). Styling is left to Lucid and her template; line styles for Exception Path and Loop Back are set by hand after the import. Lucid may report that the imported shapes have "hard-coded styles"; the file holds no style columns, so the cause is on Lucid's side and is not confirmed.
