@@ -83,7 +83,7 @@ One message, in this order:
 5. **Taxonomy:** the row used, or a new-row proposal.
 6. **Changes (updates only):** a before/after list: existing statement, new statement, for each changed fact. Then the questions about softer differences.
 7. **Metadata:** the eight fields.
-8. **Open questions this file may answer** (and any new question that duplicates an open one, shown as "same as Qxxx"): one table with the ID, the question, the fit (fully, partly, informs, conflicts), the supporting passage, who said it and when, and what would change (the article statement, the Change Log line, the workbook row). Say "none found" if there are none. Partly answered and informing ones stay open; they get a short note added to the question's Context cell only if the user approves.
+8. **Open questions this file may answer** (and any new question that duplicates an open one, shown as "same as Qxxx"): one table with the ID, the full question text exactly as it is in the workbook (never the ID alone), the fit (fully, partly, informs, conflicts), the supporting passage, who said it and when, and what would change (the article statement, the Change Log line, the workbook row). Say "none found" if there are none. Partly answered and informing ones stay open; they get a short note added to the question's Context cell only if the user approves.
 9. **Unsure:** every field or decision you could not settle, with a question each.
 
 End by asking the user to approve, edit or reject.

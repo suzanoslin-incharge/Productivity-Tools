@@ -314,7 +314,7 @@ applies (layout, short lane names, every shape connected, UTF-8 with CRLF).
   ("S14 to S15 (No)"); it cannot read `LineType` from the file. Since 2026-11-02 a rules
   table is not needed for each map: Suzan's Lucid template applies the styles
   from the labels, so only the label values in the data matter. Section 4.5 and
-  `shared-knowledge/Lucid_Style_Definitions.pdf` are the written record of the
+  `Lucid_Style_Definitions.pdf` (in this folder) are the written record of the
   styles (Suzan Oslin, 2026-11-02). Build a rules table only if she asks.
 - **Rule order.** When two rules set the same property on a shape, the later
   rule won (S12: `Assumed`, now `Unconfirmed`, yellow over `Start` green). Put `Status` rules after
@@ -351,7 +351,7 @@ rules are for that day and are untested.
 
 ### 4.5 Styles are set in Lucid, not in the data (revised values, 2026-11-02)
 
-The authority is the revised template rules Suzan gave on 2026-11-02, saved in `lucid-style-rules_2026-11-02.js` in this folder. They replace the values in `shared-knowledge/Lucid_Style_Definitions.pdf` (2026-10-29) wherever the two differ. Suzan's Lucid template applies them from the labels in 4.2. The data never holds a color or a geometry, and the CSV does not need them. Use the exact hex values and stroke names; make no substitutions.
+The authority is the revised template rules Suzan gave on 2026-11-02, saved in `Lucid-Style-Rules_2026-11-03.js` (her newest version; written up in `Lucid-Style-Definitions_2026-11-03.md`) in this folder. They replace the values in `Lucid_Style_Definitions.pdf` (in this folder) (2026-10-29) wherever the two differ. Suzan's Lucid template applies them from the labels in 4.2. The data never holds a color or a geometry, and the CSV does not need them. Use the exact hex values and stroke names; make no substitutions.
 
 **Shapes** (text `#17324d` unless noted; every border is 3 px)
 

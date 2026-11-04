@@ -1,5 +1,5 @@
-// Revised Lucid template rules, given by Suzan Oslin on 2026-11-02.
-// Saved as given, with one correction (Exception Path / Loop Back width, noted below). The CSV does not need them. See section 4.5 of lucidchart-integration.md.
+// Lucid template rules: "Finalized Template Rules". Exported 2026-11-03.
+// Exception Path / Loop Back lines are 3 px dashed. No other changes from the saved rules.
 
 const styleRules = {
   shapes: {
@@ -62,7 +62,7 @@ const styleRules = {
     "Exception Path / Loop Back": {
       fillColor: "transparent",
       lineColor: "#4c535d",
-      lineWidth: 3, // corrected from 4 to 3 by Suzan Oslin, 2026-11-02
+      lineWidth: 3,
       strokeStyle: "dashed",
       textColor: "#17324d"
     },
