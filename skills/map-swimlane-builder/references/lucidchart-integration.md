@@ -412,3 +412,5 @@ Notes:
 | Quick rough draft, lanes not yet final, or exploring options | **AI prompt (§3)**, with the BPMN-shape-library instruction spelled out |
 | Color shapes by label from a CSV import (no Enterprise plan) | **CSV rules (§4.3)**: `ShapeType` and `Status` columns import as shape data; lines are styled by hand; shape rules still to test |
 | Diagram linked to the master workbook on SharePoint (Enterprise plan only) | **XLSX rules (§4.4)**; untested and not needed until the plan changes |
+
+Other diagram types (system context, data-flow, sequence, org chart, entity-relationship, mind map) and what Lucid builds them from are in `lucid-other-diagram-types.md` (untested, from Gemini, added 2026-11-09).
