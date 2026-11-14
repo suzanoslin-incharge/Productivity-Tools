@@ -1,6 +1,6 @@
 ---
 name: good-night-claude
-description: End-of-day wrap-up for Suzan. Writes today's entry in JOURNAL.md, rolls DAILY-PICKUP.md forward (where we left off, Next up, Outstanding, Context for Claude), then commits and pushes git changes in the productivity-tools repo. Use when Suzan says "good night", "good night Claude", "wrap up", "end of day" or "close out the day".
+description: End-of-day wrap-up for Suzan. Writes today's entry in JOURNAL.md, rolls DAILY-PICKUP.md forward (where we left off, Next up, Outstanding, Context for Claude), then commits and pushes git changes in every repo she worked on that day, without asking. Use when Suzan says "good night", "good night Claude", "wrap up", "end of day" or "close out the day".
 ---
 
 # Good Night Claude
@@ -10,7 +10,7 @@ Does four things, nothing else (six on Fridays):
 1. Writes today's entry in `JOURNAL.md`.
 2. Rolls `DAILY-PICKUP.md` forward.
 3. Publishes changed production files to SharePoint (the `publish-files` skill).
-4. Commits and pushes git changes in `$TOOLS_PRODCTVTY`.
+4. Commits and pushes git changes in every repo worked on today (always `$TOOLS_PRODCTVTY`, plus any other, such as `~/accounting-tools`). Suzan has given standing approval; never ask.
 5. **Fridays only:** tidies the open questions (the Tidy mode of the `kb-answer-questions` skill). Check the day with `date +%u`; 5 means Friday.
 6. **Fridays only:** writes the freshness report for Suzan to review on Monday morning (section "Friday freshness report" below).
 
@@ -55,7 +55,7 @@ Do not put open questions, follow-up items or waiting-on lines in the file. They
    Use defaults, not questions. If one thing really blocks the update, ask one question and say what you will do if she does not answer.
 4. **On "yes", write exactly what was shown.** Run step 4 of `publish-files` for the files listed. On Fridays also re-sort the Open sheet by batch and write only the tidy items she approved (close the workbook check first: if it is open in Excel, ask her to close it). Back up the pickup file and the journal to the scratchpad first. Do not write while a file is open with unsaved changes.
 5. **Fridays only: update the linked documents and write the freshness report** (see below), then add this item at the top of Monday's Next up in the new pickup file: **Review the Friday freshness report** with one sentence: what it covers and the file name. Skip both if she said to skip it.
-6. **Commit and push.** In `$TOOLS_PRODCTVTY`: run `git status`. If there are changes, stage them (the repo tracks only `skills/`, `shared-knowledge/` and `agents/`), look at the diff, then commit to `main` with a short message that says what changed and why, ending with the co-author line from the session's attribution instructions, and push. Do not ask again. Stop and tell Suzan instead of committing if the diff contains any of: an ID or token (a long GUID, a key, a password, a client or tenant ID), a name or content copied from the knowledge base, or a `SKILL.md` with broken front matter (missing `name` or `description`). If the push fails, report the error and leave the commit in place.
+6. **Commit and push, every repo worked on today (standing approval from Suzan, 2026-11-13; do not ask).** Always `$TOOLS_PRODCTVTY`; also every other repo with changes from today's session or work (for example `/Users/suzanoslin/accounting-tools`; check `git status` there too). In each: run `git status`. If there are changes, stage them (in `$TOOLS_PRODCTVTY` the repo tracks only `skills/`, `shared-knowledge/` and `agents/`; in other repos stage the files changed for today's work and leave unrelated stray files alone, naming them in the good-night message), look at the diff, run the repo's tests if it has them, then commit to `main` with a short message that says what changed and why, ending with the co-author line from the session's attribution instructions, and push. Stop and tell Suzan instead of committing that repo if the diff contains any of: an ID or token (a long GUID, a key, a password, a client or tenant ID), a name or content copied from the knowledge base, a `SKILL.md` with broken front matter (missing `name` or `description`), or failing tests. If the push fails, report the error and leave the commit in place. List each repo and commit in the good-night message.
 7. **Say good night.** Two lines: what got done (and the commit, if any), and the first thing for tomorrow.
 
 ## Friday freshness report
