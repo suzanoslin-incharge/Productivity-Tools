@@ -4,7 +4,7 @@ Shared Claude Code skills and agents for InCharge Energy — **general-purpose,
 cross-department** tools, not specific to any one team's domain. If a skill
 is specific to a department's own processes or data (e.g. accounting/finance
 workflows), it belongs in a sibling repo instead — see
-[`accounting-tools`](../accounting-tools) for that one.
+[`ar-cash-application`](../ar-cash-application) for that one.
 
 This repo is a **Claude Code plugin**: anyone at the company can install it
 and get the same skills, agents, and shared reference knowledge in their own
@@ -19,7 +19,7 @@ Claude Code sessions, regardless of what department they're in.
 - **A domain repo instead**: a skill that only makes sense with a specific
   team's data, systems, or vocabulary baked in (e.g. an AP-invoice-exception
   triager, a bank-transaction matcher). Those go in that team's own repo
-  (`accounting-tools`, and future ones per department).
+  (`ar-cash-application`, and future ones per department).
 
 `map-sipoc-builder` and `map-swimlane-builder` live here for exactly this reason —
 they're process-mapping tools usable by any team, even though the first

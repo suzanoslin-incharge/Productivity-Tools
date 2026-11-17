@@ -45,7 +45,7 @@ just accounting/finance (the worked example in the reference guide is a
 generic service-invoicing illustration, not scope). If the
 person names a company-specific system, role, or term you don't recognize,
 ask rather than guess. A department may maintain its own glossary in its own
-tools repo (e.g. `accounting-tools`) — check there if relevant, but
+tools repo (e.g. `ar-cash-application`) — check there if relevant, but
 don't assume it exists for every team.
 
 ## Output format

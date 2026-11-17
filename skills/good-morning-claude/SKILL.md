@@ -5,7 +5,7 @@ description: Start-of-day pickup for Suzan. Reads DAILY-PICKUP.md (including las
 
 # Good Morning Claude
 
-Starts the day from `$ACCT_MYNOTES/TRACKERS/DAILY-PICKUP.md`. Read only that file, plus today's calendar (read only, today's date only, Microsoft 365 connector). Also read the lockbox learnings file `/Users/suzanoslin/accounting-tools/references/deposit-journal/Lockbox-Learnings.json`, only to find suggestions with status "pending". Do not read the journal. Do not search mail, Teams, trackers or other files.
+Starts the day from `$ACCT_MYNOTES/TRACKERS/DAILY-PICKUP.md`. Read only that file, plus today's calendar (read only, today's date only, Microsoft 365 connector). Also read the lockbox learnings file `/Users/suzanoslin/ar-cash-application/references/deposit-journal/Lockbox-Learnings.json`, only to find suggestions with status "pending". Do not read the journal. Do not search mail, Teams, trackers or other files.
 
 ## Steps
 
@@ -18,7 +18,7 @@ Starts the day from `$ACCT_MYNOTES/TRACKERS/DAILY-PICKUP.md`. Read only that fil
    - **Lockbox suggestions:** only when the learnings file has pending suggestions; otherwise leave this part out entirely (no heading, no "none"). After Outstanding. One short line per suggestion: its ID and its text. Then one line: say yes or no for each; a yes writes the rule, a no keeps it quiet until Walter confirms more lines.
    - **Today's calendar:** after Outstanding, today's meetings in time order (Pacific): time and title only. If the calendar cannot be read, say so in one line. Today only; never other days.
 3. Do not list open questions, follow-up items or waiting-on lines. They live in the trackers. Mention them only if Suzan asks.
-4. Do not change any file. The one exception: when Suzan answers a lockbox suggestion, record it with `python3 /Users/suzanoslin/accounting-tools/scripts/learnings.py approve|decline <ID>` and say what was written.
+4. Do not change any file. The one exception: when Suzan answers a lockbox suggestion, record it with `python3 /Users/suzanoslin/ar-cash-application/scripts/learnings.py approve|decline <ID>` and say what was written.
 
 ## Rules
 

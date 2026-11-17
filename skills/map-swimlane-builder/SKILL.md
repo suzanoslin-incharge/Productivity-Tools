@@ -13,7 +13,7 @@ that scope and produces the detailed, lane-by-lane flow.
 This skill is general-purpose — usable for any department's process. If the
 process involves company-specific roles or systems you don't recognize, ask
 rather than guess. A department may maintain its own glossary in its own
-tools repo (e.g. `accounting-tools`) — check there if relevant, but
+tools repo (e.g. `ar-cash-application`) — check there if relevant, but
 don't assume it exists for every team.
 
 Two references, kept separate on purpose:
