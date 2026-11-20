@@ -68,7 +68,7 @@ Every file is handled in one of two modes. The mode is not stored as a field: it
 
 The taxonomy is additive only. Never rename, split, merge or retire an existing row. If no row is a valid match:
 
-1. Read `$TOOLS_PRODCTVTY/shared-knowledge/org-glossary.md` (department names and lines of business, for the Business Function) and `$TOOLS_PRODCTVTY/shared-knowledge/systems-landscape.md` (exact system names, for the Process Area). Read them only now, not on normal runs.
+1. Read `$TOOLS/shared-knowledge/org-glossary.md` (department names and lines of business, for the Business Function) and `$TOOLS/shared-knowledge/systems-landscape.md` (exact system names, for the Process Area). Read them only now, not on normal runs.
 2. Add a **new-row proposal** to the proposal: the Category text, the folder name, the glossary or landscape entries it is based on, and the files that would go under it.
 3. If approved, append the row to `00_Taxonomy.md` with a change-history line (marked Proposed until the user approves it as a standing row) and use it. If declined, file the article with `Category: Proposed: <category>` and flag it.
 

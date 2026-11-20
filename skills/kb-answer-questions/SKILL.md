@@ -46,7 +46,7 @@ comes with context.
 0. **By batch.** If the user names a batch or a topic ("the Fastenal batch", "Dispatch Guide"), list that batch's questions, grouped by person, in the short form below. Names of batches are the values in the `Batch` column.
 1. **Find the people.** Match each name the user gave against "Who may know"
    (case-insensitive, first or last name, e.g. "Josh" matches "Joshua
-   Barnhill"). Use `$TOOLS_PRODCTVTY/shared-knowledge/org-glossary.md` to
+   Barnhill"). Use `$TOOLS/shared-knowledge/org-glossary.md` to
    resolve a first name. If a name matches several people or none, ask. A row
    with two names appears under both people; show it once in full and refer to
    it from the second person's list. The user may also ask by topic, article or

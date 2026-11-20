@@ -5,7 +5,7 @@ description: Start-of-day pickup for Suzan. Reads DAILY-PICKUP.md (including las
 
 # Good Morning Claude
 
-Starts the day from `$ACCT_MYNOTES/TRACKERS/DAILY-PICKUP.md`. Read only that file, plus today's calendar (read only, today's date only, Microsoft 365 connector). Also read the lockbox learnings file `/Users/suzanoslin/ar-cash-application/references/deposit-journal/Lockbox-Learnings.json`, only to find suggestions with status "pending". Do not read the journal. Do not search mail, Teams, trackers or other files.
+Starts the day from `$ACCT_MYNOTES/TRACKERS/DAILY-PICKUP.md`. Read only that file, plus today's calendar (read only, today's date only, Microsoft 365 connector). Also read the lockbox learnings file `$ACCT_INTERNAL/Bank/Checks Received/Automated_Deposit_Journals/logs-learnings/Learnings.json`, only to find suggestions with status "pending". Do not read the journal. Do not search mail, Teams, trackers or other files.
 
 ## Steps
 
